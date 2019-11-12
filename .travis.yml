@@ -24,8 +24,7 @@ before_script:
   - cd ./plugins/bedard/saas
 
 script:
-  - ls -a
-  - php vendor/bin/phpunit --coverage-clover=coverage.xml
+  - if [[ $TRAVIS_PHP_VERSION = 7.3 ]]; then php vendor/bin/phpunit --coverage-clover=coverage.xml; else php vendor/bin/phpunit; fi
 
 after_success:
-    - bash <(curl -s https://codecov.io/bash)
+  - if [[ $TRAVIS_PHP_VERSION = 7.3 ]]; then bash <(curl -s https://codecov.io/bash) -v; fi
