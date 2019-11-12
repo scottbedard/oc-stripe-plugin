@@ -24,6 +24,7 @@ before_script:
   - cd ./plugins/bedard/saas
 
 script:
+  - ls -a
   - php vendor/bin/phpunit --coverage-clover=coverage.xml
 
 after_success:
