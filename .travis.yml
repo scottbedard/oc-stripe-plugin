@@ -19,6 +19,7 @@ before_script:
   - mkdir -p ./october/plugins/bedard/saas
   - mv !(october) october/plugins/bedard/saas
   - cd october
+  - git clone git@github.com:rainlab/user-plugin.git plugins/rainlab/user
   - composer install
   - cp config/cms.php config/testing/cms.php
   - cd ./plugins/bedard/saas
