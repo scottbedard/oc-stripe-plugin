@@ -23,6 +23,10 @@
     <filter>
         <whitelist>
             <directory suffix=".php">./</directory>
+            <exclude>
+                <directory suffix=".php">./tests</directory>
+                <file>./Plugin.php</file>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>
