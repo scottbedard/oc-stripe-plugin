@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Bedard\\Saas\\Tests\\": "tests/"
+        }
+    },
+    "name": "bedard/oc-saas-plugin",
+    "require": {},
+    "require-dev": {
+        "fzaninotto/faker": "~1.7",
+        "mockery/mockery": "~1.0",
+        "phpunit/phpunit": "~6.5"
+    },
+    "type": "october-plugin"
+}
