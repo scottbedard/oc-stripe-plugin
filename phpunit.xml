@@ -24,9 +24,9 @@
         <whitelist>
             <directory suffix=".php">./</directory>
             <exclude>
-                <directory>./tests</directory>
-                <directory>./updates</directory>
-                <directory>./vendor</directory>
+                <directory suffix=".php">./tests</directory>
+                <directory suffix=".php">./updates</directory>
+                <directory suffix=".php">./vendor</directory>
                 <file>./Plugin.php</file>
             </exclude>
         </whitelist>
