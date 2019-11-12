@@ -15,7 +15,7 @@ use System\Classes\PluginManager;
 abstract class PluginTestCase extends BasePluginTestCase
 {
     /**
-     * @var array   Plugins to refresh between tests.
+     * @var array Plugins to refresh between tests.
      */
     protected $refreshPlugins = [
         'RainLab.User',
@@ -23,7 +23,7 @@ abstract class PluginTestCase extends BasePluginTestCase
 
     /**
      * Perform test case set up.
-     * 
+     *
      * @return void
      */
     public function setUp()
@@ -41,8 +41,8 @@ abstract class PluginTestCase extends BasePluginTestCase
         // register the Auth facade in our test environment
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'RainLab\User\Facades\Auth');
-    
-        App::singleton('user.auth', function() {
+
+        App::singleton('user.auth', function () {
             return \RainLab\User\Classes\AuthManager::instance();
         });
 
@@ -61,7 +61,7 @@ abstract class PluginTestCase extends BasePluginTestCase
 
     /**
      * Perform tear down.
-     * 
+     *
      * @return void
      */
     public function tearDown()

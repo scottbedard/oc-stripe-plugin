@@ -5,7 +5,7 @@ namespace Bedard\Saas;
 use System\Classes\PluginBase;
 
 /**
- * Saas Plugin Information File
+ * Saas Plugin Information File.
  */
 class Plugin extends PluginBase
 {
@@ -24,7 +24,7 @@ class Plugin extends PluginBase
     public function boot()
     {
     }
-    
+
     /**
      * Returns information about this plugin.
      *
