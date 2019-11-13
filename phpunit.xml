@@ -21,8 +21,15 @@
         <env name="SESSION_DRIVER" value="array"/>
     </php>
     <filter>
+    <filter>
         <whitelist>
-            <directory>.</directory>
+            <directory suffix=".php">./</directory>
+            <exclude>
+                <file>./Plugin.php</file>
+                <directory suffix=".php">./tests</directory>
+                <directory suffix=".php">./updates</directory>
+            </exclude>
         </whitelist>
+    </filter>
     </filter>
 </phpunit>
