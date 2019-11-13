@@ -1,9 +1,11 @@
-<?php namespace Bedard\Saas\Models;
+<?php
+
+namespace Bedard\Saas\Models;
 
 use Model;
 
 /**
- * Plan Model
+ * Plan Model.
  */
 class Plan extends Model
 {
@@ -54,7 +56,7 @@ class Plan extends Model
      */
     protected $dates = [
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     /**

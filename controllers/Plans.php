@@ -1,10 +1,12 @@
-<?php namespace Bedard\Saas\Controllers;
+<?php
 
-use BackendMenu;
+namespace Bedard\Saas\Controllers;
+
 use Backend\Classes\Controller;
+use BackendMenu;
 
 /**
- * Plans Back-end Controller
+ * Plans Back-end Controller.
  */
 class Plans extends Controller
 {
@@ -12,7 +14,7 @@ class Plans extends Controller
 
     public $implement = [
         'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController'
+        'Backend.Behaviors.ListController',
     ];
 
     public $listConfig = 'config_list.yaml';

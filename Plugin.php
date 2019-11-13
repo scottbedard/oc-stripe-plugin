@@ -74,7 +74,7 @@ class Plugin extends PluginBase
                 'order'         => 500,
                 'permissions'   => ['bedard.saas.*'],
                 'url'           => Backend::url('bedard/saas/plans'),
-                'sideMenu' => [
+                'sideMenu'      => [
                     'plans' => [
                         'icon'          => 'icon-cubes',
                         'label'         => 'bedard.saas::lang.navigation.plans',
@@ -96,7 +96,7 @@ class Plugin extends PluginBase
         return [
             'bedard.saas.access_plans' => [
                 'label' => 'bedard.saas::lang.permissions.access_plans',
-                'tab' => 'bedard.saas::lang.permissions.tab',
+                'tab'   => 'bedard.saas::lang.permissions.tab',
             ],
         ];
     }
