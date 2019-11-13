@@ -21,8 +21,8 @@
         <env name="SESSION_DRIVER" value="array"/>
     </php>
     <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./</directory>
+        <whitelist>
+            <directory>.</directory>
             <exclude>
                 <file>./Plugin.php</file>
             </exclude>
