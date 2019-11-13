@@ -22,6 +22,7 @@ before_script:
   - composer install
   - cp config/cms.php config/testing/cms.php
   - cd ./plugins/bedard/saas
+  - composer install
 
 script:
   - if [[ $TRAVIS_PHP_VERSION = 7.3 ]]; then php vendor/bin/phpunit --coverage-clover=coverage.xml; else php vendor/bin/phpunit; fi
