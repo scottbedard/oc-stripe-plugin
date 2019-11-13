@@ -7,10 +7,10 @@ return [
     ],
     'permissions' => [
         'access_plans' => 'Manage plans',
-        'tab' => 'Software services',
+        'tab'          => 'Software services',
     ],
     'plans' => [
         'list_title' => 'Manage Plans',
-        'model' => 'Plan',
+        'model'      => 'Plan',
     ],
 ];
