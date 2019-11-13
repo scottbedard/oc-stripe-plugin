@@ -4,5 +4,21 @@
 
 columns:
     id:
-        label: ID
+        label: bedard.saas::lang.plans.list.id
         searchable: true
+    name:
+        label: bedard.saas::lang.plans.list.name
+        searchable: true
+    slug:
+        label: bedard.saas::lang.plans.list.slug
+        searchable: true
+    is_active:
+        label: bedard.saas::lang.plans.list.is_active
+        type: partial
+        path: $/bedard/saas/models/plan/_is_active_column.htm
+    created_at:
+        label: bedard.saas::lang.plans.list.created_at
+        type: date
+    updated_at:
+        label: bedard.saas::lang.plans.list.updated_at
+        type: timesince

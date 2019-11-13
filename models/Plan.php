@@ -24,17 +24,26 @@ class Plan extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'is_active' => 'boolean',
+        'name' => 'required',
+        'slug' => 'required|unique:bedard_saas_plans',
+    ];
 
     /**
      * @var array Attributes to be cast to native types
      */
-    protected $casts = [];
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
 
     /**
      * @var array Attributes to be cast to JSON

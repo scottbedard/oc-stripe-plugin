@@ -13,6 +13,10 @@ class create_plans_table extends Migration
         Schema::create('bedard_saas_plans', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->text('description');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

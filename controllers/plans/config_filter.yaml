@@ -1,0 +1,10 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+    is_active:
+        conditions: is_active <> false
+        default: 0
+        label: bedard.saas::lang.plans.list.is_active_filter
+        type: checkbox

@@ -3,6 +3,26 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    name:
+        label: bedard.saas::lang.plans.form.name
+        span: left
+        attributes:
+            autofocus: true
+    slug:
+        label: bedard.saas::lang.plans.form.slug
+        span: right
+        preset:
+            field: name
+            type: slug
+    is_active:
+        comment: bedard.saas::lang.plans.form.is_active_comment
+        label: bedard.saas::lang.plans.form.is_active
+        type: switch
+tabs:
+    stretch: true
+    fields:
+        description:
+            label: bedard.saas::lang.plans.form.description
+            size: tiny
+            tab: bedard.saas::lang.plans.form.general_tab
+            type: textarea
