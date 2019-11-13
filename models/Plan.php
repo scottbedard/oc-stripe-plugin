@@ -34,8 +34,8 @@ class Plan extends Model
      */
     public $rules = [
         'is_active' => 'boolean',
-        'name' => 'required',
-        'slug' => 'required|unique:bedard_saas_plans',
+        'name'      => 'required',
+        'slug'      => 'required|unique:bedard_saas_plans',
     ];
 
     /**
