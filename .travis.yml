@@ -25,7 +25,7 @@ before_script:
   - composer install
 
 script:
-  - if [[ $TRAVIS_PHP_VERSION = 7.3 ]]; then php vendor/bin/phpunit --coverage-clover=coverage.xml; else php vendor/bin/phpunit; fi
+  - if [[ $TRAVIS_PHP_VERSION = 7.3 ]]; then php vendor/bin/phpunit --coverage-clover clover.xml; else php vendor/bin/phpunit; fi
 
 after_success:
-  - if [[ $TRAVIS_PHP_VERSION = 7.3 ]]; then bash <(curl -s https://codecov.io/bash) -v; fi
+  - if [[ $TRAVIS_PHP_VERSION = 7.3 ]]; then bash <(curl -s https://codecov.io/bash) -v -cF php; fi
