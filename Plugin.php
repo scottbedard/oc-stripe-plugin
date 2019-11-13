@@ -2,6 +2,7 @@
 
 namespace Bedard\Saas;
 
+use Backend;
 use System\Classes\PluginBase;
 
 /**
@@ -66,7 +67,23 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return [];
+        return [
+            'saas' => [
+                'icon'          => 'icon-credit-card',
+                'label'         => 'bedard.saas::lang.navigation.label',
+                'order'         => 500,
+                'permissions'   => ['bedard.saas.*'],
+                'url'           => Backend::url('bedard/saas/plans'),
+                'sideMenu' => [
+                    'plans' => [
+                        'icon'          => 'icon-cubes',
+                        'label'         => 'bedard.saas::lang.navigation.plans',
+                        'permissions'   => ['bedard.saas.access_plans'],
+                        'url'           => Backend::url('bedard/saas/plans'),
+                    ],
+                ],
+            ],
+        ];
     }
 
     /**
@@ -76,6 +93,11 @@ class Plugin extends PluginBase
      */
     public function registerPermissions()
     {
-        return [];
+        return [
+            'bedard.saas.access_plans' => [
+                'label' => 'bedard.saas::lang.permissions.access_plans',
+                'tab' => 'bedard.saas::lang.permissions.tab',
+            ],
+        ];
     }
 }
