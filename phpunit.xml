@@ -21,7 +21,6 @@
         <env name="SESSION_DRIVER" value="array"/>
     </php>
     <filter>
-    <filter>
         <whitelist>
             <directory suffix=".php">./</directory>
             <exclude>
@@ -30,6 +29,5 @@
                 <directory suffix=".php">./updates</directory>
             </exclude>
         </whitelist>
-    </filter>
     </filter>
 </phpunit>
