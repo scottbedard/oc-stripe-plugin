@@ -6,4 +6,22 @@
 
 Software as a service plugin for October CMS and Stripe.
 
-> **Note:** This plugin is in active development, and is not ready for public use.
+> **Note:** This plugin is in active development, and is not ready for public use. [See this issue](https://github.com/scottbedard/oc-saas-plugin/issues/2) for current project status.
+
+### Installation
+
+Install [RainLab.User](https://github.com/rainlab/user-plugin) and run all migrations, then run the following from the root October directory.
+
+```bash
+# clone repository
+git clone git@github.com:scottbedard/oc-saas-plugin.git plugins/bedard/saas
+
+# run migrations
+php artisan plugin:refresh Bedard.Saas
+```
+
+### License
+
+[MIT](https://github.com/scottbedard/oc-saas-plugin/blob/master/LICENSE)
+
+Copyright (c) 2019-present, Scott Bedard
