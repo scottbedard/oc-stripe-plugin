@@ -63,6 +63,9 @@ class Schedule extends Model
      * @var array Relations
      */
     public $belongsToMany = [
-        'plans' => 'Bedard\Saas\Models\Plan',
+        'plans' => [
+            'Bedard\Saas\Models\Plan',
+            'table' => 'bedard_saas_plan_schedule',
+        ],
     ];
 }

@@ -34,4 +34,14 @@ return [
         'list_title' => 'Manage Plans',
         'model'      => 'Plan',
     ],
+    'schedules' => [
+        'form' => [
+
+        ],
+        'list' => [
+
+        ],
+        'list_title' => 'Manage Schedules',
+        'model' => 'Schedule',
+    ],
 ];

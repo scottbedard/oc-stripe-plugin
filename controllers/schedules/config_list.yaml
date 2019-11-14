@@ -9,7 +9,7 @@ list: $/bedard/saas/models/schedule/columns.yaml
 modelClass: Bedard\Saas\Models\Schedule
 
 # List Title
-title: Manage Schedules
+title: bedard.saas::lang.schedules.list_title
 
 # Link URL for each record
 recordUrl: bedard/saas/schedules/update/:id
