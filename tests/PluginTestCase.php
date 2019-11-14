@@ -4,6 +4,8 @@ namespace Bedard\Saas\Tests;
 
 use App;
 use Auth;
+use Faker\Generator;
+use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Notification;
 use Mail;
@@ -37,6 +39,13 @@ abstract class PluginTestCase extends BasePluginTestCase
         UserSettings::resetDefault();
         UserSettings::set('activate_mode', 'auto');
         UserSettings::set('allow_registration', true);
+
+        // register model factories
+        App::singleton(Factory::class, function ($app) {
+            $faker = $app->make(Generator::class);
+
+            return Factory::construct($faker, plugins_path('bedard/saas/factories'));
+        });
 
         // register the Auth facade in our test environment
         $alias = AliasLoader::getInstance();

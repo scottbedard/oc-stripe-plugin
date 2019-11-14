@@ -1,20 +1,18 @@
-<?php
-
-namespace Bedard\Saas\Models;
+<?php namespace Bedard\Saas\Models;
 
 use Model;
 
 /**
- * Plan Model.
+ * Schedule Model
  */
-class Plan extends Model
+class Schedule extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'bedard_saas_plans';
+    public $table = 'bedard_saas_schedules';
 
     /**
      * @var array Guarded fields
@@ -24,26 +22,17 @@ class Plan extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [
-        'name',
-        'slug',
-    ];
+    protected $fillable = [];
 
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [
-        'is_active' => 'boolean',
-        'name'      => 'required',
-        'slug'      => 'required|unique:bedard_saas_plans',
-    ];
+    public $rules = [];
 
     /**
      * @var array Attributes to be cast to native types
      */
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
+    protected $casts = [];
 
     /**
      * @var array Attributes to be cast to JSON
@@ -65,13 +54,13 @@ class Plan extends Model
      */
     protected $dates = [
         'created_at',
-        'updated_at',
+        'updated_at'
     ];
 
     /**
      * @var array Relations
      */
     public $belongsToMany = [
-        'schedules' => 'Bedard\Saas\Models\Schedule',
+        'plans' => 'Bedard\Saas\Models\Plan',
     ];
 }
