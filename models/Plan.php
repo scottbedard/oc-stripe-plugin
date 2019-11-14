@@ -79,7 +79,7 @@ class Plan extends Model
     ];
 
     /**
-     * Query scopes
+     * Query scopes.
      */
     public function scopeActive($query)
     {
