@@ -29,4 +29,9 @@ class Schedules extends Controller
 
         BackendMenu::setContext('Bedard.Saas', 'saas', 'schedules');
     }
+
+    public function listExtendQuery($query)
+    {
+        return $query->withCount(['active_plans', 'plans']);
+    }
 }

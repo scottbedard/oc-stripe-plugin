@@ -45,6 +45,7 @@ return [
             'name'                => 'Name',
         ],
         'list' => [
+            'active_plans_count'               => 'Active Plans',
             'billing_frequency'                => 'Billing Frequency',
             'billing_frequency_day_plural'     => ':duration days',
             'billing_frequency_day_singular'   => ':duration day',
@@ -55,6 +56,7 @@ return [
             'created_at'                       => 'Created',
             'id'                               => 'ID',
             'name'                             => 'Name',
+            'plans_count'                      => 'Total Plans',
             'updated_at'                       => 'Last Updated',
         ],
         'list_title' => 'Manage Schedules',

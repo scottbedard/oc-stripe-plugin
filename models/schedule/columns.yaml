@@ -14,6 +14,10 @@ columns:
         path: $/bedard/saas/models/schedule/_billing_frequency_column.htm
         sortable: false
         type: partial
+    active_plans_count:
+        label: bedard.saas::lang.schedules.list.active_plans_count
+    plans_count:
+        label: bedard.saas::lang.schedules.list.plans_count
     created_at:
         label: bedard.saas::lang.schedules.list.created_at
         type: date
