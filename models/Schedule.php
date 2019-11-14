@@ -35,8 +35,8 @@ class Schedule extends Model
      */
     public $rules = [
         'calendar_duration' => 'required|integer|min:1',
-        'calendar_unit' => 'required|in:day,month,year',
-        'name' => 'required',
+        'calendar_unit'     => 'required|in:day,month,year',
+        'name'              => 'required',
     ];
 
     /**
