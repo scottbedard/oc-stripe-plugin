@@ -1,10 +1,12 @@
-<?php namespace Bedard\Saas\Updates;
+<?php
+
+namespace Bedard\Saas\Updates;
 
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreatePlanScheduleTable extends Migration
+class create_plan_schedule_table extends Migration
 {
     public function up()
     {

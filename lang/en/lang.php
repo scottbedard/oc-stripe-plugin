@@ -2,14 +2,14 @@
 
 return [
     'navigation' => [
-        'label' => 'Services',
-        'plans' => 'Plans',
+        'label'     => 'Services',
+        'plans'     => 'Plans',
         'schedules' => 'Schedules',
     ],
     'permissions' => [
-        'access_plans' => 'Manage plans',
+        'access_plans'     => 'Manage plans',
         'access_schedules' => 'Manage billing schedules',
-        'tab'          => 'Software services',
+        'tab'              => 'Software services',
     ],
     'plans' => [
         'form' => [

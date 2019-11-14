@@ -34,10 +34,10 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'author' => 'Scott Bedard',
+            'author'      => 'Scott Bedard',
             'description' => 'Software as a service with Stripe',
-            'icon' => 'icon-cc-stripe',
-            'name' => 'Saas',
+            'icon'        => 'icon-cc-stripe',
+            'name'        => 'Saas',
         ];
     }
 
@@ -69,23 +69,23 @@ class Plugin extends PluginBase
     {
         return [
             'saas' => [
-                'icon' => 'icon-credit-card',
-                'label' => 'bedard.saas::lang.navigation.label',
-                'order' => 500,
+                'icon'        => 'icon-credit-card',
+                'label'       => 'bedard.saas::lang.navigation.label',
+                'order'       => 500,
                 'permissions' => ['bedard.saas.*'],
-                'url' => Backend::url('bedard/saas/plans'),
-                'sideMenu' => [
+                'url'         => Backend::url('bedard/saas/plans'),
+                'sideMenu'    => [
                     'plans' => [
-                        'icon' => 'icon-cubes',
-                        'label' => 'bedard.saas::lang.navigation.plans',
+                        'icon'        => 'icon-cubes',
+                        'label'       => 'bedard.saas::lang.navigation.plans',
                         'permissions' => ['bedard.saas.access_plans'],
-                        'url' => Backend::url('bedard/saas/plans'),
+                        'url'         => Backend::url('bedard/saas/plans'),
                     ],
                     'schedules' => [
-                        'icon' => 'icon-calendar',
-                        'label' => 'bedard.saas::lang.navigation.schedules',
+                        'icon'        => 'icon-calendar',
+                        'label'       => 'bedard.saas::lang.navigation.schedules',
                         'permissions' => ['bedard.saas.access_schedules'],
-                        'url' => Backend::url('bedard/saas/schedules'),
+                        'url'         => Backend::url('bedard/saas/schedules'),
                     ],
                 ],
             ],
@@ -106,8 +106,8 @@ class Plugin extends PluginBase
             ],
             'bedard.saas.access_schedules' => [
                 'label' => 'bedard.saas::lang.permissions.access_schedules',
-                'tab' => 'bedard.saas::lang.permissions.tab',
-            ]
+                'tab'   => 'bedard.saas::lang.permissions.tab',
+            ],
         ];
     }
 }
