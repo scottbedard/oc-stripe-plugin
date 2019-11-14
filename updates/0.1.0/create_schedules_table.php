@@ -13,6 +13,9 @@ class create_schedules_table extends Migration
         Schema::create('bedard_saas_schedules', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('name');
+            $table->smallInteger('calendar_duration')->unsigned();
+            $table->enum('calendar_unit', ['day', 'month', 'year']);
             $table->timestamps();
         });
     }

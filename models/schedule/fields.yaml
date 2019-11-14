@@ -3,6 +3,19 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    name:
+        label: bedard.saas::lang.schedules.form.name
+    calendar_duration:
+        label: bedard.saas::lang.schedules.form.calendar_duration
+        min: 1
+        span: left
+        step: 1
+        type: number
+    calendar_unit:
+        label: bedard.saas::lang.schedules.form.calendar_unit
+        span: right
+        type: dropdown
+        options:
+            day: bedard.saas::lang.schedules.form.calendar_unit_day
+            month: bedard.saas::lang.schedules.form.calendar_unit_month
+            year: bedard.saas::lang.schedules.form.calendar_unit_year

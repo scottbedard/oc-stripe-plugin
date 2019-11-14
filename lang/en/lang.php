@@ -36,10 +36,25 @@ return [
     ],
     'schedules' => [
         'form' => [
-
+            'calendar_duration' => 'Calendar Duration',
+            'calendar_unit' => 'Calendar Unit',
+            'calendar_unit_day' => 'Day',
+            'calendar_unit_month' => 'Month',
+            'calendar_unit_year' => 'Year',
+            'name' => 'Name',
         ],
         'list' => [
-
+            'billing_frequency' => 'Billing Frequency',
+            'billing_frequency_day_plural' => ':duration days',
+            'billing_frequency_day_singular' => ':duration day',
+            'billing_frequency_month_plural' => ':duration months',
+            'billing_frequency_month_singular' => ':duration month',
+            'billing_frequency_year_plural' => ':duration years',
+            'billing_frequency_year_singular' => ':duration year',
+            'created_at' => 'Created',
+            'id' => 'ID',
+            'name' => 'Name',
+            'updated_at' => 'Last Updated',
         ],
         'list_title' => 'Manage Schedules',
         'model'      => 'Schedule',

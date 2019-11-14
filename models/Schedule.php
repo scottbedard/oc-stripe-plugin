@@ -34,7 +34,9 @@ class Schedule extends Model
     /**
      * @var array Attributes to be cast to native types
      */
-    protected $casts = [];
+    protected $casts = [
+        'calendar_unit' => 'number',
+    ];
 
     /**
      * @var array Attributes to be cast to JSON

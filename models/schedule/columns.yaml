@@ -4,5 +4,19 @@
 
 columns:
     id:
-        label: ID
+        label: bedard.saas::lang.schedules.list.id
         searchable: true
+    name:
+        label: bedard.saas::lang.schedules.list.name
+        searchable: true
+    billing_frequency:
+        label: bedard.saas::lang.schedules.list.billing_frequency
+        path: $/bedard/saas/models/schedule/_billing_frequency_column.htm
+        sortable: false
+        type: partial
+    created_at:
+        label: bedard.saas::lang.schedules.list.created_at
+        type: date
+    updated_at:
+        label: bedard.saas::lang.schedules.list.updated_at
+        type: timesince
