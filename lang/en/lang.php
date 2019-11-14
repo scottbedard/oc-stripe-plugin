@@ -42,6 +42,6 @@ return [
 
         ],
         'list_title' => 'Manage Schedules',
-        'model' => 'Schedule',
+        'model'      => 'Schedule',
     ],
 ];
