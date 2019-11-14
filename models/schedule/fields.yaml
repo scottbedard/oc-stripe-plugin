@@ -5,6 +5,8 @@
 fields:
     name:
         label: bedard.saas::lang.schedules.form.name
+        attributes:
+            autofocus: true
     calendar_duration:
         label: bedard.saas::lang.schedules.form.calendar_duration
         min: 1

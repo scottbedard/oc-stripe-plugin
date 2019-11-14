@@ -24,12 +24,20 @@ class Schedule extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'calendar_duration',
+        'calendar_unit',
+        'name',
+    ];
 
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'calendar_duration' => 'required|integer|min:1',
+        'calendar_unit' => 'required|in:day,month,year',
+        'name' => 'required',
+    ];
 
     /**
      * @var array Attributes to be cast to native types

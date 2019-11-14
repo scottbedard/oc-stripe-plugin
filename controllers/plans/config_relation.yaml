@@ -1,0 +1,15 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+schedules:
+    deferredBinding: true
+    emptyMessage: backend::lang.list.no_records
+    label: bedard.saas::lang.schedules.model
+    manage:
+        form: $/bedard/saas/models/schedule/fields.yaml
+        recordsPerPage: 10
+    view:
+        list: $/bedard/saas/models/schedule/columns.yaml
+        recordOnClick: "$.oc.relationBehavior.toggleListCheckbox(this)"
+        toolbarButtons: create|add|remove

@@ -18,6 +18,7 @@ return [
             'is_active'         => 'Status',
             'is_active_comment' => 'When off, this plan cannot be purchased',
             'name'              => 'Name',
+            'schedules_tab'     => 'Schedules',
             'slug'              => 'Slug',
         ],
         'list' => [

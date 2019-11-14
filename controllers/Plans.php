@@ -15,6 +15,7 @@ class Plans extends Controller
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController',
+        'Backend.Behaviors.RelationController',
     ];
 
     public $listConfig = 'config_list.yaml';
@@ -22,6 +23,8 @@ class Plans extends Controller
     public $registerPermissions = [
         'bedard.saas.access_plans',
     ];
+
+    public $relationConfig = 'config_relation.yaml';
 
     public function __construct()
     {
