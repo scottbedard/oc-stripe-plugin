@@ -4,6 +4,7 @@ namespace Bedard\Saas\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Bedard\Saas\Models\Schedule;
 
 /**
  * Plans Back-end Controller.
@@ -31,5 +32,14 @@ class Plans extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Bedard.Saas', 'saas', 'plans');
+    }
+
+    public function relationExtendViewWidget($widget, $field, $model)
+    {      
+        if ($field === 'schedules') {
+            $widget->bindEvent('list.extendQueryBefore', function ($query) use ($widget) {
+                $query->withCount(['active_plans', 'plans']);
+            });
+        }
     }
 }

@@ -83,4 +83,12 @@ class Schedule extends Model
             'table' => 'bedard_saas_plan_schedule',
         ],
     ];
+
+    /**
+     * Query scopes.
+     */
+    public function scopeHasActivePlan($query)
+    {
+        return $query->has('active_plans');
+    }
 }

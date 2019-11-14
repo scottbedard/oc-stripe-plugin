@@ -54,6 +54,7 @@ return [
             'billing_frequency_year_plural'    => ':duration years',
             'billing_frequency_year_singular'  => ':duration year',
             'created_at'                       => 'Created',
+            'has_active_plan_filter'           => 'Hide schedules with no active plans',
             'id'                               => 'ID',
             'name'                             => 'Name',
             'plans_count'                      => 'Total Plans',
