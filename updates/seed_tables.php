@@ -9,7 +9,7 @@ use Faker\Generator;
 use Illuminate\Database\Eloquent\Factory;
 use October\Rain\Database\Updates\Seeder;
 
-class SeedAllTables extends Seeder
+class seed_tables extends Seeder
 {
     public function __construct()
     {
@@ -30,38 +30,38 @@ class SeedAllTables extends Seeder
     {
         $standard = factory(Plan::class)->create([
             'is_active' => true,
-            'name' => 'Standard',
-            'slug' => 'standard',
+            'name'      => 'Standard',
+            'slug'      => 'standard',
         ]);
 
         factory(Schedule::class)->states('monthly')->create([
-            'cost' => 10,
+            'cost'    => 10,
             'plan_id' => $standard->id,
         ]);
 
         factory(Schedule::class)->states('yearly')->create([
-            'cost' => 100,
+            'cost'    => 100,
             'plan_id' => $standard->id,
         ]);
 
         $premium = factory(Plan::class)->create([
             'is_active' => true,
-            'name' => 'Premium',
-            'slug' => 'premium',
+            'name'      => 'Premium',
+            'slug'      => 'premium',
         ]);
 
         factory(Schedule::class)->states('monthly')->create([
-            'cost' => 20,
+            'cost'    => 20,
             'plan_id' => $premium->id,
         ]);
 
         factory(Schedule::class)->states('quarterly')->create([
-            'cost' => 55,
+            'cost'    => 55,
             'plan_id' => $premium->id,
         ]);
 
         factory(Schedule::class)->states('yearly')->create([
-            'cost' => 200,
+            'cost'    => 200,
             'plan_id' => $premium->id,
         ]);
 

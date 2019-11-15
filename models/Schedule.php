@@ -46,7 +46,7 @@ class Schedule extends Model
      */
     protected $casts = [
         'calendar_unit' => 'number',
-        'cost' => 'number',
+        'cost'          => 'number',
     ];
 
     /**

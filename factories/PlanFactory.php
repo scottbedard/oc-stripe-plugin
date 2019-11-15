@@ -12,8 +12,8 @@ $factory->define(Plan::class, function (Generator $faker) {
 
     return [
         'description' => $faker->paragraph(3),
-        'is_active' => false,
-        'name' => $name,
-        'slug' => Str::slug($name),
+        'is_active'   => false,
+        'name'        => $name,
+        'slug'        => Str::slug($name),
     ];
 });
