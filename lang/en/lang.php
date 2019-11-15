@@ -7,7 +7,7 @@ return [
     ],
     'permissions' => [
         'access_plans' => 'Manage plans',
-        'tab' => 'Software services',
+        'tab'          => 'Software services',
     ],
     'plans' => [
         'form' => [
@@ -52,11 +52,11 @@ return [
             'interval_month_singular' => ':duration month',
             'interval_year_plural'    => ':duration years',
             'interval_year_singular'  => ':duration year',
-            'created_at' => 'Created',
-            'cost' => 'Cost',
-            'id' => 'ID',
-            'name' => 'Name',
-            'updated_at' => 'Last Updated',
+            'created_at'              => 'Created',
+            'cost'                    => 'Cost',
+            'id'                      => 'ID',
+            'name'                    => 'Name',
+            'updated_at'              => 'Last Updated',
         ],
         'model' => 'Schedule',
     ],
