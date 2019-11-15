@@ -33,12 +33,8 @@ class Plans extends Controller
         BackendMenu::setContext('Bedard.Saas', 'saas', 'plans');
     }
 
-    public function relationExtendViewWidget($widget, $field, $model)
+    public function listExtendQuery($query)
     {
-        if ($field === 'schedules') {
-            $widget->bindEvent('list.extendQueryBefore', function ($query) use ($widget) {
-                $query->withCount(['active_plans', 'plans']);
-            });
-        }
+        $query->withCount('schedules');
     }
 }

@@ -11,5 +11,4 @@ schedules:
         recordsPerPage: 10
     view:
         list: $/bedard/saas/models/schedule/columns.yaml
-        recordOnClick: "$.oc.relationBehavior.toggleListCheckbox(this)"
-        toolbarButtons: create|add|remove
+        toolbarButtons: create|delete

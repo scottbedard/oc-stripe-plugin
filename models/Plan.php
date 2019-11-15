@@ -71,11 +71,8 @@ class Plan extends Model
     /**
      * @var array Relations
      */
-    public $belongsToMany = [
-        'schedules' => [
-            'Bedard\Saas\Models\Schedule',
-            'table' => 'bedard_saas_plan_schedule',
-        ],
+    public $hasMany = [
+        'schedules' => 'Bedard\Saas\Models\Schedule',
     ];
 
     /**

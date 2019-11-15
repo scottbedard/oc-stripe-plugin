@@ -1,9 +1,10 @@
 <i
     class="icon-circle"
-    data-toggle="tooltip"
-    title="<?= e(trans($record->is_active
-        ? 'bedard.saas::lang.plans.list.is_active_on'
-        : 'bedard.saas::lang.plans.list.is_active_off'
-    )) ?>"
-    style="color: <?= $record->is_active ? '#95b753' : '#999' ?>">
-</i>
+    style="color: <?= $record->is_active ? '#95b753' : '#999' ?>; margin-right: 0.5rem"
+></i><?= 
+    e(trans(
+        $record->is_active
+            ? 'bedard.saas::lang.plans.list.is_active_on'
+            : 'bedard.saas::lang.plans.list.is_active_off'
+    ))
+?>

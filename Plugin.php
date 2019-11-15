@@ -18,15 +18,6 @@ class Plugin extends PluginBase
     ];
 
     /**
-     * Boot method, called right before the request route.
-     *
-     * @return array
-     */
-    public function boot()
-    {
-    }
-
-    /**
      * Returns information about this plugin.
      *
      * @return array
@@ -39,25 +30,6 @@ class Plugin extends PluginBase
             'icon'        => 'icon-cc-stripe',
             'name'        => 'Saas',
         ];
-    }
-
-    /**
-     * Register method, called when the plugin is first registered.
-     *
-     * @return void
-     */
-    public function register()
-    {
-    }
-
-    /**
-     * Registers any front-end components implemented in this plugin.
-     *
-     * @return array
-     */
-    public function registerComponents()
-    {
-        return [];
     }
 
     /**
@@ -81,12 +53,6 @@ class Plugin extends PluginBase
                         'permissions' => ['bedard.saas.access_plans'],
                         'url'         => Backend::url('bedard/saas/plans'),
                     ],
-                    'schedules' => [
-                        'icon'        => 'icon-calendar',
-                        'label'       => 'bedard.saas::lang.navigation.schedules',
-                        'permissions' => ['bedard.saas.access_schedules'],
-                        'url'         => Backend::url('bedard/saas/schedules'),
-                    ],
                 ],
             ],
         ];
@@ -102,10 +68,6 @@ class Plugin extends PluginBase
         return [
             'bedard.saas.access_plans' => [
                 'label' => 'bedard.saas::lang.permissions.access_plans',
-                'tab'   => 'bedard.saas::lang.permissions.tab',
-            ],
-            'bedard.saas.access_schedules' => [
-                'label' => 'bedard.saas::lang.permissions.access_schedules',
                 'tab'   => 'bedard.saas::lang.permissions.tab',
             ],
         ];

@@ -27,6 +27,7 @@ class Schedule extends Model
     protected $fillable = [
         'calendar_duration',
         'calendar_unit',
+        'cost',
         'name',
     ];
 
@@ -36,6 +37,7 @@ class Schedule extends Model
     public $rules = [
         'calendar_duration' => 'required|integer|min:1',
         'calendar_unit'     => 'required|in:day,month,year',
+        'cost'              => 'required|numeric|min:0',
         'name'              => 'required',
     ];
 
@@ -72,23 +74,7 @@ class Schedule extends Model
     /**
      * @var array Relations
      */
-    public $belongsToMany = [
-        'active_plans' => [
-            'Bedard\Saas\Models\Plan',
-            'table' => 'bedard_saas_plan_schedule',
-            'scope' => 'active',
-        ],
-        'plans' => [
-            'Bedard\Saas\Models\Plan',
-            'table' => 'bedard_saas_plan_schedule',
-        ],
+    public $belongsTo = [
+        'plan' => 'Bedard\Saas\Models\Plan',
     ];
-
-    /**
-     * Query scopes.
-     */
-    public function scopeHasActivePlan($query)
-    {
-        return $query->has('active_plans');
-    }
 }

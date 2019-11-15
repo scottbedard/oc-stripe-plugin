@@ -12,6 +12,8 @@ columns:
     slug:
         label: bedard.saas::lang.plans.list.slug
         searchable: true
+    schedules_count:
+        label: bedard.saas::lang.plans.list.schedules_count
     is_active:
         label: bedard.saas::lang.plans.list.is_active
         type: partial

@@ -3,21 +3,16 @@
 # ===================================
 
 columns:
-    id:
-        label: bedard.saas::lang.schedules.list.id
-        searchable: true
     name:
         label: bedard.saas::lang.schedules.list.name
         searchable: true
-    billing_frequency:
-        label: bedard.saas::lang.schedules.list.billing_frequency
-        path: $/bedard/saas/models/schedule/_billing_frequency_column.htm
+    interval:
+        label: bedard.saas::lang.schedules.list.interval
+        path: $/bedard/saas/models/schedule/_interval_column.htm
         sortable: false
         type: partial
-    active_plans_count:
-        label: bedard.saas::lang.schedules.list.active_plans_count
-    plans_count:
-        label: bedard.saas::lang.schedules.list.plans_count
+    cost:
+        label: bedard.saas::lang.schedules.list.cost
     created_at:
         label: bedard.saas::lang.schedules.list.created_at
         type: date

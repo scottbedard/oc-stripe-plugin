@@ -4,9 +4,13 @@
 
 fields:
     name:
-        label: bedard.saas::lang.schedules.form.name
         attributes:
             autofocus: true
+        label: bedard.saas::lang.schedules.form.name
+    cost:
+        label: bedard.saas::lang.schedules.form.cost
+        step: 0.01
+        type: number
     calendar_duration:
         label: bedard.saas::lang.schedules.form.calendar_duration
         min: 1
@@ -15,9 +19,9 @@ fields:
         type: number
     calendar_unit:
         label: bedard.saas::lang.schedules.form.calendar_unit
-        span: right
-        type: dropdown
         options:
             day: bedard.saas::lang.schedules.form.calendar_unit_day
             month: bedard.saas::lang.schedules.form.calendar_unit_month
             year: bedard.saas::lang.schedules.form.calendar_unit_year
+        span: right
+        type: dropdown
