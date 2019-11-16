@@ -20,7 +20,6 @@ before_script:
   - mv !(october) october/plugins/bedard/saas
   - cd october
   - printf "STRIPE_KEY=$STRIPE_KEY\nSTRIPE_SECRET=$STRIPE_SECRET" > ".env"
-  - cat .env
   - composer install
   - cp config/cms.php config/testing/cms.php
   - cd ./plugins/bedard/saas
