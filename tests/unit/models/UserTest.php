@@ -17,6 +17,7 @@ class UserTest extends PluginTestCase
         $customer = StripeIntegration::retrieveCustomer($user);
 
         $this->assertEquals($user->email, $customer->email);
+        $this->assertEquals($user->name . ' ' . $user->surname, $customer->name);
     }
 
     public function test_updating_a_user_updates_the_stripe_customer()
