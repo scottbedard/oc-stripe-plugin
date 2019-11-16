@@ -35,12 +35,12 @@ class seed_tables extends Seeder
         ]);
 
         factory(Schedule::class)->states('monthly')->create([
-            'cost'    => 10,
+            'cost'       => 10,
             'product_id' => $standard->id,
         ]);
 
         factory(Schedule::class)->states('yearly')->create([
-            'cost'    => 100,
+            'cost'       => 100,
             'product_id' => $standard->id,
         ]);
 
@@ -51,17 +51,17 @@ class seed_tables extends Seeder
         ]);
 
         factory(Schedule::class)->states('monthly')->create([
-            'cost'    => 20,
+            'cost'       => 20,
             'product_id' => $premium->id,
         ]);
 
         factory(Schedule::class)->states('quarterly')->create([
-            'cost'    => 55,
+            'cost'       => 55,
             'product_id' => $premium->id,
         ]);
 
         factory(Schedule::class)->states('yearly')->create([
-            'cost'    => 200,
+            'cost'       => 200,
             'product_id' => $premium->id,
         ]);
 

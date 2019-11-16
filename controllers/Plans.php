@@ -8,7 +8,7 @@ use BackendMenu;
 /**
  * Products Back-end Controller.
  */
-class Products extends Controller
+class Plans extends Controller
 {
     public $formConfig = 'config_form.yaml';
 
