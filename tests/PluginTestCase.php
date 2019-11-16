@@ -28,7 +28,7 @@ abstract class PluginTestCase extends BasePluginTestCase
     /**
      * Helper function to create and re-fetch a user. The fresh user instance
      * is necessary to prevent validation errors caused by stale password fields.
-     * 
+     *
      * @return \RainLab\User\Models\User
      */
     public function createUser($data = [])

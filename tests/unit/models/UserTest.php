@@ -4,7 +4,6 @@ namespace Bedard\Saas\Tests\Unit\Models;
 
 use Bedard\Saas\Tests\PluginTestCase;
 use Faker\Factory;
-use RainLab\User\Models\User;
 use StripeIntegration;
 
 class UserTest extends PluginTestCase
@@ -27,7 +26,7 @@ class UserTest extends PluginTestCase
         $user = $this->createUser();
         $user->email = $faker->email;
         $user->save();
-        
+
         $customer = StripeIntegration::retrieveCustomer($user);
 
         $this->assertEquals($user->email, $customer->email);
