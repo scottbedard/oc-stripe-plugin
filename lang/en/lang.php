@@ -2,14 +2,14 @@
 
 return [
     'navigation' => [
-        'label'    => 'Services',
+        'label'       => 'Services',
         'products'    => 'Products',
-        'settings' => 'Settings',
+        'settings'    => 'Settings',
     ],
     'permissions' => [
         'access_products'    => 'Manage products',
-        'access_settings' => 'Manage settings',
-        'tab'             => 'Software services',
+        'access_settings'    => 'Manage settings',
+        'tab'                => 'Software services',
     ],
     'products' => [
         'form' => [
