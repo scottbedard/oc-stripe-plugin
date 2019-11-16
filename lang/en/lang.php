@@ -4,9 +4,11 @@ return [
     'navigation' => [
         'label' => 'Services',
         'plans' => 'Plans',
+        'settings' => 'Settings',
     ],
     'permissions' => [
         'access_plans' => 'Manage plans',
+        'access_settings' => 'Manage settings',
         'tab'          => 'Software services',
     ],
     'plans' => [
