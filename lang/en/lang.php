@@ -71,7 +71,7 @@ return [
             'api_keys_test'            => 'Test keys are configured properly.',
             'api_keys_test_comment'    => 'Services should functional normally, but no transactions will occur.',
             'currency_code'            => 'Currency code',
-            'currency_code_comment'    => 'Refer to the <a href="https://stripe.com/docs/currencies" target="_blank">Stripe documentation</a> for a list of supported currencies.'
+            'currency_code_comment'    => 'Refer to the <a href="https://stripe.com/docs/currencies" target="_blank">Stripe documentation</a> for a list of supported currencies.',
         ],
         'menu_category'    => 'Services',
         'menu_description' => 'Manage Stripe configuration.',

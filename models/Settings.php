@@ -61,7 +61,7 @@ class Settings extends Model
 
     /**
      * Get the currency code.
-     * 
+     *
      * @return string
      */
     public function getCurrencyCodeAttribute()
