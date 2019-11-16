@@ -4,11 +4,10 @@ namespace Bedard\Saas;
 
 use App;
 use Backend;
-use StripeIntegration;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\User;
+use StripeIntegration;
 use System\Classes\PluginBase;
-
 
 /**
  * Saas Plugin Information File.
@@ -24,7 +23,7 @@ class Plugin extends PluginBase
 
     /**
      * Boot method, called right before the request is routed.
-     * 
+     *
      * @return void
      */
     public function boot()
@@ -33,7 +32,7 @@ class Plugin extends PluginBase
         $alias = AliasLoader::getInstance();
         $alias->alias('StripeIntegration', 'Bedard\Saas\Facades\StripeIntegration');
 
-        App::singleton('bedard.saas.stripe', function() {
+        App::singleton('bedard.saas.stripe', function () {
             return \Bedard\Saas\Classes\StripeIntegration::instance();
         });
 
@@ -42,7 +41,7 @@ class Plugin extends PluginBase
 
     /**
      * Extend RainLab.User plugin.
-     * 
+     *
      * @return void
      */
     protected function extendRainLabUser()

@@ -8,9 +8,9 @@ use RainLab\User\Models\User;
  */
 $factory->define(User::class, function (Generator $faker) {
     return [
-        'email' => $faker->email,
-        'password' => '12345678',
+        'email'                 => $faker->email,
+        'password'              => '12345678',
         'password_confirmation' => '12345678',
-        'username' => $faker->username,
+        'username'              => $faker->username,
     ];
 });

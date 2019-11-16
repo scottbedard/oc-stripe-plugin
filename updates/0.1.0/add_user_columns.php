@@ -5,7 +5,7 @@ namespace Bedard\Saas\Updates;
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class AddUserColumns extends Migration
+class add_user_columns extends Migration
 {
     public function up()
     {

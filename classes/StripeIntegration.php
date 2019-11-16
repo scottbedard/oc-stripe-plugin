@@ -11,13 +11,13 @@ class StripeIntegration
     use \October\Rain\Support\Traits\Singleton;
 
     /**
-     * @var StripeIntegration   Singleton instance
+     * @var StripeIntegration Singleton instance
      */
     protected static $instance;
 
     /**
      * Construct.
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -27,7 +27,7 @@ class StripeIntegration
 
     /**
      * Create a customer from a user model.
-     * 
+     *
      * @return void
      */
     public function createCustomer(User $user): void
@@ -43,7 +43,7 @@ class StripeIntegration
 
     /**
      * Retrieve a customer from a user model.
-     * 
+     *
      * @return \Stripe\Customer
      */
     public function retrieveCustomer(User $user): Customer
