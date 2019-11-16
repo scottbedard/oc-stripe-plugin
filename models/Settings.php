@@ -58,4 +58,14 @@ class Settings extends Model
 
         return 0;
     }
+
+    /**
+     * Get the currency code.
+     * 
+     * @return string
+     */
+    public function getCurrencyCodeAttribute()
+    {
+        return self::get('currency_code', 'USD');
+    }
 }
