@@ -48,12 +48,13 @@ class StripeIntegration
      *
      * @param  \RainLab\User\Models\User
      *
-     * @return void
+     * @return \Stripe\Customer
      */
-    public function deleteCustomer(User $user)
+    public function deleteCustomer(User $user): Customer
     {
         $customer = $this->retrieveCustomer($user);
-        $customer->delete();
+
+        return $customer->delete();
     }
 
     /**
