@@ -4,6 +4,7 @@ namespace Bedard\Saas\Tests;
 
 use App;
 use Auth;
+use Config;
 use Faker\Generator;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Foundation\AliasLoader;
@@ -34,6 +35,9 @@ abstract class PluginTestCase extends BasePluginTestCase
 
         // boot all plugins
         PluginManager::instance()->bootAll(true);
+
+        // set rainlab.user min password length
+        Config::set('rainlab.user::minPasswordLength', 8);
 
         // reset any modified settings
         UserSettings::resetDefault();
