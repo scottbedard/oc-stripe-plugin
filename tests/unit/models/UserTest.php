@@ -37,8 +37,8 @@ class UserTest extends PluginTestCase
     {
         $user = $this->createUser();
 
-        print_r ($user->toArray());
-        
+        print_r($user->toArray());
+
         $user->delete();
 
         $customer = StripeIntegration::retrieveCustomer($user);
