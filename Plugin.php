@@ -54,6 +54,10 @@ class Plugin extends PluginBase
             $model->bindEvent('model.afterUpdate', function () use ($model) {
                 StripeIntegration::updateCustomer($model);
             });
+
+            $model->bindEvent('model.afterDelete', function () use ($model) {
+                StripeIntegration::deleteCustomer($model);
+            });
         });
     }
 

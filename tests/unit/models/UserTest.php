@@ -19,7 +19,7 @@ class UserTest extends PluginTestCase
         $this->assertEquals($user->email, $customer->email);
     }
 
-    public function test_updating_a_user_also_updates_the_stripe_customer()
+    public function test_updating_a_user_updates_the_stripe_customer()
     {
         $faker = Factory::create();
 
@@ -30,5 +30,15 @@ class UserTest extends PluginTestCase
         $customer = StripeIntegration::retrieveCustomer($user);
 
         $this->assertEquals($user->email, $customer->email);
+    }
+
+    public function test_deleting_a_user_deletes_the_stripe_customer()
+    {
+        $user = $this->createUser();
+        $user->delete();
+
+        $customer = StripeIntegration::retrieveCustomer($user);
+        
+        $this->assertTrue($customer->deleted);
     }
 }

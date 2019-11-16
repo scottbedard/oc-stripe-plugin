@@ -43,8 +43,21 @@ class StripeIntegration
     }
 
     /**
-     * Returns data to sync between User models and Stripe Customer objects.
-     *
+     * Permenantly delete a customer. This cannot be undone, and immediately
+     * cancels any active subscriptions on the customer.
+     * 
+     * @param  \RainLab\User\Models\User
+     * @return void
+     */
+    public function deleteCustomer(User $user)
+    {
+        $customer = $this->retrieveCustomer($user);
+        $customer->delete();
+    }
+
+    /**
+     * Returns data to sync between User models and Stripe Customer objects
+     * 
      * @param  \RainLab\User\Models\User
      *
      * @return array
