@@ -1,0 +1,8 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    api_keys:
+        path: $/bedard/saas/models/settings/_api_keys_field.htm
+        type: partial

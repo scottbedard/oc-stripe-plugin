@@ -18,7 +18,7 @@ class Plugin extends PluginBase
     ];
 
     /**
-     * Returns information about this plugin.
+     * Plugin details.
      *
      * @return array
      */
@@ -33,7 +33,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Registers back-end navigation items for this plugin.
+     * Registers back-end navigation items.
      *
      * @return array
      */
@@ -59,7 +59,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Registers any back-end permissions used by this plugin.
+     * Registers any back-end permissions.
      *
      * @return array
      */
@@ -70,6 +70,26 @@ class Plugin extends PluginBase
                 'label' => 'bedard.saas::lang.permissions.access_plans',
                 'tab'   => 'bedard.saas::lang.permissions.tab',
             ],
+        ];
+    }
+
+    /**
+     * Registers settings models.
+     * 
+     * @return array
+     */
+    public function registerSettings()
+    {
+        return [
+            'settings' => [
+                'category'    => 'bedard.saas::lang.settings.menu_category',
+                'class'       => 'Bedard\Saas\Models\Settings',
+                'description' => 'bedard.saas::lang.settings.menu_description',
+                'icon'        => 'icon-cc-stripe',
+                'label'       => 'bedard.saas::lang.settings.menu_label',
+                'order'       => 500,
+                'permissions' => ['bedard.saas.access_settings'],
+            ]
         ];
     }
 }
