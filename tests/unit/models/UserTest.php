@@ -38,7 +38,7 @@ class UserTest extends PluginTestCase
         $user->delete();
 
         $customer = StripeIntegration::retrieveCustomer($user);
-        
+
         $this->assertTrue($customer->deleted);
     }
 }
