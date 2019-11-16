@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - checkout
+      - rub:
+          name: Clone October
+          command: |
+            git clone git@github.com:octobercms/october.git
+            mv !(october) october/plugins/bedard/saas
+            cd october
+            ls -a
+      - run:
+          name: Install plugins
+          command: |
+            git clone git@github.com:rainlab/user-plugin.git plugins/rainlab/user
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - test
