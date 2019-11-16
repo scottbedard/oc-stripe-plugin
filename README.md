@@ -15,10 +15,26 @@ Install [RainLab.User](https://github.com/rainlab/user-plugin) and run all migra
 
 ```bash
 # clone repository
-git clone git@github.com:scottbedard/oc-saas-plugin.git plugins/bedard/saas
+$ git clone git@github.com:scottbedard/oc-saas-plugin.git plugins/bedard/saas
 
 # run migrations
-php artisan plugin:refresh Bedard.Saas
+$ php artisan plugin:refresh Bedard.Saas
+```
+
+Once this is done, configure your publishable and secret Stripe keys. Do this by adding the following to `config/services.php`.
+
+```php
+'stripe' => [
+    'key'     => env('STRIPE_KEY'),
+    'secret'  => env('STRIPE_SECRET'),
+],
+```
+
+Finally, add the following to your `.env` file.
+
+```
+STRIPE_KEY=pk_test_XXXXXXXXXXXXXXXXXXXXXX
+STRIPE_SECRET=sk_test_XXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ### License
