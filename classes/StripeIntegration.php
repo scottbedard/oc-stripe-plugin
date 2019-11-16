@@ -28,26 +28,51 @@ class StripeIntegration
     /**
      * Create a customer from a user model.
      *
-     * @return void
+     * @param  \RainLab\User\Models\User
+     * @return \Stripe\Customer
      */
-    public function createCustomer(User $user): void
+    public function createCustomer(User $user): Customer
     {
-        $customer = Customer::create([
-            'email' => $user->email,
-        ]);
+        $customer = Customer::create($this->getCustomerData($user));
 
         $user->bedard_saas_customer_id = $customer->id;
-
         $user->forceSave();
+
+        return $customer;
+    }
+
+    /**
+     * Returns data to sync between User models and Stripe Customer objects
+     * 
+     * @param  \RainLab\User\Models\User
+     * @return array
+     */
+    protected function getCustomerData(User $user): array
+    {
+        return [
+            'email' => $user->email,
+        ];
     }
 
     /**
      * Retrieve a customer from a user model.
      *
+     * @param  \RainLab\User\Models\User
      * @return \Stripe\Customer
      */
     public function retrieveCustomer(User $user): Customer
     {
         return Customer::retrieve($user->bedard_saas_customer_id);
+    }
+
+    /**
+     * Update a customer from a user model.
+     * 
+     * @param  \RainLab\User\Models\User
+     * @return \Stripe\Customer
+     */
+    public function updateCustomer(User $user): Customer
+    {
+        return Customer::update($user->bedard_saas_customer_id, $this->getCustomerData($user));
     }
 }

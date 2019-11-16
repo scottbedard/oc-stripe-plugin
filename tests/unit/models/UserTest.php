@@ -3,6 +3,7 @@
 namespace Bedard\Saas\Tests\Unit\Models;
 
 use Bedard\Saas\Tests\PluginTestCase;
+use Faker\Factory;
 use RainLab\User\Models\User;
 use StripeIntegration;
 
@@ -10,10 +11,23 @@ class UserTest extends PluginTestCase
 {
     public function test_creating_a_user_creates_a_stripe_customer()
     {
-        $user = User::find(factory(User::class)->create()->id);
+        $user = $this->createUser();
 
         $this->assertStringStartsWith('cus_', $user->bedard_saas_customer_id);
 
+        $customer = StripeIntegration::retrieveCustomer($user);
+
+        $this->assertEquals($user->email, $customer->email);
+    }
+
+    public function test_updating_a_user_also_updates_the_stripe_customer()
+    {
+        $faker = Factory::create();
+
+        $user = $this->createUser();
+        $user->email = $faker->email;
+        $user->save();
+        
         $customer = StripeIntegration::retrieveCustomer($user);
 
         $this->assertEquals($user->email, $customer->email);

@@ -13,6 +13,7 @@ use Mail;
 use Mockery;
 use PluginTestCase as BasePluginTestCase;
 use RainLab\User\Models\Settings as UserSettings;
+use RainLab\User\Models\User;
 use System\Classes\PluginManager;
 
 abstract class PluginTestCase extends BasePluginTestCase
@@ -23,6 +24,17 @@ abstract class PluginTestCase extends BasePluginTestCase
     protected $refreshPlugins = [
         'RainLab.User',
     ];
+
+    /**
+     * Helper function to create and re-fetch a user. The fresh user instance
+     * is necessary to prevent validation errors caused by stale password fields.
+     * 
+     * @return \RainLab\User\Models\User
+     */
+    public function createUser($data = [])
+    {
+        return User::find(factory(User::class)->create($data)->id);
+    }
 
     /**
      * Perform test case set up.

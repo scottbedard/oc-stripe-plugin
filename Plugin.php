@@ -50,6 +50,10 @@ class Plugin extends PluginBase
             $model->bindEvent('model.afterCreate', function () use ($model) {
                 StripeIntegration::createCustomer($model);
             });
+
+            $model->bindEvent('model.afterUpdate', function () use ($model) {
+                StripeIntegration::updateCustomer($model);
+            });
         });
     }
 
