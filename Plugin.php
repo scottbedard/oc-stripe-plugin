@@ -54,10 +54,10 @@ class Plugin extends PluginBase
                         'url'         => Backend::url('bedard/saas/plans'),
                     ],
                     'settings' => [
-                        'icon' => 'icon-cog',
-                        'label' => 'bedard.saas::lang.navigation.settings',
+                        'icon'        => 'icon-cog',
+                        'label'       => 'bedard.saas::lang.navigation.settings',
                         'permissions' => ['bedard.saas.access_settings'],
-                        'url' => Backend::url('system/settings/update/bedard/saas/settings'),
+                        'url'         => Backend::url('system/settings/update/bedard/saas/settings'),
                     ],
                 ],
             ],
@@ -78,7 +78,7 @@ class Plugin extends PluginBase
             ],
             'bedard.saas.access_settings' => [
                 'label' => 'bedard.saas::lang.permissions.access_settings',
-                'tab' => 'bedard.saas::lang.permissions.tab',
+                'tab'   => 'bedard.saas::lang.permissions.tab',
             ],
         ];
     }
