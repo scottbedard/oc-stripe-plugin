@@ -2,8 +2,8 @@
 
 namespace Bedard\Saas\Models\Settings;
 
-use Bedard\Saas\Tests\PluginTestCase;
 use Bedard\Saas\Models\Settings;
+use Bedard\Saas\Tests\PluginTestCase;
 use Config;
 
 class SettingsTest extends PluginTestCase

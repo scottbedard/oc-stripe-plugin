@@ -75,7 +75,7 @@ class Plugin extends PluginBase
 
     /**
      * Registers settings models.
-     * 
+     *
      * @return array
      */
     public function registerSettings()
@@ -89,7 +89,7 @@ class Plugin extends PluginBase
                 'label'       => 'bedard.saas::lang.settings.menu_label',
                 'order'       => 500,
                 'permissions' => ['bedard.saas.access_settings'],
-            ]
+            ],
         ];
     }
 }
