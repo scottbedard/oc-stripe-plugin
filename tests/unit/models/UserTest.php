@@ -36,6 +36,9 @@ class UserTest extends PluginTestCase
     public function test_deleting_a_user_deletes_the_stripe_customer()
     {
         $user = $this->createUser();
+
+        print_r ($user->toArray());
+        
         $user->delete();
 
         $customer = StripeIntegration::retrieveCustomer($user);
