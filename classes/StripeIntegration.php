@@ -67,7 +67,7 @@ class StripeIntegration
     {
         return [
             'email' => $user->email,
-            'name' => $user->name . ' ' . $user->surname,
+            'name'  => $user->name.' '.$user->surname,
         ];
     }
 
