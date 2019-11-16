@@ -6,9 +6,9 @@ use Backend\Classes\Controller;
 use BackendMenu;
 
 /**
- * Plans Back-end Controller.
+ * Products Back-end Controller.
  */
-class Plans extends Controller
+class Products extends Controller
 {
     public $formConfig = 'config_form.yaml';
 
@@ -21,7 +21,7 @@ class Plans extends Controller
     public $listConfig = 'config_list.yaml';
 
     public $registerPermissions = [
-        'bedard.saas.access_plans',
+        'bedard.saas.access_products',
     ];
 
     public $relationConfig = 'config_relation.yaml';
@@ -30,7 +30,7 @@ class Plans extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Bedard.Saas', 'saas', 'plans');
+        BackendMenu::setContext('Bedard.Saas', 'saas', 'products');
     }
 
     public function listExtendQuery($query)

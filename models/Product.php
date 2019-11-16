@@ -5,16 +5,16 @@ namespace Bedard\Saas\Models;
 use Model;
 
 /**
- * Plan Model.
+ * Product Model.
  */
-class Plan extends Model
+class Product extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'bedard_saas_plans';
+    public $table = 'bedard_saas_products';
 
     /**
      * @var array Guarded fields
@@ -35,7 +35,7 @@ class Plan extends Model
     public $rules = [
         'is_active' => 'boolean',
         'name'      => 'required',
-        'slug'      => 'required|unique:bedard_saas_plans',
+        'slug'      => 'required|unique:bedard_saas_products',
     ];
 
     /**

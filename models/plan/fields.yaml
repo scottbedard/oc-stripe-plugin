@@ -4,12 +4,12 @@
 
 fields:
     name:
-        label: bedard.saas::lang.plans.form.name
+        label: bedard.saas::lang.products.form.name
         span: left
         attributes:
             autofocus: true
     slug:
-        label: bedard.saas::lang.plans.form.slug
+        label: bedard.saas::lang.products.form.slug
         span: right
         preset:
             field: name
@@ -18,19 +18,19 @@ tabs:
     stretch: true
     fields:
         description:
-            label: bedard.saas::lang.plans.form.description
+            label: bedard.saas::lang.products.form.description
             size: tiny
             span: left
-            tab: bedard.saas::lang.plans.form.general_tab
+            tab: bedard.saas::lang.products.form.general_tab
             type: textarea
         is_active:
-            comment: bedard.saas::lang.plans.form.is_active_comment
-            label: bedard.saas::lang.plans.form.is_active
+            comment: bedard.saas::lang.products.form.is_active_comment
+            label: bedard.saas::lang.products.form.is_active
             span: right
-            tab: bedard.saas::lang.plans.form.general_tab
+            tab: bedard.saas::lang.products.form.general_tab
             type: switch
         schedules:
-            path: $/bedard/saas/models/plan/_schedules_field.htm
-            tab: bedard.saas::lang.plans.form.schedules_tab
+            path: $/bedard/saas/models/product/_schedules_field.htm
+            tab: bedard.saas::lang.products.form.schedules_tab
             type: partial
         

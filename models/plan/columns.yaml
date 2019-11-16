@@ -4,23 +4,23 @@
 
 columns:
     id:
-        label: bedard.saas::lang.plans.list.id
+        label: bedard.saas::lang.products.list.id
         searchable: true
     name:
-        label: bedard.saas::lang.plans.list.name
+        label: bedard.saas::lang.products.list.name
         searchable: true
     slug:
-        label: bedard.saas::lang.plans.list.slug
+        label: bedard.saas::lang.products.list.slug
         searchable: true
     schedules_count:
-        label: bedard.saas::lang.plans.list.schedules_count
+        label: bedard.saas::lang.products.list.schedules_count
     is_active:
-        label: bedard.saas::lang.plans.list.is_active
+        label: bedard.saas::lang.products.list.is_active
         type: partial
-        path: $/bedard/saas/models/plan/_is_active_column.htm
+        path: $/bedard/saas/models/product/_is_active_column.htm
     created_at:
-        label: bedard.saas::lang.plans.list.created_at
+        label: bedard.saas::lang.products.list.created_at
         type: date
     updated_at:
-        label: bedard.saas::lang.plans.list.updated_at
+        label: bedard.saas::lang.products.list.updated_at
         type: timesince

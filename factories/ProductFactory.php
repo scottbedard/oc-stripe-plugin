@@ -1,13 +1,13 @@
 <?php
 
-use Bedard\Saas\Models\Plan;
+use Bedard\Saas\Models\Product;
 use Faker\Generator;
 use Illuminate\Support\Str;
 
 /*
  * @var $factory Illuminate\Database\Eloquent\Factory
  */
-$factory->define(Plan::class, function (Generator $faker) {
+$factory->define(Product::class, function (Generator $faker) {
     $name = $faker->jobTitle;
 
     return [

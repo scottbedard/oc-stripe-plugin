@@ -89,13 +89,13 @@ class Plugin extends PluginBase
                 'label'       => 'bedard.saas::lang.navigation.label',
                 'order'       => 500,
                 'permissions' => ['bedard.saas.*'],
-                'url'         => Backend::url('bedard/saas/plans'),
+                'url'         => Backend::url('bedard/saas/products'),
                 'sideMenu'    => [
-                    'plans' => [
+                    'products' => [
                         'icon'        => 'icon-cubes',
-                        'label'       => 'bedard.saas::lang.navigation.plans',
-                        'permissions' => ['bedard.saas.access_plans'],
-                        'url'         => Backend::url('bedard/saas/plans'),
+                        'label'       => 'bedard.saas::lang.navigation.products',
+                        'permissions' => ['bedard.saas.access_products'],
+                        'url'         => Backend::url('bedard/saas/products'),
                     ],
                     'settings' => [
                         'icon'        => 'icon-cog',
@@ -116,8 +116,8 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'bedard.saas.access_plans' => [
-                'label' => 'bedard.saas::lang.permissions.access_plans',
+            'bedard.saas.access_products' => [
+                'label' => 'bedard.saas::lang.permissions.access_products',
                 'tab'   => 'bedard.saas::lang.permissions.tab',
             ],
             'bedard.saas.access_settings' => [

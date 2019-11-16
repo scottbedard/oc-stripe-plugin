@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/bedard/saas/models/plan/columns.yaml
+list: $/bedard/saas/models/product/columns.yaml
 
 # Model Class name
-modelClass: Bedard\Saas\Models\Plan
+modelClass: Bedard\Saas\Models\Product
 
 # List Title
-title: bedard.saas::lang.plans.list_title
+title: bedard.saas::lang.products.list_title
 
 # Link URL for each record
-recordUrl: bedard/saas/plans/update/:id
+recordUrl: bedard/saas/products/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

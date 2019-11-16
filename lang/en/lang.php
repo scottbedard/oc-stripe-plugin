@@ -3,20 +3,20 @@
 return [
     'navigation' => [
         'label'    => 'Services',
-        'plans'    => 'Plans',
+        'products'    => 'Products',
         'settings' => 'Settings',
     ],
     'permissions' => [
-        'access_plans'    => 'Manage plans',
+        'access_products'    => 'Manage products',
         'access_settings' => 'Manage settings',
         'tab'             => 'Software services',
     ],
-    'plans' => [
+    'products' => [
         'form' => [
             'description'       => 'Description',
             'general_tab'       => 'General',
             'is_active'         => 'Status',
-            'is_active_comment' => 'When off, this plan cannot be purchased',
+            'is_active_comment' => 'When off, this product cannot be purchased',
             'name'              => 'Name',
             'schedules_tab'     => 'Billing Schedules',
             'slug'              => 'Slug',
@@ -33,8 +33,8 @@ return [
             'slug'             => 'Slug',
             'updated_at'       => 'Last Updated',
         ],
-        'list_title' => 'Manage Plans',
-        'model'      => 'Plan',
+        'list_title' => 'Manage Products',
+        'model'      => 'Product',
     ],
     'schedules' => [
         'form' => [

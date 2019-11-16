@@ -76,6 +76,6 @@ class Schedule extends Model
      * @var array Relations
      */
     public $belongsTo = [
-        'plan' => 'Bedard\Saas\Models\Plan',
+        'product' => 'Bedard\Saas\Models\Product',
     ];
 }

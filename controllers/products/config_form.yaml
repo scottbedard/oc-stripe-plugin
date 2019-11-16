@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: bedard.saas::lang.plans.model
+name: bedard.saas::lang.products.model
 
 # Model Form Field configuration
-form: $/bedard/saas/models/plan/fields.yaml
+form: $/bedard/saas/models/product/fields.yaml
 
 # Model Class name
-modelClass: Bedard\Saas\Models\Plan
+modelClass: Bedard\Saas\Models\Product
 
 # Default redirect location
-defaultRedirect: bedard/saas/plans
+defaultRedirect: bedard/saas/products
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: bedard/saas/plans/update/:id
-    redirectClose: bedard/saas/plans
+    redirect: bedard/saas/products/update/:id
+    redirectClose: bedard/saas/products
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: bedard/saas/plans
-    redirectClose: bedard/saas/plans
+    redirect: bedard/saas/products
+    redirectClose: bedard/saas/products
 
 # Preview page
 preview:

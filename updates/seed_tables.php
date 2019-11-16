@@ -3,7 +3,7 @@
 namespace Bedard\Saas\Updates;
 
 use App;
-use Bedard\Saas\Models\Plan;
+use Bedard\Saas\Models\Product;
 use Bedard\Saas\Models\Schedule;
 use Faker\Generator;
 use Illuminate\Database\Eloquent\Factory;
@@ -23,12 +23,12 @@ class seed_tables extends Seeder
 
     public function run()
     {
-        $this->seedPlans();
+        $this->seedProducts();
     }
 
-    protected function seedPlans()
+    protected function seedProducts()
     {
-        $standard = factory(Plan::class)->create([
+        $standard = factory(Product::class)->create([
             'is_active' => true,
             'name'      => 'Standard',
             'slug'      => 'standard',
@@ -36,15 +36,15 @@ class seed_tables extends Seeder
 
         factory(Schedule::class)->states('monthly')->create([
             'cost'    => 10,
-            'plan_id' => $standard->id,
+            'product_id' => $standard->id,
         ]);
 
         factory(Schedule::class)->states('yearly')->create([
             'cost'    => 100,
-            'plan_id' => $standard->id,
+            'product_id' => $standard->id,
         ]);
 
-        $premium = factory(Plan::class)->create([
+        $premium = factory(Product::class)->create([
             'is_active' => true,
             'name'      => 'Premium',
             'slug'      => 'premium',
@@ -52,20 +52,20 @@ class seed_tables extends Seeder
 
         factory(Schedule::class)->states('monthly')->create([
             'cost'    => 20,
-            'plan_id' => $premium->id,
+            'product_id' => $premium->id,
         ]);
 
         factory(Schedule::class)->states('quarterly')->create([
             'cost'    => 55,
-            'plan_id' => $premium->id,
+            'product_id' => $premium->id,
         ]);
 
         factory(Schedule::class)->states('yearly')->create([
             'cost'    => 200,
-            'plan_id' => $premium->id,
+            'product_id' => $premium->id,
         ]);
 
-        $agency = factory(Plan::class)->create([
+        $agency = factory(Product::class)->create([
             'name' => 'Agency',
             'slug' => 'agency',
         ]);

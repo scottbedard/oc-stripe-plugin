@@ -6,11 +6,11 @@ use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class create_plans_table extends Migration
+class create_products_table extends Migration
 {
     public function up()
     {
-        Schema::create('bedard_saas_plans', function (Blueprint $table) {
+        Schema::create('bedard_saas_products', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
@@ -23,6 +23,6 @@ class create_plans_table extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('bedard_saas_plans');
+        Schema::dropIfExists('bedard_saas_products');
     }
 }

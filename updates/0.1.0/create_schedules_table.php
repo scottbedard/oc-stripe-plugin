@@ -13,7 +13,7 @@ class create_schedules_table extends Migration
         Schema::create('bedard_saas_schedules', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('plan_id')->nullable()->unsigned()->index();
+            $table->integer('product_id')->nullable()->unsigned()->index();
             $table->string('name');
             $table->decimal('cost', 10, 2)->default(0)->unsigned();
             $table->smallInteger('calendar_duration')->unsigned();
