@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Test
           command: |
-            (cd ./october/plugins/bedard/saas && vendor/bin/phpunit)
+            (cd ./october/plugins/bedard/saas && vendor/bin/phpunit --filter=test_deleting_a_user_deletes_the_stripe_customer)
 workflows:
   version: 2
   tests:
