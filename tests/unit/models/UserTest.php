@@ -36,10 +36,14 @@ class UserTest extends PluginTestCase
     public function test_deleting_a_user_deletes_the_stripe_customer()
     {
         $user = $this->createUser();
-        $user->delete();
+        // $user->delete();
 
         $customer = StripeManager::retrieveCustomer($user);
 
-        $this->assertTrue($customer->deleted);
+        print_r ($user->toArray());
+
+        dd($customer);
+
+        // $this->assertTrue($customer->deleted);
     }
 }
