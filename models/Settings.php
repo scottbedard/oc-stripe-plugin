@@ -61,7 +61,7 @@ class Settings extends Model
 
     /**
      * Default settings data.
-     * 
+     *
      * @return void
      */
     public function initSettingsData(): void
