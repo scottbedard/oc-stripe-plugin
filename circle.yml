@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   test:
     docker:
@@ -33,6 +35,10 @@ jobs:
           name: Test
           command: |
             (cd ./october/plugins/bedard/saas && phpdbg -qrr vendor/bin/phpunit -d memory_limit=512M --coverage-clover clover.xml)
+      - store_artifacts:
+          path:  ./october/plugins/bedard/saas/clover.xml
+      - codecov/upload:
+          file: ./october/plugins/bedard/saas/clover.xml
 workflows:
   version: 2
   tests:
