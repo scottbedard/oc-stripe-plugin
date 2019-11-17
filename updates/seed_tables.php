@@ -23,6 +23,11 @@ class seed_tables extends Seeder
 
     public function run()
     {
+        // do nothing during unit tests
+        if (app()->env === 'testing') {
+            return;
+        }
+
         $this->seedProducts();
     }
 

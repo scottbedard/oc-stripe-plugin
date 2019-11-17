@@ -4,7 +4,7 @@
 
 scopes:
     is_active:
-        conditions: is_active <> false
-        default: 0
+        default: false
         label: bedard.saas::lang.products.list.is_active_filter
+        scope: active
         type: checkbox
