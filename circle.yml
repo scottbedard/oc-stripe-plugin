@@ -29,7 +29,6 @@ jobs:
           name: Configure environment
           command: |
             printf "STRIPE_KEY=$STRIPE_KEY\nSTRIPE_SECRET=$STRIPE_SECRET" > "./october/.env"
-            cp ./october/config/cms.php ./october/config/testing/cms.php
       - run:
           name: Test
           command: |
