@@ -34,6 +34,10 @@ jobs:
           command: |
             cd ./october/plugins/bedard/saas
             phpdbg -qrr vendor/bin/phpunit -d memory_limit=512M --coverage-clover clover.xml
+      - run:
+          name: Codecov
+          command: |
+            cd ./october/plugins/bedard/saas
             bash <(curl -s https://codecov.io/bash) -v -cF php
 workflows:
   version: 2
