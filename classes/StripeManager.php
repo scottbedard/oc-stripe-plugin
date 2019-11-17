@@ -91,7 +91,7 @@ class StripeManager
     public function updateCustomer(User $user): void
     {
         $fields = ['email', 'name', 'surname'];
-        
+
         if ($user->isDirty($fields)) {
             $id = $user->bedard_saas_customer_id;
             $data = $this->getCustomerData($user);
