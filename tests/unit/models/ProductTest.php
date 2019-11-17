@@ -2,8 +2,8 @@
 
 namespace Bedard\Saas\Tests\Unit\Models;
 
-use Bedard\Saas\Tests\PluginTestCase;
 use Bedard\Saas\Models\Product;
+use Bedard\Saas\Tests\PluginTestCase;
 
 class ProductTest extends PluginTestCase
 {
