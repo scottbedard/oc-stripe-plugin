@@ -25,6 +25,7 @@
             <directory suffix=".php">./</directory>
             <exclude>
                 <file>./Plugin.php</file>
+                <directory suffix=".php">./lang</directory>
                 <directory suffix=".php">./tests</directory>
                 <directory suffix=".php">./updates</directory>
                 <directory suffix=".php">./vendor</directory>
