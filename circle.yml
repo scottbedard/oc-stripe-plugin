@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Test
           command: |
-            (cd ./october/plugins/bedard/saas && vendor/bin/phpunit)
+            (cd ./october/plugins/bedard/saas && vendor/bin/phpunit --coverage-clover clover.xml)
 workflows:
   version: 2
   tests:
