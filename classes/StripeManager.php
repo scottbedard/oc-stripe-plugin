@@ -6,7 +6,7 @@ use RainLab\User\Models\User;
 use Stripe\Customer;
 use Stripe\Stripe;
 
-class StripeIntegration
+class StripeManager
 {
     use \October\Rain\Support\Traits\Singleton;
 

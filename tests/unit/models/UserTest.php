@@ -4,7 +4,7 @@ namespace Bedard\Saas\Tests\Unit\Models;
 
 use Bedard\Saas\Tests\PluginTestCase;
 use Faker\Factory;
-use StripeIntegration;
+use StripeManager;
 
 class UserTest extends PluginTestCase
 {
@@ -14,7 +14,7 @@ class UserTest extends PluginTestCase
 
         $this->assertStringStartsWith('cus_', $user->bedard_saas_customer_id);
 
-        $customer = StripeIntegration::retrieveCustomer($user);
+        $customer = StripeManager::retrieveCustomer($user);
 
         $this->assertEquals($user->email, $customer->email);
         $this->assertEquals($user->name.' '.$user->surname, $customer->name);
@@ -28,7 +28,7 @@ class UserTest extends PluginTestCase
         $user->email = $faker->email;
         $user->save();
 
-        $customer = StripeIntegration::retrieveCustomer($user);
+        $customer = StripeManager::retrieveCustomer($user);
 
         $this->assertEquals($user->email, $customer->email);
     }
@@ -41,7 +41,7 @@ class UserTest extends PluginTestCase
 
         $user->delete();
 
-        $customer = StripeIntegration::retrieveCustomer($user);
+        $customer = StripeManager::retrieveCustomer($user);
 
         $this->assertTrue($customer->deleted);
     }

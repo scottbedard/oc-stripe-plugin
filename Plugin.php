@@ -6,7 +6,7 @@ use App;
 use Backend;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\User;
-use StripeIntegration;
+use StripeManager;
 use System\Classes\PluginBase;
 
 /**
@@ -30,10 +30,10 @@ class Plugin extends PluginBase
     {
         // register our stripe integration singleton
         $alias = AliasLoader::getInstance();
-        $alias->alias('StripeIntegration', 'Bedard\Saas\Facades\StripeIntegration');
+        $alias->alias('StripeManager', 'Bedard\Saas\Facades\StripeManager');
 
         App::singleton('bedard.saas.stripe', function () {
-            return \Bedard\Saas\Classes\StripeIntegration::instance();
+            return \Bedard\Saas\Classes\StripeManager::instance();
         });
 
         $this->extendRainLabUser();
@@ -48,15 +48,15 @@ class Plugin extends PluginBase
     {
         User::extend(function ($model) {
             $model->bindEvent('model.afterCreate', function () use ($model) {
-                StripeIntegration::createCustomer($model);
+                StripeManager::createCustomer($model);
             });
 
             $model->bindEvent('model.afterUpdate', function () use ($model) {
-                StripeIntegration::updateCustomer($model);
+                StripeManager::updateCustomer($model);
             });
 
             $model->bindEvent('model.afterDelete', function () use ($model) {
-                StripeIntegration::deleteCustomer($model);
+                StripeManager::deleteCustomer($model);
             });
         });
     }
