@@ -4,6 +4,7 @@ namespace Bedard\Saas\Tests;
 
 use App;
 use Auth;
+use Bedard\Saas\Models\Settings as SaasSettings;
 use Config;
 use Faker\Generator;
 use Illuminate\Database\Eloquent\Factory;
@@ -56,6 +57,7 @@ abstract class PluginTestCase extends BasePluginTestCase
         Config::set('services.stripe.secret', env('STRIPE_SECRET'));
 
         // reset any modified settings
+        SaasSettings::resetDefault();
         UserSettings::resetDefault();
         UserSettings::set('activate_mode', 'auto');
         UserSettings::set('allow_registration', true);

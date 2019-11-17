@@ -37,7 +37,7 @@ class Settings extends Model
      *
      * @return int
      */
-    public static function apiKeysConfigured()
+    public static function apiKeysConfigured(): int
     {
         $key = config('services.stripe.key');
         $secret = config('services.stripe.secret');
@@ -60,12 +60,12 @@ class Settings extends Model
     }
 
     /**
-     * Get the currency code.
-     *
-     * @return string
+     * Default settings data.
+     * 
+     * @return void
      */
-    public function getCurrencyCodeAttribute()
+    public function initSettingsData(): void
     {
-        return self::get('currency_code', 'USD');
+        $this->currency_code = 'USD';
     }
 }
