@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - run:
+          name: Clone October
+          command: |
+            git clone https://github.com/octobercms/october.git
+      - run:
+          name: Install plugins
+          command: |
+            git clone https://github.com/scottbedard/oc-saas-plugin ./october/plugins/bedard/saas
+            git clone https://github.com/rainlab/user-plugin.git ./october/plugins/rainlab/user
+      - restore_cache:
+          key: -v3-{{ checksum "october/composer.json" }}-{{ checksum "october/plugins/bedard/saas/composer.lock" }}
+      - run:
+          name: Install dependencies
+          command: |
+            (cd ./october && composer install)
+            (cd ./october/plugins/bedard/saas && composer install)
+      - save_cache:
+          key: -v3-{{ checksum "october/composer.json" }}-{{ checksum "october/plugins/bedard/saas/composer.lock" }}
+          paths:
+            - "october/vendor"
+            - "october/plugins/bedard/saas/vendor"
+      - run:
+          name: Configure environment
+          command: |
+            printf "STRIPE_KEY=$STRIPE_KEY\nSTRIPE_SECRET=$STRIPE_SECRET" > "./october/.env"
+            cp ./october/config/cms.php ./october/config/testing/cms.php
+      - run:
+          name: Test
+          command: |
+            (cd ./october/plugins/bedard/saas && vendor/bin/phpunit)
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - test
