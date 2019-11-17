@@ -40,7 +40,7 @@ class UserTest extends PluginTestCase
 
         $customer = StripeManager::retrieveCustomer($user);
 
-        print_r ($user->toArray());
+        print_r($user->toArray());
 
         dd($customer);
 
