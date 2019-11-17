@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: circleci/php:7.3-node
     steps:
+      - run: sudo pecl channel-update pecl.php.net
+      - run: sudo pecl install xdebug && sudo docker-php-ext-enable xdebug
       - run:
           name: Clone October
           command: |
