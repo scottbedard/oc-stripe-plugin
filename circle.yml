@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Test
           command: |
-            (cd ./october/plugins/bedard/saas && phpdbg -qrr vendor/bin/phpunit --coverage-clover clover.xml)
+            (cd ./october/plugins/bedard/saas && phpdbg -qrr vendor/bin/phpunit -d memory_limit=512M --coverage-clover clover.xml)
 workflows:
   version: 2
   tests:
