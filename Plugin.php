@@ -47,11 +47,11 @@ class Plugin extends PluginBase
     protected function extendRainLabUser()
     {
         User::extend(function ($model) {
-            $model->bindEvent('model.afterCreate', function () use ($model) {
+            $model->bindEvent('model.beforeCreate', function () use ($model) {
                 StripeManager::createCustomer($model);
             });
 
-            $model->bindEvent('model.afterUpdate', function () use ($model) {
+            $model->bindEvent('model.beforeUpdate', function () use ($model) {
                 StripeManager::updateCustomer($model);
             });
 

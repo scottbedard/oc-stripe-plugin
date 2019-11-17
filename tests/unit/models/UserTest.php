@@ -20,7 +20,7 @@ class UserTest extends PluginTestCase
         $this->assertEquals($user->name.' '.$user->surname, $customer->name);
     }
 
-    public function test_updating_a_user_updates_the_stripe_customer()
+    public function test_updating_a_user_email_updates_the_stripe_customer()
     {
         $faker = Factory::create();
 
@@ -36,9 +36,6 @@ class UserTest extends PluginTestCase
     public function test_deleting_a_user_deletes_the_stripe_customer()
     {
         $user = $this->createUser();
-
-        print_r($user->toArray());
-
         $user->delete();
 
         $customer = StripeManager::retrieveCustomer($user);

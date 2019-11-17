@@ -32,14 +32,11 @@ class StripeManager
      *
      * @return \Stripe\Customer
      */
-    public function createCustomer(User $user): Customer
+    public function createCustomer(User &$user): void
     {
         $customer = Customer::create($this->getCustomerData($user));
 
         $user->bedard_saas_customer_id = $customer->id;
-        $user->forceSave();
-
-        return $customer;
     }
 
     /**
@@ -91,8 +88,15 @@ class StripeManager
      *
      * @return \Stripe\Customer
      */
-    public function updateCustomer(User $user): Customer
+    public function updateCustomer(User $user): void
     {
-        return Customer::update($user->bedard_saas_customer_id, $this->getCustomerData($user));
+        $fields = ['email', 'name', 'surname'];
+        
+        if ($user->isDirty($fields)) {
+            $id = $user->bedard_saas_customer_id;
+            $data = $this->getCustomerData($user);
+
+            Customer::update($id, $data);
+        }
     }
 }
