@@ -34,7 +34,7 @@ class StripeManager
      */
     public function createCustomer(User &$user): void
     {
-        print_r ('CREATING!');
+        print_r('CREATING!');
         $customer = Customer::create($this->getCustomerData($user));
 
         $user->bedard_saas_customer_id = $customer->id;
@@ -97,7 +97,7 @@ class StripeManager
             $id = $user->bedard_saas_customer_id;
             $data = $this->getCustomerData($user);
 
-            print_r ('UPDATING!');
+            print_r('UPDATING!');
             Customer::update($id, $data);
         }
     }
