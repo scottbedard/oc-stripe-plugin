@@ -2,12 +2,12 @@
 
 namespace Bedard\Saas\Controllers;
 
-use BackendMenu;
 use Backend\Classes\Controller;
+use BackendMenu;
 use Bedard\Saas\Models\Settings;
 use Flash;
-use StripeManager;
 use Stripe\Exception\ApiErrorException;
+use StripeManager;
 use ValidationException;
 use Validator;
 
@@ -27,10 +27,10 @@ class Coupons extends Controller
     ];
 
     public $rules = [
-        'amount_off' => 'required_without:percent_off',
+        'amount_off'         => 'required_without:percent_off',
         'duration_in_months' => 'required_if:duration,repeating|integer|min:1',
-        'max_redemptions' => 'integer|min:1',
-        'percent_off' => 'numeric|min:0|max:100',
+        'max_redemptions'    => 'integer|min:1',
+        'percent_off'        => 'numeric|min:0|max:100',
     ];
 
     public function __construct()
@@ -49,7 +49,7 @@ class Coupons extends Controller
 
     public function formCreateModelObject()
     {
-        $model = new \Model;
+        $model = new \Model();
         $model->currency = Settings::get('currency_code');
 
         return $model;
@@ -73,15 +73,15 @@ class Coupons extends Controller
         } catch (ApiErrorException $e) {
             Flash::error($e->getMessage());
         }
-        
+
         Flash::success('hooray');
     }
 
     /**
      * Validate form data.
-     * 
-     * @param  array    $data
-     * 
+     *
+     * @param array $data
+     *
      * @return void
      */
     protected function validate(array $data)
@@ -90,6 +90,6 @@ class Coupons extends Controller
 
         if ($validator->fails()) {
             throw new ValidationException($validator);
-        } 
+        }
     }
 }
