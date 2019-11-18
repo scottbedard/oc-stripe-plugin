@@ -84,7 +84,6 @@ class Coupons extends Controller
         try {
             $coupon = StripeManager::createCoupon($data);
         } catch (ApiErrorException $e) {
-            dd($e);
             Flash::error($e->getMessage());
         }
 
@@ -103,8 +102,6 @@ class Coupons extends Controller
         $validator = Validator::make($data, $this->rules);
 
         if ($validator->fails()) {
-            dd($validator->messages());
-
             throw new ValidationException($validator);
         }
     }

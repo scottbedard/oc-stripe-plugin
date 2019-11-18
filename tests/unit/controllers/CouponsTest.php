@@ -2,6 +2,7 @@
 
 namespace Bedard\Saas\Tests\Unit\Controllers;
 
+use October\Rain\Exception\AjaxException;
 use Bedard\Saas\Tests\PluginTestCase;
 use StripeManager;
 
@@ -59,5 +60,20 @@ class CouponsTest extends PluginTestCase
         $this->assertEquals(5, $coupon->duration_in_months);
 
         $response->assertStatus(200);
+    }
+
+    public function test_creating_a_coupon_with_validation_errors()
+    {
+        $admin = self::createBackendUser();
+        
+        $response = $this->ajax(
+            '/backend/bedard/saas/coupons/create', 
+            'onSave', 
+            $this->payload([]) // <- an empty payload should cause errors
+        );
+
+        $response->assertStatus(500);
+        
+        $this->assertInstanceOf(AjaxException::class, $response->exception);
     }
 }
