@@ -28,9 +28,9 @@ class StripeManager
 
     /**
      * Create a coupon.
-     * 
-     * @param  array    $data
-     * 
+     *
+     * @param array $data
+     *
      * @return Coupon
      */
     public function createCoupon($data = []): Coupon
