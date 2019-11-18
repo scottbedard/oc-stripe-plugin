@@ -1,15 +1,51 @@
 <?php
 
 return [
+    'coupons' => [
+        'form' => [
+            'amount_off' => 'Discount amount',
+            'amount_off_comment' => 'Exact amount to reduce the cost by.',
+            'conditions_tab' => 'Conditions',
+            'conditions_tab' => 'Conditions',
+            'currency' => 'Currency code',
+            'currency_comment' => 'Refer to the <a href="https://stripe.com/docs/currencies" target="_blank">Stripe documentation</a> for a list of supported currencies.',
+            'discount_type' => 'Discount type',
+            'discount_type_fixed' => 'Fixed amount',
+            'discount_type_relative' => 'Percentage',
+            'duration' => 'Duration',
+            'duration_forever' => 'Forever',
+            'max_redemptions' => 'Maximum redemptions',
+            'max_redemptions_comment' => 'The total number of times this coupon may be used.',
+            'duration_in_months' => 'Duration in months',
+            'duration_once' => 'Once',
+            'duration_repeating' => 'Repeating',
+            'id' => 'ID',
+            'id_comment' => 'Unique string used to identify this coupon. This is often a specific code you’ll give to your customer to use when signing up (e.g., FALL25OFF).',
+            'name' => 'Name',
+            'name_comment' => 'Name of the coupon displayed to customers on invoices and receipts. Defaults to ID if not specified.',
+            'percent_coupon' => 'Percentage based coupon',
+            'percent_off' => 'Discount percentage',
+            'percent_off_comment' => 'Percentage to reduce the cost by, relative to the original cost.',
+            'redeem_by' => 'Redeem by',
+            'settings_tab' => 'Settings',
+        ],
+        'list' => [
+
+        ],
+        'list_title' => 'Manage Coupons',
+        'model' => 'Coupon',
+    ],
     'navigation' => [
         'label'       => 'Services',
+        'coupons'     => 'Coupons',
         'products'    => 'Products',
         'settings'    => 'Settings',
     ],
     'permissions' => [
-        'access_products'    => 'Manage products',
-        'access_settings'    => 'Manage settings',
-        'tab'                => 'Software services',
+        'access_coupons'  => 'Manage coupons',
+        'access_products' => 'Manage products',
+        'access_settings' => 'Manage settings',
+        'tab'             => 'Software services',
     ],
     'products' => [
         'form' => [

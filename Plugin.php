@@ -91,6 +91,12 @@ class Plugin extends PluginBase
                 'permissions' => ['bedard.saas.*'],
                 'url'         => Backend::url('bedard/saas/products'),
                 'sideMenu'    => [
+                    'coupons' => [
+                        'icon'        => 'icon-tags',
+                        'label'       => 'bedard.saas::lang.navigation.coupons',
+                        'permissions' => ['bedard.saas.access_coupons'],
+                        'url'         => Backend::url('bedard/saas/coupons'),
+                    ],
                     'products' => [
                         'icon'        => 'icon-cubes',
                         'label'       => 'bedard.saas::lang.navigation.products',
@@ -116,6 +122,10 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
+            'bedard.saas.access_coupons' => [
+                'label' => 'bedard.saas::lang.permissions.access_coupons',
+                'tab'   => 'bedard.saas::lang.permissions.tab',
+            ],
             'bedard.saas.access_products' => [
                 'label' => 'bedard.saas::lang.permissions.access_products',
                 'tab'   => 'bedard.saas::lang.permissions.tab',

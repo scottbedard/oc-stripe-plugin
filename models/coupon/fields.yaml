@@ -1,0 +1,98 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        attributes:
+            autofocus: true
+        comment: bedard.saas::lang.coupons.form.id_comment
+        label: bedard.saas::lang.coupons.form.id
+        span: left
+    
+    name:
+        label: bedard.saas::lang.coupons.form.name
+        comment: bedard.saas::lang.coupons.form.name_comment
+        span: right
+
+tabs:
+    stretch: true
+    fields:
+        percent_off:
+            comment: bedard.saas::lang.coupons.form.percent_off_comment
+            label: bedard.saas::lang.coupons.form.percent_off
+            max: 100
+            min: 0
+            span: left
+            tab: bedard.saas::lang.coupons.form.settings_tab
+            trigger:
+                action: show
+                condition: value[relative]
+                field: discount_type
+            type: number
+
+        amount_off:
+            comment: bedard.saas::lang.coupons.form.amount_off_comment
+            label: bedard.saas::lang.coupons.form.amount_off
+            span: left
+            tab: bedard.saas::lang.coupons.form.settings_tab
+            trigger:
+                action: show
+                condition: value[fixed]
+                field: discount_type
+            type: number
+
+        discount_type:
+            default: relative
+            label: bedard.saas::lang.coupons.form.discount_type
+            options:
+                relative: bedard.saas::lang.coupons.form.discount_type_relative
+                fixed: bedard.saas::lang.coupons.form.discount_type_fixed
+            span: right
+            tab: bedard.saas::lang.coupons.form.settings_tab
+            type: radio
+
+        duration:
+            label: bedard.saas::lang.coupons.form.duration
+            span: left
+            tab: bedard.saas::lang.coupons.form.settings_tab
+            type: dropdown
+            options:
+                once: bedard.saas::lang.coupons.form.duration_once
+                forever: bedard.saas::lang.coupons.form.duration_forever
+                repeating: bedard.saas::lang.coupons.form.duration_repeating
+        
+        duration_in_months:
+            label: bedard.saas::lang.coupons.form.duration_in_months
+            min: 1
+            span: right
+            step: 1
+            tab: bedard.saas::lang.coupons.form.settings_tab
+            trigger:
+                action: enable
+                condition: value[repeating]
+                field: duration
+            type: number
+
+        currency:
+            label: bedard.saas::lang.coupons.form.currency
+            comment: bedard.saas::lang.coupons.form.currency_comment
+            commentHtml: true
+            span: left
+            tab: bedard.saas::lang.coupons.form.settings_tab
+
+        max_redemptions:
+            comment: bedard.saas::lang.coupons.form.max_redemptions_comment
+            label: bedard.saas::lang.coupons.form.max_redemptions
+            min: 1
+            span: left
+            step: 1
+            tab: bedard.saas::lang.coupons.form.conditions_tab
+            type: number
+        
+        redeem_by:
+            label: bedard.saas::lang.coupons.form.redeem_by
+            mode: datetime
+            span: right
+            tab: bedard.saas::lang.coupons.form.conditions_tab
+            type: datepicker

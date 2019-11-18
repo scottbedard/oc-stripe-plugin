@@ -3,6 +3,7 @@
 namespace Bedard\Saas\Classes;
 
 use RainLab\User\Models\User;
+use Stripe\Coupon;
 use Stripe\Customer;
 use Stripe\Stripe;
 
@@ -23,6 +24,18 @@ class StripeManager
     public function __construct()
     {
         Stripe::setApiKey(config('services.stripe.secret'));
+    }
+
+    /**
+     * Create a coupon.
+     * 
+     * @param  array    $data
+     * 
+     * @return Coupon
+     */
+    public function createCoupon($data = []): Coupon
+    {
+        return Coupon::create($data);
     }
 
     /**
