@@ -85,7 +85,7 @@ class StripeManager
     /**
      * Retrieve a coupon.
      *
-     * @param  string $id
+     * @param string $id
      *
      * @return \Stripe\Coupon
      */
