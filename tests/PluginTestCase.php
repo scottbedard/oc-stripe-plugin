@@ -4,6 +4,8 @@ namespace Bedard\Saas\Tests;
 
 use App;
 use Auth;
+use BackendAuth;
+use Backend\Models\User as BackendUser;
 use Bedard\Saas\Models\Settings as SaasSettings;
 use Config;
 use Faker\Generator;
@@ -27,6 +29,42 @@ abstract class PluginTestCase extends BasePluginTestCase
     ];
 
     /**
+     * Perform an ajax request.
+     */
+    public function ajax($endpoint, $handler, $payload = [])
+    {
+        return $this->post($endpoint, $payload, [
+            'X-Requested-With' => 'XMLHttpRequest',
+            'X-OCTOBER-REQUEST-HANDLER' => $handler,
+        ]);
+    }
+
+    /**
+     * Create and authenticate a backend user
+     */
+    public function createBackendUser()
+    {
+        $user = BackendUser::create([
+            'email' => 'tester@admin.com',
+            'login' => 'tester',
+            'password' => '12345678',
+            'password_confirmation' => '12345678',
+            'send_invite' => false,
+            'is_activated' => true,            
+        ]);
+
+        $user->is_superuser = true;
+        $user->save();
+
+        $user = BackendAuth::authenticate([
+            'login' => 'tester',
+            'password' => '12345678'
+        ], true);
+
+        return $user;
+    }
+
+    /**
      * Helper function to create and re-fetch a user. The fresh user instance
      * is necessary to prevent validation errors caused by stale password fields.
      *
@@ -48,6 +86,9 @@ abstract class PluginTestCase extends BasePluginTestCase
 
         // boot all plugins
         PluginManager::instance()->bootAll(true);
+
+        // disable backend csrf protection
+        Config::set('cms.enableCsrfProtection', false);
 
         // set rainlab.user min password length
         Config::set('rainlab.user::minPasswordLength', 8);

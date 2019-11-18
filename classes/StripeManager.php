@@ -83,6 +83,18 @@ class StripeManager
     }
 
     /**
+     * Retrieve a coupon.
+     *
+     * @param  string $id
+     *
+     * @return \Stripe\Coupon
+     */
+    public function retrieveCoupon(string $id): Coupon
+    {
+        return Coupon::retrieve($id);
+    }
+
+    /**
      * Retrieve a customer from a user model.
      *
      * @param  \RainLab\User\Models\User

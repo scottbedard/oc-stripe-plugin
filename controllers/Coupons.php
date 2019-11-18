@@ -4,6 +4,7 @@ namespace Bedard\Saas\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Bedard\Saas\Classes\ArrayUtil;
 use Bedard\Saas\Models\Settings;
 use Flash;
 use Stripe\Exception\ApiErrorException;
@@ -27,10 +28,12 @@ class Coupons extends Controller
     ];
 
     public $rules = [
-        'amount_off'         => 'required_without:percent_off',
+        'amount_off' => 'required_without:percent_off',
+        'currency' => 'required_with:amount_off',
+        'duration' => 'required|in:once,forever,repeating',
         'duration_in_months' => 'required_if:duration,repeating|integer|min:1',
-        'max_redemptions'    => 'integer|min:1',
-        'percent_off'        => 'numeric|min:0|max:100',
+        'max_redemptions' => 'integer|min:1',
+        'percent_off' => 'required_without:amount_off|numeric|min:0|max:100',
     ];
 
     public function __construct()
@@ -38,6 +41,20 @@ class Coupons extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Bedard.Saas', 'saas', 'coupons');
+    }
+
+    /**
+     * Normalize coupon data.
+     * 
+     * @param  array $data
+     * 
+     * @return array
+     */
+    protected function normalize($data)
+    {
+        unset($data['discount_type']);
+
+        return ArrayUtil::removeEmptyProperties($data);
     }
 
     public function index()
@@ -60,17 +77,14 @@ class Coupons extends Controller
      */
     public function create_onSave()
     {
-        $data = post('Model');
-
-        if ($data['id'] === '') {
-            unset($data['id']);
-        }
+        $data = $this->normalize(post('Model'));
 
         $this->validate($data);
 
         try {
             $coupon = StripeManager::createCoupon($data);
         } catch (ApiErrorException $e) {
+            dd($e);
             Flash::error($e->getMessage());
         }
 
@@ -89,6 +103,7 @@ class Coupons extends Controller
         $validator = Validator::make($data, $this->rules);
 
         if ($validator->fails()) {
+            dd($validator->messages());
             throw new ValidationException($validator);
         }
     }
