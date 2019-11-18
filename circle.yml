@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Install plugins
           command: |
-            git clone https://github.com/scottbedard/oc-saas-plugin ./october/plugins/bedard/saas
+            git clone -b ${CIRCLE_BRANCH} https://github.com/scottbedard/oc-saas-plugin ./october/plugins/bedard/saas
             git clone https://github.com/rainlab/user-plugin.git ./october/plugins/rainlab/user
       - restore_cache:
           key: -v3-{{ checksum "october/composer.json" }}-{{ checksum "october/plugins/bedard/saas/composer.lock" }}
