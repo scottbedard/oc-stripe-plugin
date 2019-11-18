@@ -28,12 +28,12 @@ class Coupons extends Controller
     ];
 
     public $rules = [
-        'amount_off' => 'required_without:percent_off',
-        'currency' => 'required_with:amount_off',
-        'duration' => 'required|in:once,forever,repeating',
+        'amount_off'         => 'required_without:percent_off',
+        'currency'           => 'required_with:amount_off',
+        'duration'           => 'required|in:once,forever,repeating',
         'duration_in_months' => 'required_if:duration,repeating|integer|min:1',
-        'max_redemptions' => 'integer|min:1',
-        'percent_off' => 'required_without:amount_off|numeric|min:0|max:100',
+        'max_redemptions'    => 'integer|min:1',
+        'percent_off'        => 'required_without:amount_off|numeric|min:0|max:100',
     ];
 
     public function __construct()
@@ -45,9 +45,9 @@ class Coupons extends Controller
 
     /**
      * Normalize coupon data.
-     * 
-     * @param  array $data
-     * 
+     *
+     * @param array $data
+     *
      * @return array
      */
     protected function normalize($data)
@@ -104,6 +104,7 @@ class Coupons extends Controller
 
         if ($validator->fails()) {
             dd($validator->messages());
+
             throw new ValidationException($validator);
         }
     }

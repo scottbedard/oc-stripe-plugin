@@ -16,16 +16,16 @@ class CouponsTest extends PluginTestCase
     {
         return [
             'Model' => array_merge([
-                'amount_off' => '',
-                'currency' => '',
-                'discount_type' => '',
-                'duration' => '',
+                'amount_off'         => '',
+                'currency'           => '',
+                'discount_type'      => '',
+                'duration'           => '',
                 'duration_in_months' => '',
-                'id' => '',
-                'max_redemptions' => '',
-                'name' => '',
-                'percent_off' => '',
-                'redeem_by' => '',
+                'id'                 => '',
+                'max_redemptions'    => '',
+                'name'               => '',
+                'percent_off'        => '',
+                'redeem_by'          => '',
             ], $data),
         ];
     }
@@ -40,13 +40,13 @@ class CouponsTest extends PluginTestCase
         $response = $this->ajax(
             '/backend/bedard/saas/coupons/create', 'onSave',
             $this->payload([
-                'amount_off' => 500,
-                'currency' => 'eur',
-                'duration' => 'repeating',
+                'amount_off'         => 500,
+                'currency'           => 'eur',
+                'duration'           => 'repeating',
                 'duration_in_months' => 5,
-                'id' => $id,
-                'max_redemptions' => 10,
-                'name' => 'Some awesome coupon',
+                'id'                 => $id,
+                'max_redemptions'    => 10,
+                'name'               => 'Some awesome coupon',
             ])
         );
 
@@ -57,7 +57,7 @@ class CouponsTest extends PluginTestCase
         $this->assertEquals('eur', $coupon->currency);
         $this->assertEquals('repeating', $coupon->duration);
         $this->assertEquals(5, $coupon->duration_in_months);
-        
+
         $response->assertStatus(200);
     }
 }

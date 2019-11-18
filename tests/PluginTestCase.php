@@ -4,8 +4,8 @@ namespace Bedard\Saas\Tests;
 
 use App;
 use Auth;
-use BackendAuth;
 use Backend\Models\User as BackendUser;
+use BackendAuth;
 use Bedard\Saas\Models\Settings as SaasSettings;
 use Config;
 use Faker\Generator;
@@ -34,31 +34,31 @@ abstract class PluginTestCase extends BasePluginTestCase
     public function ajax($endpoint, $handler, $payload = [])
     {
         return $this->post($endpoint, $payload, [
-            'X-Requested-With' => 'XMLHttpRequest',
+            'X-Requested-With'          => 'XMLHttpRequest',
             'X-OCTOBER-REQUEST-HANDLER' => $handler,
         ]);
     }
 
     /**
-     * Create and authenticate a backend user
+     * Create and authenticate a backend user.
      */
     public function createBackendUser()
     {
         $user = BackendUser::create([
-            'email' => 'tester@admin.com',
-            'login' => 'tester',
-            'password' => '12345678',
+            'email'                 => 'tester@admin.com',
+            'login'                 => 'tester',
+            'password'              => '12345678',
             'password_confirmation' => '12345678',
-            'send_invite' => false,
-            'is_activated' => true,            
+            'send_invite'           => false,
+            'is_activated'          => true,
         ]);
 
         $user->is_superuser = true;
         $user->save();
 
         $user = BackendAuth::authenticate([
-            'login' => 'tester',
-            'password' => '12345678'
+            'login'    => 'tester',
+            'password' => '12345678',
         ], true);
 
         return $user;

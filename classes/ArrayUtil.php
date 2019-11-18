@@ -6,14 +6,14 @@ class ArrayUtil
 {
     /**
      * Remove array keys with falsey values.
-     * 
-     * @param  array $source
-     * 
+     *
+     * @param array $source
+     *
      * @return array
      */
     public static function removeEmptyProperties(array $source): array
     {
-        foreach($source as $key => $value) {
+        foreach ($source as $key => $value) {
             if (empty($value)) {
                 unset($source[$key]);
             }
