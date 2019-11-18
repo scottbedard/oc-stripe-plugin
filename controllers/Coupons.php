@@ -2,13 +2,14 @@
 
 namespace Bedard\Saas\Controllers;
 
-use Backend\Classes\Controller;
 use BackendMenu;
+use Backend\Classes\Controller;
 use Bedard\Saas\Classes\ArrayUtil;
 use Bedard\Saas\Models\Settings;
 use Flash;
-use Stripe\Exception\ApiErrorException;
+use October\Rain\Exception\AjaxException;
 use StripeManager;
+use Stripe\Exception\ApiErrorException;
 use ValidationException;
 use Validator;
 
@@ -84,7 +85,7 @@ class Coupons extends Controller
         try {
             $coupon = StripeManager::createCoupon($data);
         } catch (ApiErrorException $e) {
-            Flash::error($e->getMessage());
+            return response($e->getMessage(), 500);
         }
 
         Flash::success('hooray');
