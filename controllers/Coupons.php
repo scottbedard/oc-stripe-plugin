@@ -2,14 +2,13 @@
 
 namespace Bedard\Saas\Controllers;
 
-use BackendMenu;
 use Backend\Classes\Controller;
+use BackendMenu;
 use Bedard\Saas\Classes\ArrayUtil;
 use Bedard\Saas\Models\Settings;
 use Flash;
-use October\Rain\Exception\AjaxException;
-use StripeManager;
 use Stripe\Exception\ApiErrorException;
+use StripeManager;
 use ValidationException;
 use Validator;
 
