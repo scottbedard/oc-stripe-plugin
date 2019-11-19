@@ -2,8 +2,7 @@
 
 return [
     'permissions' => [
-        'access_settings'    => 'Manage settings',
-        'tab'                => 'Software services',
+        'access_settings'    => 'Manage Stripe settings',
     ],
     'settings' => [
         'form' => [
@@ -12,7 +11,7 @@ return [
             'api_keys_live'            => 'Live keys are configured properly.',
             'api_keys_live_comment'    => 'Services are fully operational and making live transactions.',
             'api_keys_test'            => 'Test keys are configured properly.',
-            'api_keys_test_comment'    => 'Services should functional normally, but no transactions will occur.',
+            'api_keys_test_comment'    => 'Services should function normally, but no real transactions will occur.',
         ],
         'menu_category'    => 'Services',
         'menu_description' => 'Manage Stripe configuration.',

@@ -86,7 +86,7 @@ class Plugin extends PluginBase
         return [
             'bedard.saas.access_settings' => [
                 'label' => 'bedard.saas::lang.permissions.access_settings',
-                'tab'   => 'bedard.saas::lang.permissions.tab',
+                'tab'   => 'rainlab.user::lang.plugin.tab',
             ],
         ];
     }
