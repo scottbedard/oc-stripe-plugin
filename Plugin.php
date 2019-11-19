@@ -8,6 +8,7 @@ use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\User;
 use StripeManager;
 use System\Classes\PluginBase;
+use System\Classes\SettingsManager;
 
 /**
  * Saas Plugin Information File.
@@ -77,38 +78,6 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Registers back-end navigation items.
-     *
-     * @return array
-     */
-    public function registerNavigation()
-    {
-        return [
-            'saas' => [
-                'icon'        => 'icon-credit-card',
-                'label'       => 'bedard.saas::lang.navigation.label',
-                'order'       => 500,
-                'permissions' => ['bedard.saas.*'],
-                'url'         => Backend::url('bedard/saas/products'),
-                'sideMenu'    => [
-                    'products' => [
-                        'icon'        => 'icon-cubes',
-                        'label'       => 'bedard.saas::lang.navigation.products',
-                        'permissions' => ['bedard.saas.access_products'],
-                        'url'         => Backend::url('bedard/saas/products'),
-                    ],
-                    'settings' => [
-                        'icon'        => 'icon-cog',
-                        'label'       => 'bedard.saas::lang.navigation.settings',
-                        'permissions' => ['bedard.saas.access_settings'],
-                        'url'         => Backend::url('system/settings/update/bedard/saas/settings'),
-                    ],
-                ],
-            ],
-        ];
-    }
-
-    /**
      * Registers any back-end permissions.
      *
      * @return array
@@ -116,10 +85,6 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'bedard.saas.access_products' => [
-                'label' => 'bedard.saas::lang.permissions.access_products',
-                'tab'   => 'bedard.saas::lang.permissions.tab',
-            ],
             'bedard.saas.access_settings' => [
                 'label' => 'bedard.saas::lang.permissions.access_settings',
                 'tab'   => 'bedard.saas::lang.permissions.tab',
@@ -136,12 +101,12 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'category'    => 'bedard.saas::lang.settings.menu_category',
+                'category'    => SettingsManager::CATEGORY_USERS,
                 'class'       => 'Bedard\Saas\Models\Settings',
                 'description' => 'bedard.saas::lang.settings.menu_description',
                 'icon'        => 'icon-cc-stripe',
                 'label'       => 'bedard.saas::lang.settings.menu_label',
-                'order'       => 500,
+                'order'       => 600,
                 'permissions' => ['bedard.saas.access_settings'],
             ],
         ];

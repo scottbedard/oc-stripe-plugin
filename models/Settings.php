@@ -58,14 +58,4 @@ class Settings extends Model
 
         return 0;
     }
-
-    /**
-     * Default settings data.
-     *
-     * @return void
-     */
-    public function initSettingsData(): void
-    {
-        $this->currency_code = 'USD';
-    }
 }

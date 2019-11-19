@@ -47,9 +47,4 @@ class SettingsTest extends PluginTestCase
 
         $this->assertEquals(2, Settings::apiKeysConfigured());
     }
-
-    public function test_currency_code_defaults_to_usd()
-    {
-        $this->assertEquals('USD', Settings::get('currency_code'));
-    }
 }

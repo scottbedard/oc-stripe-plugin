@@ -1,66 +1,9 @@
 <?php
 
 return [
-    'navigation' => [
-        'label'       => 'Services',
-        'products'    => 'Products',
-        'settings'    => 'Settings',
-    ],
     'permissions' => [
-        'access_products'    => 'Manage products',
         'access_settings'    => 'Manage settings',
         'tab'                => 'Software services',
-    ],
-    'products' => [
-        'form' => [
-            'description'       => 'Description',
-            'general_tab'       => 'General',
-            'is_active'         => 'Status',
-            'is_active_comment' => 'When off, this product cannot be purchased',
-            'name'              => 'Name',
-            'schedules_tab'     => 'Billing Schedules',
-            'slug'              => 'Slug',
-        ],
-        'list' => [
-            'created_at'       => 'Created',
-            'id'               => 'ID',
-            'is_active'        => 'Status',
-            'is_active_filter' => 'Hide disabled',
-            'is_active_off'    => 'Disabled',
-            'is_active_on'     => 'Active',
-            'name'             => 'Name',
-            'schedules_count'  => 'Schedules',
-            'slug'             => 'Slug',
-            'updated_at'       => 'Last Updated',
-        ],
-        'list_title' => 'Manage Products',
-        'model'      => 'Product',
-    ],
-    'schedules' => [
-        'form' => [
-            'calendar_duration'   => 'Calendar Duration',
-            'calendar_unit'       => 'Calendar Unit',
-            'calendar_unit_day'   => 'Day',
-            'calendar_unit_month' => 'Month',
-            'calendar_unit_year'  => 'Year',
-            'cost'                => 'Cost',
-            'name'                => 'Name',
-        ],
-        'list' => [
-            'interval'                => 'Interval',
-            'interval_day_plural'     => ':duration days',
-            'interval_day_singular'   => ':duration day',
-            'interval_month_plural'   => ':duration months',
-            'interval_month_singular' => ':duration month',
-            'interval_year_plural'    => ':duration years',
-            'interval_year_singular'  => ':duration year',
-            'created_at'              => 'Created',
-            'cost'                    => 'Cost',
-            'id'                      => 'ID',
-            'name'                    => 'Name',
-            'updated_at'              => 'Last Updated',
-        ],
-        'model' => 'Schedule',
     ],
     'settings' => [
         'form' => [
@@ -70,8 +13,6 @@ return [
             'api_keys_live_comment'    => 'Services are fully operational and making live transactions.',
             'api_keys_test'            => 'Test keys are configured properly.',
             'api_keys_test_comment'    => 'Services should functional normally, but no transactions will occur.',
-            'currency_code'            => 'Currency code',
-            'currency_code_comment'    => 'Refer to the <a href="https://stripe.com/docs/currencies" target="_blank">Stripe documentation</a> for a list of supported currencies.',
         ],
         'menu_category'    => 'Services',
         'menu_description' => 'Manage Stripe configuration.',
