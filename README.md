@@ -3,6 +3,7 @@
 [![Build status](https://img.shields.io/circleci/build/github/scottbedard/oc-saas-plugin)](https://circleci.com/gh/scottbedard/oc-saas-plugin)
 [![Test coverage](https://img.shields.io/codecov/c/github/scottbedard/oc-saas-plugin)](https://codecov.io/gh/scottbedard/oc-saas-plugin)
 [![Code quality](https://img.shields.io/scrutinizer/quality/g/scottbedard/oc-saas-plugin/master)](https://scrutinizer-ci.com/g/scottbedard/oc-saas-plugin)
+[![Code style](https://github.styleci.io/repos/221099316/shield?style=flat)](https://github.styleci.io/repos/221099316)
 [![License](https://img.shields.io/github/license/scottbedard/oc-saas-plugin?color=blue)](https://github.com/scottbedard/oc-saas-plugin/blob/master/LICENSE)
 
 Software as a service plugin for October CMS and Stripe.
