@@ -4,6 +4,7 @@ namespace Bedard\Saas\Classes;
 
 use RainLab\User\Models\User;
 use Stripe\Customer;
+use Stripe\Product;
 use Stripe\Stripe;
 
 class StripeManager
@@ -67,6 +68,18 @@ class StripeManager
             'email' => $user->email,
             'name'  => $user->name.' '.$user->surname,
         ];
+    }
+
+    /**
+     * List products.
+     *
+     * @param  array    $params
+     *
+     * @return array
+     */
+    public function listProducts(array $params = [])
+    {
+        return Product::all($params);
     }
 
     /**

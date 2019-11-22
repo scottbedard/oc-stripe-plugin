@@ -3,6 +3,7 @@
 namespace Bedard\Saas;
 
 use App;
+use Event;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\User;
 use StripeManager;
