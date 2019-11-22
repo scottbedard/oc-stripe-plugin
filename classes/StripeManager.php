@@ -73,7 +73,7 @@ class StripeManager
     /**
      * List products.
      *
-     * @param  array    $params
+     * @param array $params
      *
      * @return array
      */
