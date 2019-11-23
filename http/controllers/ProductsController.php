@@ -8,10 +8,10 @@ use StripeManager;
 class ProductsController extends ApiController
 {
     /**
-     * List products.
+     * List active products with associated plans.
      */
     public function index()
     {
-        return StripeManager::listProducts();
+        return StripeManager::getProductsWithPlans();
     }
 }

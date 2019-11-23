@@ -23,6 +23,7 @@ abstract class PluginTestCase extends BasePluginTestCase
      * @var array Plugins to refresh between tests.
      */
     protected $refreshPlugins = [
+        'Bedard.Saas',
         'RainLab.User',
     ];
 
@@ -38,6 +39,16 @@ abstract class PluginTestCase extends BasePluginTestCase
     }
 
     /**
+     * Parse a json fixture.
+     * 
+     * @return stdClass
+     */
+    public static function jsonFixture(string $file)
+    {
+        return json_decode(file_get_contents(plugins_path('bedard/saas/tests/fixtures/' . $file)));
+    }
+
+    /**
      * Perform test case set up.
      *
      * @return void
@@ -47,7 +58,9 @@ abstract class PluginTestCase extends BasePluginTestCase
         parent::setUp();
 
         // boot all plugins
-        PluginManager::instance()->bootAll(true);
+        $pluginManager = PluginManager::instance();
+        $pluginManager->registerAll(true);
+        $pluginManager->bootAll(true);
 
         // set rainlab.user min password length
         Config::set('rainlab.user::minPasswordLength', 8);
@@ -98,6 +111,9 @@ abstract class PluginTestCase extends BasePluginTestCase
     public function tearDown()
     {
         parent::tearDown();
+
+        $pluginManager = PluginManager::instance();
+        $pluginManager->unregisterAll();
 
         Mockery::close();
     }

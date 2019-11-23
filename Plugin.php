@@ -6,6 +6,7 @@ use App;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\User\Models\User;
 use StripeManager;
+use Stripe\Stripe;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 
@@ -28,14 +29,16 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        // register our stripe integration singleton
+        // register our main stripe integration
         $alias = AliasLoader::getInstance();
+
         $alias->alias('StripeManager', 'Bedard\Saas\Facades\StripeManager');
 
         App::singleton('bedard.saas.stripe', function () {
             return \Bedard\Saas\Classes\StripeManager::instance();
         });
 
+        // extend rainlab.user
         $this->extendRainLabUser();
     }
 
