@@ -20,26 +20,26 @@ class UserTest extends PluginTestCase
         $this->assertEquals($user->name.' '.$user->surname, $customer->name);
     }
 
-    // public function test_updating_a_user_email_updates_the_stripe_customer()
-    // {
-    //     $faker = Factory::create();
+    public function test_updating_a_user_email_updates_the_stripe_customer()
+    {
+        $faker = Factory::create();
 
-    //     $user = $this->createUser();
-    //     $user->email = $faker->email;
-    //     $user->save();
+        $user = $this->createUser();
+        $user->email = $faker->email;
+        $user->save();
 
-    //     $customer = StripeManager::retrieveCustomer($user);
+        $customer = StripeManager::retrieveCustomer($user);
 
-    //     $this->assertEquals($user->email, $customer->email);
-    // }
+        $this->assertEquals($user->email, $customer->email);
+    }
 
-    // public function test_deleting_a_user_deletes_the_stripe_customer()
-    // {
-    //     $user = $this->createUser();
-    //     $user->delete();
+    public function test_deleting_a_user_deletes_the_stripe_customer()
+    {
+        $user = $this->createUser();
+        $user->delete();
 
-    //     $customer = StripeManager::retrieveCustomer($user);
+        $customer = StripeManager::retrieveCustomer($user);
 
-    //     $this->assertTrue($customer->deleted);
-    // }
+        $this->assertTrue($customer->deleted);
+    }
 }
