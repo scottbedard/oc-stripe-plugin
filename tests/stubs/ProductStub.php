@@ -6,8 +6,8 @@ use Stripe\ApiResource;
 
 class ProductStub extends ApiResource
 {
-    const OBJECT_NAME  = 'product';
-    const TYPE_GOOD    = 'good';
+    const OBJECT_NAME = 'product';
+    const TYPE_GOOD = 'good';
     const TYPE_SERVICE = 'service';
 
     use \Stripe\ApiOperations\All;

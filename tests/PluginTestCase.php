@@ -40,12 +40,12 @@ abstract class PluginTestCase extends BasePluginTestCase
 
     /**
      * Parse a json fixture.
-     * 
+     *
      * @return stdClass
      */
     public static function jsonFixture(string $file)
     {
-        return json_decode(file_get_contents(plugins_path('bedard/saas/tests/fixtures/' . $file)));
+        return json_decode(file_get_contents(plugins_path('bedard/saas/tests/fixtures/'.$file)));
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace Bedard\Saas\Classes;
 
-use Bedard\Saas\Classes\StripeUtils;
 use RainLab\User\Models\User;
 use Stripe\Customer;
 use Stripe\Plan;
@@ -87,7 +86,7 @@ class StripeManager
     /**
      * List active products with associated plans.
      *
-     * @param  array    $params
+     * @param array $params
      *
      * @return array
      */
@@ -99,13 +98,13 @@ class StripeManager
 
         foreach ($products->data as $product) {
             $plans = Plan::all([
-                'active' => true,
+                'active'  => true,
                 'product' => $product->id,
             ]);
 
             $product->plans = StripeUtils::sort($plans->data, ['metadata.order', 'amount']);
         }
-        
+
         $data = StripeUtils::sort($products->data, ['metadata.order']);
 
         return $data;
