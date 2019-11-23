@@ -6,10 +6,10 @@ class StripeUtils
 {
     /**
      * Sort stripe resources.
-     * 
-     * @param  array        $collection
-     * @param  array|string $properties
-     * @param  any          $default
+     *
+     * @param array        $collection
+     * @param array|string $properties
+     * @param any          $default
      *
      * @return object
      */

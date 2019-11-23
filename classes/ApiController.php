@@ -16,7 +16,7 @@ class ApiController extends Controller
 
     /**
      * Construct.
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -26,7 +26,7 @@ class ApiController extends Controller
 
     /**
      * Extend object properties upon construction.
-     * 
+     *
      * @param Closure $callback
      */
     public static function extend(Closure $callback)

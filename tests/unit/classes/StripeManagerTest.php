@@ -22,13 +22,13 @@ class StripeManagerTest extends PluginTestCase
                 ['active' => true],
             ])
             ->andReturn($productsFixture);
-        
+
         Mockery::namedMock('Stripe\Plan', PlanStub::class)
             ->shouldReceive('all')
             ->times(1)
             ->withArgs([
                 [
-                    'active' => true,
+                    'active'  => true,
                     'product' => $productsFixture->data[0]->id,
                 ],
             ])
