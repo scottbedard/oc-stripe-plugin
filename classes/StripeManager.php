@@ -72,18 +72,6 @@ class StripeManager
     }
 
     /**
-     * List plans.
-     *
-     * @param array $params
-     *
-     * @return array
-     */
-    public function getPlans(array $params = [])
-    {
-        return Plan::all($params);
-    }
-
-    /**
      * List active products with associated plans.
      *
      * @param array $params
