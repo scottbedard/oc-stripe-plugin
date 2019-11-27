@@ -72,6 +72,19 @@ class StripeManager
     }
 
     /**
+     * Delete a customer's payment source
+     * 
+     * @param  \RainLab\User\Models\User    $user
+     * @param  string                       $cardId
+     *
+     * @return \Stripe\Customer
+     */
+    public function deleteCustomerSource(User $user, $source)
+    {
+        return Customer::deleteSource($user->bedard_saas_customer_id, $source);
+    }
+
+    /**
      * Returns data to sync between User models and Stripe Customer objects.
      *
      * @param  \RainLab\User\Models\User

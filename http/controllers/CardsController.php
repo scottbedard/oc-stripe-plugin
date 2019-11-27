@@ -20,6 +20,18 @@ class CardsController extends ApiController
     }
 
     /**
+     * Delete a card.
+     * 
+     * @param  string   $card
+     */
+    public function destroy($card)
+    {
+        $user = Auth::getUser();
+
+        return StripeManager::deleteCustomerSource($user, $card);
+    }
+
+    /**
      * List a user's cards.
      */
     public function index()
