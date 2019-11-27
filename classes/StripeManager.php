@@ -7,6 +7,7 @@ use Stripe\Customer;
 use Stripe\Plan;
 use Stripe\Product;
 use Stripe\Stripe;
+use Stripe\Subscription;
 
 class StripeManager
 {
@@ -54,6 +55,49 @@ class StripeManager
         $customer = Customer::create($this->getCustomerData($user));
 
         $user->bedard_saas_customer_id = $customer->id;
+    }
+
+    /**
+     * Create a plan.
+     * 
+     * @param  array    $data
+     * 
+     * @return \Stripe\Plan
+     */
+    public function createPlan(array $params = [])
+    {
+        return Plan::create($params);
+    }
+
+    /**
+     * Create a product.
+     * 
+     * @param  array    $data
+     * 
+     * @return \Stripe\Product
+     */
+    public function createProduct(array $params = [])
+    {
+        return Product::create($params);
+    }
+
+    /**
+     * Subscribe a user to a plan.
+     * 
+     * @param  \RainLab\User\Models\User    $user
+     * @param  string                       $planId
+     * @param  array                        $data
+     * 
+     * @return \Stripe\Subscription
+     */
+    public function subscribeUserToPlan(User $user, string $planId, array $params = [])
+    {
+        return Subscription::create(array_merge($params, [
+            'customer' => $user->bedard_saas_customer_id,
+            'items' => [
+                ['plan' => $planId],
+            ],
+        ]));
     }
 
     /**
@@ -137,6 +181,18 @@ class StripeManager
     public function listCustomerSources(User $user, $params = [])
     {
         return Customer::allSources($user->bedard_saas_customer_id, $params);
+    }
+
+    /**
+     * List subscriptions.
+     *
+     * @param  array    $params
+     *
+     * @return array
+     */
+    public function listSubscriptions($params = [])
+    {
+        return Subscription::all($params);
     }
 
     /**

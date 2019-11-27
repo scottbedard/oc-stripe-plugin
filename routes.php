@@ -23,6 +23,9 @@ if (config('bedard.saas::apiEnable')) {
 
                 // customers
                 Route::post('customers/default-source', 'Bedard\Saas\Http\Controllers\CustomersController@defaultSource');
+            
+                // subscriptions
+                Route::get('subscriptions', 'Bedard\Saas\Http\Controllers\SubscriptionsController@index');
             });
         });
 }
