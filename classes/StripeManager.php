@@ -72,10 +72,10 @@ class StripeManager
     }
 
     /**
-     * Delete a customer's payment source
-     * 
-     * @param  \RainLab\User\Models\User    $user
-     * @param  string                       $cardId
+     * Delete a customer's payment source.
+     *
+     * @param \RainLab\User\Models\User $user
+     * @param string                    $cardId
      *
      * @return \Stripe\Customer
      */
