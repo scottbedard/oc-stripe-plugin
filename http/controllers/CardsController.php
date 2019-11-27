@@ -21,8 +21,8 @@ class CardsController extends ApiController
 
     /**
      * Delete a card.
-     * 
-     * @param  string   $card
+     *
+     * @param string $card
      */
     public function destroy($card)
     {

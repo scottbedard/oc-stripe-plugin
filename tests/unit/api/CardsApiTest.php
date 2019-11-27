@@ -45,7 +45,7 @@ class CardsApiTest extends PluginTestCase
 
         $response = $this->get('/api/bedard/saas/cards?limit=2');
         $response->assertStatus(200);
-        
+
         $data = json_decode($response->getContent(), true);
 
         $this->assertTrue($data['has_more']);
