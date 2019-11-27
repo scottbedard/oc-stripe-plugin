@@ -13,7 +13,7 @@ if (config('bedard.saas::apiEnable')) {
         // authenticated routes
         //
         Route::group(['middleware' => 'RainLab\User\Classes\AuthMiddleware'], function () {
-            
+
             // cards
             Route::post('cards', 'Bedard\Saas\Http\Controllers\CardsController@create');
         });
