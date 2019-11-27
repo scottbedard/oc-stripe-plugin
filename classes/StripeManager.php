@@ -172,8 +172,8 @@ class StripeManager
     /**
      * Update a customer.
      *
-     * @param  \RainLab\User\Models\User    $user
-     * @param  array                        $data
+     * @param \RainLab\User\Models\User $user
+     * @param array                     $data
      *
      * @return \Stripe\Customer
      */
