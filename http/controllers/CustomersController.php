@@ -9,7 +9,7 @@ use StripeManager;
 class CustomersController extends ApiController
 {
     /**
-     * Update the authenticated user's default payment source
+     * Update the authenticated user's default payment source.
      */
     public function defaultSource()
     {
