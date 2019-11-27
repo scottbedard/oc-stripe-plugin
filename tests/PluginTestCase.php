@@ -38,6 +38,25 @@ abstract class PluginTestCase extends BasePluginTestCase
         return User::find(factory(User::class)->create($data)->id);
     }
 
+    public function createActivatedUser($data = [])
+    {
+        $user = $this->createUser($data);
+        $user->is_activated = 1;
+        $user->activated_at = now();
+        $user->save();
+
+        return $user;
+    }
+
+    public function createAuthenticatedUser($data = [])
+    {
+        $user = $this->createActivatedUser($data);
+        
+        Auth::login($user);
+
+        return $user;
+    }
+
     /**
      * Parse a json fixture.
      *
@@ -69,38 +88,12 @@ abstract class PluginTestCase extends BasePluginTestCase
         Config::set('services.stripe.key', env('STRIPE_KEY'));
         Config::set('services.stripe.secret', env('STRIPE_SECRET'));
 
-        // reset any modified settings
-        SaasSettings::resetDefault();
-        UserSettings::resetDefault();
-        UserSettings::set('activate_mode', 'auto');
-        UserSettings::set('allow_registration', true);
-
         // register model factories
         App::singleton(Factory::class, function ($app) {
             $faker = $app->make(Generator::class);
 
             return Factory::construct($faker, plugins_path('bedard/saas/factories'));
         });
-
-        // register the Auth facade in our test environment
-        $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', 'RainLab\User\Facades\Auth');
-
-        App::singleton('user.auth', function () {
-            return \RainLab\User\Classes\AuthManager::instance();
-        });
-
-        // Log the user out
-        Auth::logout();
-
-        // october's "pretend" method doesn't quite reach the level
-        // of testability we're after. so we'll use the built in
-        // "fake" method instead. the only downside to doing this
-        // is that we cannot use the "quick sending" methods.
-        Mail::fake();
-
-        // disable notifications during tests
-        Notification::fake();
     }
 
     /**

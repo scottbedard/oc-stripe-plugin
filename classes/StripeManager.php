@@ -3,6 +3,7 @@
 namespace Bedard\Saas\Classes;
 
 use RainLab\User\Models\User;
+use Stripe\Card;
 use Stripe\Customer;
 use Stripe\Plan;
 use Stripe\Product;
@@ -25,6 +26,21 @@ class StripeManager
     public function __construct()
     {
         Stripe::setApiKey(config('services.stripe.secret'));
+    }
+
+    /**
+     * Create a customer from a user model.
+     *
+     * @param  \RainLab\User\Models\User
+     * @param  string
+     *
+     * @return \Stripe\Card
+     */
+    public function createCard(User $user, string $token)
+    {
+        return Customer::createSource($user->bedard_saas_customer_id, [
+            'source' => $token,
+        ]);
     }
 
     /**
