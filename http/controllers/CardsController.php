@@ -43,9 +43,9 @@ class CardsController extends ApiController
         $cards = StripeManager::listCustomerSources($user, $params);
 
         return [
-            'data' => $cards->data,
+            'data'           => $cards->data,
             'default_source' => $customer->default_source,
-            'has_more' => $cards->has_more,
+            'has_more'       => $cards->has_more,
         ];
     }
 }
