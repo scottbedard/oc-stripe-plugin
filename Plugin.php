@@ -55,7 +55,7 @@ class Plugin extends PluginBase
             });
 
             $model->bindEvent('model.beforeUpdate', function () use ($model) {
-                StripeManager::updateCustomer($model);
+                StripeManager::syncCustomer($model);
             });
 
             $model->bindEvent('model.afterDelete', function () use ($model) {

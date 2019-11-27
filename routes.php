@@ -20,6 +20,10 @@ if (config('bedard.saas::apiEnable')) {
                 Route::delete('cards/{card}', 'Bedard\Saas\Http\Controllers\CardsController@destroy');
                 Route::get('cards', 'Bedard\Saas\Http\Controllers\CardsController@index');
                 Route::post('cards', 'Bedard\Saas\Http\Controllers\CardsController@create');
+                
+                // customers
+                Route::get('customers/{customer}', 'Bedard\Saas\Http\Controllers\CustomersController@show');
+                Route::match(['patch', 'put'], 'customers', 'Bedard\Saas\Http\Controllers\CustomersController@update');
             });
         });
 }

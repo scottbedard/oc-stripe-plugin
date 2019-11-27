@@ -152,21 +152,33 @@ class StripeManager
     }
 
     /**
-     * Update a customer from a user model.
+     * Synchronize a user's customer data.
      *
      * @param  \RainLab\User\Models\User
      *
      * @return \Stripe\Customer
      */
-    public function updateCustomer(User $user): void
+    public function syncCustomer(User $user): void
     {
         $fields = ['email', 'name', 'surname'];
 
         if ($user->isDirty($fields)) {
-            $id = $user->bedard_saas_customer_id;
             $data = $this->getCustomerData($user);
 
-            Customer::update($id, $data);
+            $this->updateCustomer($user, $data);
         }
+    }
+
+    /**
+     * Update a customer.
+     *
+     * @param  \RainLab\User\Models\User    $user
+     * @param  array                        $data
+     *
+     * @return \Stripe\Customer
+     */
+    public function updateCustomer(User $user, array $data = [])
+    {
+        return Customer::update($user->bedard_saas_customer_id, $data);
     }
 }
