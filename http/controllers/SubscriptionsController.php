@@ -21,7 +21,7 @@ class SubscriptionsController extends ApiController
         ]);
 
         return [
-            'has_more' => $subscriptions->has_more,
+            'has_more'      => $subscriptions->has_more,
             'subscriptions' => $subscriptions->data,
         ];
     }
