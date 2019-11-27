@@ -22,8 +22,7 @@ if (config('bedard.saas::apiEnable')) {
                 Route::post('cards', 'Bedard\Saas\Http\Controllers\CardsController@create');
 
                 // customers
-                Route::get('customers/{customer}', 'Bedard\Saas\Http\Controllers\CustomersController@show');
-                Route::match(['patch', 'put'], 'customers', 'Bedard\Saas\Http\Controllers\CustomersController@update');
+                Route::post('customers/default-source', 'Bedard\Saas\Http\Controllers\CustomersController@defaultSource');
             });
         });
 }

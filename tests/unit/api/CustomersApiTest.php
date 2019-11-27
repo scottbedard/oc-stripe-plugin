@@ -7,37 +7,22 @@ use StripeManager;
 
 class CustomersApiTest extends PluginTestCase
 {
-    public function test_patch_updating_a_user()
+    public function test_updating_a_users_default_payment_source()
     {
         $user = $this->createAuthenticatedUser();
+        $one = StripeManager::createCard($user, 'tok_amex');
+        $two = StripeManager::createCard($user, 'tok_amex');
 
-        $request = $this->patch('/api/bedard/saas/customers', [
-            'description' => 'An awesome customer',
+        $customer = StripeManager::retrieveCustomer($user);
+        $this->assertEquals($one->id, $customer->default_source);
+
+        $response = $this->post('/api/bedard/saas/customers/default-source', [
+            'source' => $two->id,
         ]);
 
-        $request->assertStatus(200);
+        $response->assertStatus(200);
 
-        $data = json_decode($request->getContent(), true);
         $customer = StripeManager::retrieveCustomer($user);
-
-        $this->assertEquals($customer->description, 'An awesome customer');
-        $this->assertEquals($customer->id, $data['id']);
-    }
-
-    public function test_put_updating_a_user()
-    {
-        $user = $this->createAuthenticatedUser();
-
-        $request = $this->put('/api/bedard/saas/customers', [
-            'description' => 'An awesome customer',
-        ]);
-
-        $request->assertStatus(200);
-
-        $data = json_decode($request->getContent(), true);
-        $customer = StripeManager::retrieveCustomer($user);
-
-        $this->assertEquals($customer->description, 'An awesome customer');
-        $this->assertEquals($customer->id, $data['id']);
+        $this->assertEquals($two->id, $customer->default_source);
     }
 }

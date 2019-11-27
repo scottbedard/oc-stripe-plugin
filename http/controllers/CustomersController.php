@@ -9,13 +9,15 @@ use StripeManager;
 class CustomersController extends ApiController
 {
     /**
-     * Update the authenticated user's customer object.
+     * Update the authenticated user's default payment source
      */
-    public function update()
+    public function defaultSource()
     {
         $user = Auth::getUser();
-        $data = post();
+        $source = post('source');
 
-        return StripeManager::updateCustomer($user, $data);
+        StripeManager::updateCustomer($user, ['default_source' => $source]);
+
+        return response('Ok', 200);
     }
 }
