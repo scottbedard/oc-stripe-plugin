@@ -9,24 +9,14 @@ use StripeManager;
 
 class CardsController extends ApiController
 {
-    protected $user;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->user = Auth::getUser();
-    }
-
     /**
      * Create a card.
      */
     public function create()
     {
-        return StripeManager::createCard($this->user, post('token'));
+        $user = Auth::getUser();
+
+        return StripeManager::createCard($user, post('token'));
     }
 
     /**
@@ -34,9 +24,11 @@ class CardsController extends ApiController
      */
     public function index()
     {
+        $user = Auth::getUser();
+
         $params = array_merge(input(), ['object' => 'card']);
 
-        $cards = StripeManager::listCustomerSources($this->user, $params);
+        $cards = StripeManager::listCustomerSources($user, $params);
 
         return Arr::except($cards, ['object', 'url']);
     }
