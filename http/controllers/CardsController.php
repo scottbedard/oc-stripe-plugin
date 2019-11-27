@@ -4,7 +4,6 @@ namespace Bedard\Saas\Http\Controllers;
 
 use Auth;
 use Bedard\Saas\Classes\ApiController;
-use Illuminate\Support\Arr;
 use StripeManager;
 
 class CardsController extends ApiController
@@ -40,8 +39,13 @@ class CardsController extends ApiController
 
         $params = array_merge(input(), ['object' => 'card']);
 
+        $customer = StripeManager::retrieveCustomer($user);
         $cards = StripeManager::listCustomerSources($user, $params);
 
-        return Arr::except($cards, ['object', 'url']);
+        return [
+            'data' => $cards->data,
+            'default_source' => $customer->default_source,
+            'has_more' => $cards->has_more,
+        ];
     }
 }

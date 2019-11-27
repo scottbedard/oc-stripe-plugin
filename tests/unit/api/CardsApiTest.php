@@ -39,7 +39,7 @@ class CardsApiTest extends PluginTestCase
     public function test_listing_customer_cards()
     {
         $user = $this->createAuthenticatedUser();
-        StripeManager::createCard($user, 'tok_amex');
+        $one = StripeManager::createCard($user, 'tok_amex');
         StripeManager::createCard($user, 'tok_amex');
         StripeManager::createCard($user, 'tok_amex');
 
@@ -50,5 +50,6 @@ class CardsApiTest extends PluginTestCase
 
         $this->assertTrue($data['has_more']);
         $this->assertEquals(2, count($data['data']));
+        $this->assertEquals($one->id, $data['default_source']);
     }
 }
