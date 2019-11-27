@@ -19,7 +19,7 @@ class CustomersApiTest extends PluginTestCase
 
         $data = json_decode($request->getContent(), true);
         $customer = StripeManager::retrieveCustomer($user);
-        
+
         $this->assertEquals($customer->description, 'An awesome customer');
         $this->assertEquals($customer->id, $data['id']);
     }
@@ -36,7 +36,7 @@ class CustomersApiTest extends PluginTestCase
 
         $data = json_decode($request->getContent(), true);
         $customer = StripeManager::retrieveCustomer($user);
-        
+
         $this->assertEquals($customer->description, 'An awesome customer');
         $this->assertEquals($customer->id, $data['id']);
     }
