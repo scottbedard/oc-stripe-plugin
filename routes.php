@@ -1,7 +1,9 @@
 <?php
 
 if (config('bedard.saas::apiEnable')) {
-    Route::prefix(config('bedard.saas::apiPrefix'))->group(function () {
+    Route::prefix(config('bedard.saas::apiPrefix'))
+        ->middleware('web')
+        ->group(function () {
         //
         // guest routes
         //
@@ -12,9 +14,10 @@ if (config('bedard.saas::apiEnable')) {
         //
         // authenticated routes
         //
-        Route::group(['middleware' => 'RainLab\User\Classes\AuthMiddleware'], function () {
-
+        Route::middleware('RainLab\User\Classes\AuthMiddleware')->group(function () {
+            
             // cards
+            Route::get('cards', 'Bedard\Saas\Http\Controllers\CardsController@index');
             Route::post('cards', 'Bedard\Saas\Http\Controllers\CardsController@create');
         });
     });

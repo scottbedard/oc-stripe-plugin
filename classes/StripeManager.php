@@ -114,6 +114,19 @@ class StripeManager
     }
 
     /**
+     * List a user's payment sources.
+     * 
+     * @param  \RainLab\User\Models\User    $user
+     * @param  array                        $params
+     *
+     * @return array
+     */
+    public function listCustomerSources(User $user, $params = [])
+    {
+        return Customer::allSources($user->bedard_saas_customer_id, $params);
+    }
+
+    /**
      * Retrieve a customer from a user model.
      *
      * @param  \RainLab\User\Models\User
