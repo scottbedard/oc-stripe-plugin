@@ -14,7 +14,7 @@ class CardsApiTest extends PluginTestCase
         $response = $this->post('/api/bedard/saas/cards', [
             'token' => 'tok_amex',
         ]);
-        
+
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);
