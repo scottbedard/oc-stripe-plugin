@@ -115,9 +115,9 @@ class StripeManager
 
     /**
      * List a user's payment sources.
-     * 
-     * @param  \RainLab\User\Models\User    $user
-     * @param  array                        $params
+     *
+     * @param \RainLab\User\Models\User $user
+     * @param array                     $params
      *
      * @return array
      */
