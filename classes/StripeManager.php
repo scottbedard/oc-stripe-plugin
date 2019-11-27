@@ -3,7 +3,6 @@
 namespace Bedard\Saas\Classes;
 
 use RainLab\User\Models\User;
-use Stripe\Card;
 use Stripe\Customer;
 use Stripe\Plan;
 use Stripe\Product;

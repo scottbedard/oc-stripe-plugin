@@ -2,13 +2,9 @@
 
 namespace Bedard\Saas\Tests\Unit\Classes;
 
-use Auth;
 use Bedard\Saas\Tests\PluginTestCase;
-use Bedard\Saas\Tests\Stubs\PlanStub;
-use Bedard\Saas\Tests\Stubs\ProductStub;
-use Mockery;
 
-class CardsApiTest extends PluginTestCase
+class CartsApiTest extends PluginTestCase
 {
     public function test_creating_a_card()
     {
@@ -17,7 +13,7 @@ class CardsApiTest extends PluginTestCase
         $response = $this->post('/api/bedard/saas/cards', [
             'token' => 'tok_amex',
         ]);
-        
+
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);

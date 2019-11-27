@@ -4,16 +4,11 @@ namespace Bedard\Saas\Tests;
 
 use App;
 use Auth;
-use Bedard\Saas\Models\Settings as SaasSettings;
 use Config;
 use Faker\Generator;
 use Illuminate\Database\Eloquent\Factory;
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\Facades\Notification;
-use Mail;
 use Mockery;
 use PluginTestCase as BasePluginTestCase;
-use RainLab\User\Models\Settings as UserSettings;
 use RainLab\User\Models\User;
 use System\Classes\PluginManager;
 
@@ -51,7 +46,7 @@ abstract class PluginTestCase extends BasePluginTestCase
     public function createAuthenticatedUser($data = [])
     {
         $user = $this->createActivatedUser($data);
-        
+
         Auth::login($user);
 
         return $user;
