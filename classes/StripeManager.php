@@ -59,9 +59,9 @@ class StripeManager
 
     /**
      * Create a plan.
-     * 
-     * @param  array    $data
-     * 
+     *
+     * @param array $data
+     *
      * @return \Stripe\Plan
      */
     public function createPlan(array $params = [])
@@ -71,9 +71,9 @@ class StripeManager
 
     /**
      * Create a product.
-     * 
-     * @param  array    $data
-     * 
+     *
+     * @param array $data
+     *
      * @return \Stripe\Product
      */
     public function createProduct(array $params = [])
@@ -83,18 +83,18 @@ class StripeManager
 
     /**
      * Subscribe a user to a plan.
-     * 
-     * @param  \RainLab\User\Models\User    $user
-     * @param  string                       $planId
-     * @param  array                        $data
-     * 
+     *
+     * @param \RainLab\User\Models\User $user
+     * @param string                    $planId
+     * @param array                     $data
+     *
      * @return \Stripe\Subscription
      */
     public function subscribeUserToPlan(User $user, string $planId, array $params = [])
     {
         return Subscription::create(array_merge($params, [
             'customer' => $user->bedard_saas_customer_id,
-            'items' => [
+            'items'    => [
                 ['plan' => $planId],
             ],
         ]));
@@ -186,7 +186,7 @@ class StripeManager
     /**
      * List subscriptions.
      *
-     * @param  array    $params
+     * @param array $params
      *
      * @return array
      */

@@ -13,18 +13,18 @@ class SubscriptionsApiTest extends PluginTestCase
         $user = $this->createAuthenticatedUser();
         $product = StripeManager::createProduct(['name' => 'Basic']);
         $plan = StripeManager::createPlan([
-            'active' => true,
-            'amount' => 0,
+            'active'   => true,
+            'amount'   => 0,
             'currency' => 'usd',
             'interval' => 'month',
-            'product' => $product->id,
+            'product'  => $product->id,
         ]);
 
         StripeManager::subscribeUserToPlan($user, $plan->id);
 
         $response = $this->get('/api/bedard/saas/subscriptions');
         $response->assertStatus(200);
-        
+
         $data = json_decode($response->getContent(), true);
         $this->assertEquals($plan->id, $data['subscriptions'][0]['plan']['id']);
         $this->assertEquals(1, count($data['subscriptions']));
