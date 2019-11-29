@@ -15,7 +15,7 @@ class UserCardsApiTest extends PluginTestCase
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);
-        
+
         $this->assertStringStartsWith('card_', $data['data']['id']);
     }
 
