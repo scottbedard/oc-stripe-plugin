@@ -15,7 +15,9 @@ class UserCardsController extends ApiController
     {
         $user = Auth::getUser();
 
-        return StripeManager::createCard($user, post('token'));
+        return [
+            'data' => StripeManager::createCard($user, post('token')),
+        ];
     }
 
     /**
@@ -26,8 +28,12 @@ class UserCardsController extends ApiController
     public function destroy($card)
     {
         $user = Auth::getUser();
+        $result = StripeManager::deleteCustomerSource($user, $card);
 
-        return StripeManager::deleteCustomerSource($user, $card);
+        return [
+            'deleted' => $result->deleted,
+            'id' => $result->id,
+        ];
     }
 
     /**

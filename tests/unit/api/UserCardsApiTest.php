@@ -15,8 +15,8 @@ class UserCardsApiTest extends PluginTestCase
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);
-
-        $this->assertEquals('card', $data['object']);
+        
+        $this->assertStringStartsWith('card_', $data['data']['id']);
     }
 
     public function test_deleting_a_card()
@@ -30,10 +30,13 @@ class UserCardsApiTest extends PluginTestCase
         $response = $this->delete('/api/bedard/saas/user/cards/'.$one->id);
         $response->assertStatus(200);
 
-        $cards = StripeManager::listCustomerSources($user)->data;
+        $data = json_decode($response->getContent(), true);
+        $this->assertEquals($one->id, $data['id']);
+        $this->assertTrue($data['deleted']);
 
-        $this->assertEquals(1, count($cards));
+        $cards = StripeManager::listCustomerSources($user)->data;
         $this->assertEquals($two->id, $cards[0]->id);
+        $this->assertEquals(1, count($cards));
     }
 
     public function test_listing_customer_cards()
