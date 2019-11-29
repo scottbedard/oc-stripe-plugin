@@ -8,9 +8,9 @@
 
 Software as a service plugin for October CMS and Stripe.
 
-> **Note:** This plugin is in active development, and is not ready for public use. [See this issue](https://github.com/scottbedard/oc-saas-plugin/issues/2) for current project status.
+> **WARNING:** This plugin is in active development, and is not ready for public use. API changes may happen at any time. [See this issue](https://github.com/scottbedard/oc-saas-plugin/issues/2) for current project status.
 
-### Installation
+## Installation
 
 Install [RainLab.User](https://github.com/rainlab/user-plugin) and run all migrations, then run the following from the root October directory.
 
@@ -38,7 +38,61 @@ STRIPE_KEY=pk_test_XXXXXXXXXXXXXXXXXXXXXX
 STRIPE_SECRET=sk_test_XXXXXXXXXXXXXXXXXXXXXX
 ```
 
-### License
+## Components
+
+Unfortunately there are no components for this plugin yet. It is currently being designed for use with [single page applications](https://github.com/scottbedard/oc-saas-theme). Hopefully once the core functionality is built, we can create a similar starter theme that uses traditional October components. If you'd like to help with this, feel free to open an issue and lets chat!
+
+## Endpoints
+
+An HTTP API is enabled by default. If you'd like to disable this, add the following to your `.env` file. Alternatively, you can use October's [file based configuration](https://octobercms.com/docs/plugin/settings#file-configuration).
+
+```
+BEDARD_SAAS_API_ENABLE=false
+```
+
+### Cards
+
+##### `GET: /api/bedard/saas/user/cards`
+
+Fetch the authenticated user's cards.
+
+_Response_
+- `data` - A [list of card objects](https://stripe.com/docs/api/cards/list?lang=php).
+- `default_source` - The customer's default payment source.
+- `has_more` - A boolean determing if the user has more cards not present in `data`.
+
+##### `POST: /api/bedard/saas/user/cards`
+
+Create a card for the authenticated user.
+
+_Response_
+
+- `data` - The newly created [card object](https://stripe.com/docs/api/cards/object?lang=php).
+
+##### `DELETE: /api/bedard/saas/user/cards/{card}`
+
+Delete a card for the authenticated user. It is recommended that you re-fetch the user's default payment source after deleting cards. See the [Stripe documentation](https://stripe.com/docs/api/cards/delete?lang=php) for more information about how default payment sources are managed when a card is deleted.
+
+_Parameters_
+
+- `card` - Identifier for the card to delete.
+
+_Response_
+
+- `deleted` - A boolean determining if the card was successfully deleted.
+- `id` - Identifier for the deleted card.
+
+### Customers
+
+##### `PATCH/PUT: /api/bedard/saas/user/customer/default-source`
+
+Update the authenticated user's default payment source.
+
+_Payload_
+
+- `source` - Identifier for the new default payment source.
+
+## License
 
 [MIT](https://github.com/scottbedard/oc-saas-plugin/blob/master/LICENSE)
 
