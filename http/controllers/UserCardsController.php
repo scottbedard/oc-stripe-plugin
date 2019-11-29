@@ -32,7 +32,7 @@ class UserCardsController extends ApiController
 
         return [
             'deleted' => $result->deleted,
-            'id' => $result->id,
+            'id'      => $result->id,
         ];
     }
 
