@@ -14,7 +14,6 @@ class UserSubscriptionsController extends ApiController
     public function index()
     {
         $user = Auth::getUser();
-        $plan = post('plan');
 
         $subscriptions = StripeManager::listSubscriptions([
             'customer' => $user->bedard_saas_customer_id,
