@@ -84,7 +84,7 @@ _Response_
 
 ### Customers
 
-##### `PATCH/PUT: /api/bedard/saas/user/customer/default-source`
+##### `POST: /api/bedard/saas/user/customer/default-source`
 
 Update the authenticated user's default payment source.
 
