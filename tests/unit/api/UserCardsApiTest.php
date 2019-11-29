@@ -5,13 +5,13 @@ namespace Bedard\Saas\Tests\Unit\Classes;
 use Bedard\Saas\Tests\PluginTestCase;
 use StripeManager;
 
-class CardsApiTest extends PluginTestCase
+class UserCardsApiTest extends PluginTestCase
 {
     public function test_creating_a_card()
     {
         $user = $this->createAuthenticatedUser();
 
-        $response = $this->post('/api/bedard/saas/cards', ['token' => 'tok_amex']);
+        $response = $this->post('/api/bedard/saas/user/cards', ['token' => 'tok_amex']);
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);
@@ -27,7 +27,7 @@ class CardsApiTest extends PluginTestCase
 
         $this->assertEquals(2, count(StripeManager::listCustomerSources($user)->data));
 
-        $response = $this->delete('/api/bedard/saas/cards/'.$one->id);
+        $response = $this->delete('/api/bedard/saas/user/cards/'.$one->id);
         $response->assertStatus(200);
 
         $cards = StripeManager::listCustomerSources($user)->data;
@@ -43,7 +43,7 @@ class CardsApiTest extends PluginTestCase
         StripeManager::createCard($user, 'tok_amex');
         StripeManager::createCard($user, 'tok_amex');
 
-        $response = $this->get('/api/bedard/saas/cards?limit=2');
+        $response = $this->get('/api/bedard/saas/user/cards?limit=2');
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);

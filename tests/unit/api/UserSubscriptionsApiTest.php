@@ -5,7 +5,7 @@ namespace Bedard\Saas\Tests\Unit\Classes;
 use Bedard\Saas\Tests\PluginTestCase;
 use StripeManager;
 
-class SubscriptionsApiTest extends PluginTestCase
+class UserSubscriptionsApiTest extends PluginTestCase
 {
     public function test_fetching_a_users_subscriptions()
     {
@@ -22,7 +22,7 @@ class SubscriptionsApiTest extends PluginTestCase
 
         StripeManager::subscribeUserToPlan($user, $plan->id);
 
-        $response = $this->get('/api/bedard/saas/subscriptions');
+        $response = $this->get('/api/bedard/saas/user/subscriptions');
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);

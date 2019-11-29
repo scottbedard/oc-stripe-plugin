@@ -6,7 +6,7 @@ use Auth;
 use Bedard\Saas\Classes\ApiController;
 use StripeManager;
 
-class CustomersController extends ApiController
+class UserCustomerController extends ApiController
 {
     /**
      * Update the authenticated user's default payment source.

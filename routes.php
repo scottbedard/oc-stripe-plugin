@@ -5,7 +5,7 @@ if (config('bedard.saas::apiEnable')) {
         ->middleware('web')
         ->group(function () {
             //
-            // guest routes
+            // non-authenticated routes
             //
 
             // products
@@ -14,18 +14,19 @@ if (config('bedard.saas::apiEnable')) {
             //
             // authenticated routes
             //
-            Route::middleware('RainLab\User\Classes\AuthMiddleware')->group(function () {
+            Route::prefix('user')
+                ->middleware('RainLab\User\Classes\AuthMiddleware')
+                ->group(function () {
+                    // cards
+                    Route::delete('cards/{card}', 'Bedard\Saas\Http\Controllers\UserCardsController@destroy');
+                    Route::get('cards', 'Bedard\Saas\Http\Controllers\UserCardsController@index');
+                    Route::post('cards', 'Bedard\Saas\Http\Controllers\UserCardsController@create');
 
-                // cards
-                Route::delete('cards/{card}', 'Bedard\Saas\Http\Controllers\CardsController@destroy');
-                Route::get('cards', 'Bedard\Saas\Http\Controllers\CardsController@index');
-                Route::post('cards', 'Bedard\Saas\Http\Controllers\CardsController@create');
+                    // customer
+                    Route::post('customer/default-source', 'Bedard\Saas\Http\Controllers\UserCustomerController@defaultSource');
 
-                // customers
-                Route::post('customers/default-source', 'Bedard\Saas\Http\Controllers\CustomersController@defaultSource');
-
-                // subscriptions
-                Route::get('subscriptions', 'Bedard\Saas\Http\Controllers\SubscriptionsController@index');
-            });
+                    // subscriptions
+                    Route::get('subscriptions', 'Bedard\Saas\Http\Controllers\UserSubscriptionsController@index');
+                });
         });
 }

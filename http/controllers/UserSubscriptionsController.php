@@ -6,7 +6,7 @@ use Auth;
 use Bedard\Saas\Classes\ApiController;
 use StripeManager;
 
-class SubscriptionsController extends ApiController
+class UserSubscriptionsController extends ApiController
 {
     /**
      * List the authenticated users subscriptions.

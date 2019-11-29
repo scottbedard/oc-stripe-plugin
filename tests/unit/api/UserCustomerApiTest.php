@@ -5,7 +5,7 @@ namespace Bedard\Saas\Tests\Unit\Classes;
 use Bedard\Saas\Tests\PluginTestCase;
 use StripeManager;
 
-class CustomersApiTest extends PluginTestCase
+class UserCustomerApiTest extends PluginTestCase
 {
     public function test_updating_a_users_default_payment_source()
     {
@@ -16,7 +16,7 @@ class CustomersApiTest extends PluginTestCase
         $customer = StripeManager::retrieveCustomer($user);
         $this->assertEquals($one->id, $customer->default_source);
 
-        $response = $this->post('/api/bedard/saas/customers/default-source', [
+        $response = $this->post('/api/bedard/saas/user/customer/default-source', [
             'source' => $two->id,
         ]);
 

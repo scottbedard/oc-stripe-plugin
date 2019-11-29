@@ -6,7 +6,7 @@ use Auth;
 use Bedard\Saas\Classes\ApiController;
 use StripeManager;
 
-class CardsController extends ApiController
+class UserCardsController extends ApiController
 {
     /**
      * Create a card.
