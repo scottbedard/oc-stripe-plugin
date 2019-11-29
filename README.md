@@ -50,7 +50,7 @@ An HTTP API is enabled by default. If you'd like to disable this, add the follow
 BEDARD_SAAS_API_ENABLE=false
 ```
 
-### Cards
+#### Cards
 
 ##### `GET: /api/bedard/saas/user/cards`
 
@@ -82,7 +82,7 @@ _Response_
 - `deleted` - A boolean determining if the card was successfully deleted.
 - `id` - Identifier for the deleted card.
 
-### Customers
+#### Customers
 
 ##### `POST: /api/bedard/saas/user/customer/default-source`
 
@@ -91,6 +91,17 @@ Update the authenticated user's default payment source.
 _Payload_
 
 - `source` - Identifier for the new default payment source.
+
+#### Subscriptions
+
+##### `GET: /api/bedard/saas/user/subscriptions`
+
+List the authenticated user's subscriptions.
+
+_Response_
+
+- `data` - A [list of subscription objects](https://stripe.com/docs/api/subscriptions/list?lang=php).
+- `has_more` - A boolean determing if the user has more subscriptions not present in `data`.
 
 ## License
 
