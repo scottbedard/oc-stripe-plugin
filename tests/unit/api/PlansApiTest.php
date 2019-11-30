@@ -5,9 +5,8 @@ namespace Bedard\Saas\Tests\Unit\Classes;
 use Bedard\Saas\Tests\PluginTestCase;
 use Bedard\Saas\Tests\Stubs\PlanStub;
 use Mockery;
-use StripeManager;
 
-class PlanApiTest extends PluginTestCase
+class PlansApiTest extends PluginTestCase
 {
     public function test_listing_plans()
     {
@@ -21,7 +20,7 @@ class PlanApiTest extends PluginTestCase
         $response = $this->get('/api/bedard/saas/plans');
         $response->assertStatus(200);
         $data = json_decode($response->getContent(), true);
-        
+
         $this->assertFalse($data['has_more']);
         $this->assertEquals($data['data'][0]['id'], $plansFixture->data[0]->id);
     }

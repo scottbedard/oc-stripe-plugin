@@ -19,7 +19,7 @@ class PlansController extends ApiController
         $products = StripeManager::listPlans($params);
 
         return [
-            'data' => $products->data,
+            'data'     => $products->data,
             'has_more' => $products->has_more,
         ];
     }
