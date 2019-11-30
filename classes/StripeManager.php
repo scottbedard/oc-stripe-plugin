@@ -144,30 +144,15 @@ class StripeManager
     }
 
     /**
-     * List active products with associated plans.
+     * Fetch products.
      *
-     * @param array $params
+     * @param array    $params
      *
      * @return array
      */
-    public function getProductsWithPlans()
+    public function listProducts(array $params)
     {
-        $products = Product::all([
-            'active' => true,
-        ]);
-
-        foreach ($products->data as $product) {
-            $plans = Plan::all([
-                'active'  => true,
-                'product' => $product->id,
-            ]);
-
-            $product->plans = StripeUtils::sort($plans->data, ['metadata.order', 'amount']);
-        }
-
-        $data = StripeUtils::sort($products->data, ['metadata.order']);
-
-        return $data;
+        return Product::all($params);
     }
 
     /**

@@ -6,27 +6,25 @@ use Bedard\Saas\Tests\PluginTestCase;
 use Bedard\Saas\Tests\Stubs\PlanStub;
 use Bedard\Saas\Tests\Stubs\ProductStub;
 use Mockery;
+use StripeManager;
 
 class ProductsApiTest extends PluginTestCase
 {
-    public function test_products_index()
+    public function test_listing_products()
     {
         $productsFixture = self::jsonFixture('products.json');
-        $plansFixture = self::jsonFixture('plans.json');
 
         Mockery::namedMock('Stripe\Product', ProductStub::class)
             ->shouldReceive('all')
+            ->once()
             ->andReturn($productsFixture);
-
-        Mockery::namedMock('Stripe\Plan', PlanStub::class)
-            ->shouldReceive('all')
-            ->andReturn($plansFixture);
 
         $response = $this->get('/api/bedard/saas/products');
         $response->assertStatus(200);
-
         $data = json_decode($response->getContent(), true);
-        $this->assertEquals($productsFixture->data[0]->id, $data[0]['id']);
-        $this->assertEquals($plansFixture->data[0]->id, $data[0]['plans'][0]['id']);
+
+        $this->assertFalse($data['has_more']);
+        $this->assertEquals($data['data'][0]['id'], $productsFixture->data[0]->id);
+        $this->assertArrayNotHasKey('plans', $data['data'][0]);
     }
 }

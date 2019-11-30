@@ -20,8 +20,8 @@ class UserSubscriptionsController extends ApiController
         ]);
 
         return [
-            'has_more'      => $subscriptions->has_more,
-            'subscriptions' => $subscriptions->data,
+            'has_more'  => $subscriptions->has_more,
+            'data'      => $subscriptions->data,
         ];
     }
 }

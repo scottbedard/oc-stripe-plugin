@@ -26,8 +26,8 @@ class UserSubscriptionsApiTest extends PluginTestCase
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);
-        $this->assertEquals($plan->id, $data['subscriptions'][0]['plan']['id']);
-        $this->assertEquals(1, count($data['subscriptions']));
+        $this->assertEquals($plan->id, $data['data'][0]['plan']['id']);
+        $this->assertEquals(1, count($data['data']));
         $this->assertFalse($data['has_more']);
     }
 }

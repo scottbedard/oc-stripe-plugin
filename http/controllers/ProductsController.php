@@ -8,10 +8,19 @@ use StripeManager;
 class ProductsController extends ApiController
 {
     /**
-     * List active products with associated plans.
+     * List active products, optionally with active child plans.
      */
     public function index()
     {
-        return StripeManager::getProductsWithPlans();
+        $params = array_merge(input(), [
+            'active' => true,
+        ]);
+
+        $products = StripeManager::listProducts($params);
+
+        return [
+            'data' => $products->data,
+            'has_more' => $products->has_more,
+        ];
     }
 }
