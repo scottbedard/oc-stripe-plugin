@@ -144,6 +144,18 @@ class StripeManager
     }
 
     /**
+     * Fetch plans.
+     *
+     * @param array    $params
+     *
+     * @return array
+     */
+    public function listPlans(array $params)
+    {
+        return Plan::all($params);
+    }
+
+    /**
      * Fetch products.
      *
      * @param array $params

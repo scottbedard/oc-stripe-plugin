@@ -23,6 +23,5 @@ class ProductsApiTest extends PluginTestCase
 
         $this->assertFalse($data['has_more']);
         $this->assertEquals($data['data'][0]['id'], $productsFixture->data[0]->id);
-        $this->assertArrayNotHasKey('plans', $data['data'][0]);
     }
 }

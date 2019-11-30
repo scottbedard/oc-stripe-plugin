@@ -8,6 +8,9 @@ if (config('bedard.saas::apiEnable')) {
             // non-authenticated routes
             //
 
+            // plans
+            Route::get('plans', 'Bedard\Saas\Http\Controllers\PlansController@index');
+
             // products
             Route::get('products', 'Bedard\Saas\Http\Controllers\ProductsController@index');
 

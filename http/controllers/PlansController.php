@@ -5,10 +5,10 @@ namespace Bedard\Saas\Http\Controllers;
 use Bedard\Saas\Classes\ApiController;
 use StripeManager;
 
-class ProductsController extends ApiController
+class PlansController extends ApiController
 {
     /**
-     * List active products.
+     * List active plans.
      */
     public function index()
     {
@@ -16,10 +16,10 @@ class ProductsController extends ApiController
             'active' => true,
         ]);
 
-        $products = StripeManager::listProducts($params);
+        $products = StripeManager::listPlans($params);
 
         return [
-            'data'     => $products->data,
+            'data' => $products->data,
             'has_more' => $products->has_more,
         ];
     }
