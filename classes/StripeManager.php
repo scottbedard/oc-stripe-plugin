@@ -146,7 +146,7 @@ class StripeManager
     /**
      * Fetch plans.
      *
-     * @param array    $params
+     * @param array $params
      *
      * @return array
      */
