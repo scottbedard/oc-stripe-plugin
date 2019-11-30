@@ -19,7 +19,7 @@ class ProductsController extends ApiController
         $products = StripeManager::listProducts($params);
 
         return [
-            'data' => $products->data,
+            'data'     => $products->data,
             'has_more' => $products->has_more,
         ];
     }

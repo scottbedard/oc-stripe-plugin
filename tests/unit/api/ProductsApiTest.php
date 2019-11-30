@@ -3,10 +3,8 @@
 namespace Bedard\Saas\Tests\Unit\Classes;
 
 use Bedard\Saas\Tests\PluginTestCase;
-use Bedard\Saas\Tests\Stubs\PlanStub;
 use Bedard\Saas\Tests\Stubs\ProductStub;
 use Mockery;
-use StripeManager;
 
 class ProductsApiTest extends PluginTestCase
 {
