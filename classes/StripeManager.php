@@ -146,7 +146,7 @@ class StripeManager
     /**
      * Fetch products.
      *
-     * @param array    $params
+     * @param array $params
      *
      * @return array
      */
