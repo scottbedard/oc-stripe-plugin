@@ -16,7 +16,10 @@ class ProductsController extends ApiController
             'active' => true,
         ]);
 
-        $products = StripeManager::listProducts($params);
+        array_forget($params, 'plans');
+
+        $plans = array_key_exists('plans', input());
+        $products = StripeManager::listProducts($params, $plans);
 
         return [
             'data'     => $products->data,

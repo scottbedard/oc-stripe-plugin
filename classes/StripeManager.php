@@ -156,15 +156,33 @@ class StripeManager
     }
 
     /**
-     * Fetch products.
+     * Fetch products, optionally with active plans.
      *
      * @param array $params
+     * @param bool  $plans
      *
      * @return array
      */
-    public function listProducts(array $params)
+    public function listProducts(array $params, $plans = false)
     {
-        return Product::all($params);
+        $products = Product::all($params);
+
+        if ($plans) {
+            foreach ($products as $product) {
+                $plans = Plan::all([
+                    'active' => true,
+                    'limit' => 100,
+                    'product' => $product->id,
+                ]);
+
+                $product->plans = [
+                    'data' => $plans->data,
+                    'has_more' => $plans->has_more,
+                ];
+            }
+        }
+
+        return $products;
     }
 
     /**
