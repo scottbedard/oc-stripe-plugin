@@ -7,8 +7,8 @@ use Exception;
 use Illuminate\Foundation\AliasLoader;
 use Log;
 use RainLab\User\Models\User;
-use StripeManager;
 use Stripe\Stripe;
+use StripeManager;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 
