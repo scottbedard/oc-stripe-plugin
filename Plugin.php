@@ -3,10 +3,12 @@
 namespace Bedard\Saas;
 
 use App;
+use Exception;
 use Illuminate\Foundation\AliasLoader;
+use Log;
 use RainLab\User\Models\User;
-use Stripe\Stripe;
 use StripeManager;
+use Stripe\Stripe;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 
@@ -59,7 +61,11 @@ class Plugin extends PluginBase
             });
 
             $model->bindEvent('model.afterDelete', function () use ($model) {
-                StripeManager::deleteCustomer($model);
+                try {
+                    StripeManager::deleteCustomer($model);
+                } catch (Exception $e) {
+                    Log::error($e);
+                }
             });
         });
     }

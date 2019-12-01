@@ -79,10 +79,6 @@ abstract class PluginTestCase extends BasePluginTestCase
         // set rainlab.user min password length
         Config::set('rainlab.user::minPasswordLength', 8);
 
-        // set stripe keys
-        Config::set('services.stripe.key', env('STRIPE_KEY'));
-        Config::set('services.stripe.secret', env('STRIPE_SECRET'));
-
         // register model factories
         App::singleton(Factory::class, function ($app) {
             $faker = $app->make(Generator::class);
