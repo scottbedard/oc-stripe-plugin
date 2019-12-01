@@ -3,8 +3,6 @@
 namespace Bedard\Saas\Tests\Unit\Classes;
 
 use Bedard\Saas\Tests\PluginTestCase;
-use Bedard\Saas\Tests\Stubs\ProductStub;
-use Mockery;
 use StripeManager;
 
 class ProductsApiTest extends PluginTestCase
@@ -13,7 +11,7 @@ class ProductsApiTest extends PluginTestCase
     {
         $product = StripeManager::createProduct([
             'active' => true,
-            'name' => 'Basic',
+            'name'   => 'Basic',
         ]);
 
         $response = $this->get('/api/bedard/saas/products');
@@ -29,23 +27,23 @@ class ProductsApiTest extends PluginTestCase
     {
         $product = StripeManager::createProduct([
             'active' => true,
-            'name' => 'Basic',
+            'name'   => 'Basic',
         ]);
-        
+
         $plan1 = StripeManager::createPlan([
-            'active' => true,
-            'amount' => 1000,
+            'active'   => true,
+            'amount'   => 1000,
             'currency' => 'usd',
             'interval' => 'month',
-            'product' => $product->id,
+            'product'  => $product->id,
         ]);
-        
+
         $plan2 = StripeManager::createPlan([
-            'active' => false,
-            'amount' => 1000,
+            'active'   => false,
+            'amount'   => 1000,
             'currency' => 'usd',
             'interval' => 'month',
-            'product' => $product->id,
+            'product'  => $product->id,
         ]);
 
         $response = $this->get('/api/bedard/saas/products?plans');
