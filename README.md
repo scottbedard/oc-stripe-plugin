@@ -100,7 +100,7 @@ Fetch active products.
 
 _Parameters_
 
-- `plans` - Includes active plans with the products. Be aware, this will result in [multiple requests](https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm-object-relational-mapping) being made to fetch the related plans. If you have many active products, it is probably better to fetch active plans and [expand the product objects](https://stripe.com/docs/api/expanding_objects?lang=php).
+- `plans` - Includes active plans with the products. Be aware, this will result in multiple requests to Stripe being made to fetch the related plans. If you have many active products, it is probably better to fetch active plans and [expand the product objects](https://stripe.com/docs/api/expanding_objects?lang=php).
 
 _Response_
 
