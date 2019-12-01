@@ -170,13 +170,13 @@ class StripeManager
         if ($plans) {
             foreach ($products as $product) {
                 $plans = Plan::all([
-                    'active' => true,
-                    'limit' => 100,
+                    'active'  => true,
+                    'limit'   => 100,
                     'product' => $product->id,
                 ]);
 
                 $product->plans = [
-                    'data' => $plans->data,
+                    'data'     => $plans->data,
                     'has_more' => $plans->has_more,
                 ];
             }
