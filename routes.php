@@ -30,6 +30,7 @@ if (config('bedard.saas::apiEnable')) {
 
                     // subscriptions
                     Route::get('subscriptions', 'Bedard\Saas\Http\Controllers\UserSubscriptionsController@index');
+                    Route::post('subscriptions', 'Bedard\Saas\Http\Controllers\UserSubscriptionsController@create');
                 });
         });
 }

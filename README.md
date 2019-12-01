@@ -118,6 +118,18 @@ _Response_
 - `data` - A [list of subscription objects](https://stripe.com/docs/api/subscriptions/list?lang=php).
 - `has_more` - A boolean indicating if there are more subscriptions.
 
+##### `POST: /api/bedard/saas/user/subscriptions`
+
+Create a subscription for the authenticated user. The user must have at least one card on file before creating a subscription.
+
+_Payload_
+
+- `plan` - Plan identifier to subscribe the user to.
+
+_Response_
+
+- `data` - The newly created [subscription object](https://stripe.com/docs/api/subscriptions/object?lang=php).
+
 ## License
 
 [MIT](https://github.com/scottbedard/oc-saas-plugin/blob/master/LICENSE)

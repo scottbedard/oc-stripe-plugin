@@ -9,6 +9,22 @@ use StripeManager;
 class UserSubscriptionsController extends ApiController
 {
     /**
+     * Create a subscription.
+     */
+    public function create()
+    {
+        $user = Auth::getUser();
+        
+        $plan = post('plan');
+
+        $subscription = StripeManager::subscribeUserToPlan($user, $plan);
+
+        return [
+            'data' => $subscription,
+        ];
+    }
+
+    /**
      * List the authenticated users subscriptions.
      */
     public function index()

@@ -30,4 +30,30 @@ class UserSubscriptionsApiTest extends PluginTestCase
         $this->assertEquals(1, count($data['data']));
         $this->assertFalse($data['has_more']);
     }
+
+    public function test_creating_a_subscription()
+    {
+        $user = $this->createAuthenticatedUser();
+        
+        StripeManager::createCard($user, 'tok_amex');
+
+        $product = StripeManager::createProduct(['name' => 'Basic']);
+
+        $plan = StripeManager::createPlan([
+            'active'   => true,
+            'amount'   => 1000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product'  => $product->id,
+        ]);
+
+        $response = $this->post('/api/bedard/saas/user/subscriptions', [
+            'plan' => $plan->id,
+        ]);
+
+        $response->assertStatus(200);
+        $data = json_decode($response->getContent(), true);
+
+        $this->assertEquals('subscription', $data['data']['object']);
+    }
 }
