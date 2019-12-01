@@ -34,7 +34,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
     public function test_creating_a_subscription()
     {
         $user = $this->createAuthenticatedUser();
-        
+
         StripeManager::createCard($user, 'tok_amex');
 
         $product = StripeManager::createProduct(['name' => 'Basic']);
