@@ -14,7 +14,7 @@ class UserSubscriptionsController extends ApiController
     public function create()
     {
         $user = Auth::getUser();
-        
+
         $plan = post('plan');
 
         $subscription = StripeManager::subscribeUserToPlan($user, $plan);
