@@ -43,8 +43,8 @@ class UserSubscriptionsController extends ApiController
 
     /**
      * Change the plan associated with a subscription.
-     * 
-     * @param  string   $subscription
+     *
+     * @param string $subscription
      */
     public function update($subscription)
     {
