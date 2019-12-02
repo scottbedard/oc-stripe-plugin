@@ -130,6 +130,22 @@ _Response_
 
 - `data` - The newly created [subscription object](https://stripe.com/docs/api/subscriptions/object?lang=php).
 
+##### `PATCH/PUT: /api/bedard/saas/user/subscriptions/{subscription}`
+
+Change the plan associated with a user's subscription.
+
+_Parameters_
+
+- `subscription` - Subscription ID to change.
+
+_Payload_
+
+- `plan` - Plan ID to set subscription to.
+
+_Response_
+
+- `data` - The [subscription object](https://stripe.com/docs/api/subscriptions/update?lang=php) that has been updated.
+
 ## License
 
 [MIT](https://github.com/scottbedard/oc-saas-plugin/blob/master/LICENSE)
