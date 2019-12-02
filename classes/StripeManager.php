@@ -30,10 +30,10 @@ class StripeManager
 
     /**
      * Change the plan associated with a subscription.
-     * 
-     * @param  string   $subscriptionId
-     * @param  string   $planId
-     * 
+     *
+     * @param string $subscriptionId
+     * @param string $planId
+     *
      * @return \Stripe\Subscription
      */
     public function changeSubscriptionPlan($subscriptionId, $planId)
@@ -43,7 +43,7 @@ class StripeManager
         return Subscription::update($subscriptionId, [
             'items' => [
                 [
-                    'id' => $subscription->items->data[0]->id,
+                    'id'   => $subscription->items->data[0]->id,
                     'plan' => $planId,
                 ],
             ],
