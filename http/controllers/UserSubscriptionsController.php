@@ -40,4 +40,22 @@ class UserSubscriptionsController extends ApiController
             'data'      => $subscriptions->data,
         ];
     }
+
+    /**
+     * Change the plan associated with a subscription.
+     * 
+     * @param  string   $subscription
+     */
+    public function update($subscription)
+    {
+        $user = Auth::getUser();
+
+        $plan = post('plan');
+
+        $subscription = StripeManager::changeSubscriptionPlan($subscription, $plan);
+
+        return [
+            'data' => $subscription,
+        ];
+    }
 }

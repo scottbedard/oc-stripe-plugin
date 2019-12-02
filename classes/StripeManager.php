@@ -29,6 +29,28 @@ class StripeManager
     }
 
     /**
+     * Change the plan associated with a subscription.
+     * 
+     * @param  string   $subscriptionId
+     * @param  string   $planId
+     * 
+     * @return \Stripe\Subscription
+     */
+    public function changeSubscriptionPlan($subscriptionId, $planId)
+    {
+        $subscription = Subscription::retrieve($subscriptionId);
+
+        return Subscription::update($subscriptionId, [
+            'items' => [
+                [
+                    'id' => $subscription->items->data[0]->id,
+                    'plan' => $planId,
+                ],
+            ],
+        ]);
+    }
+
+    /**
      * Create a customer from a user model.
      *
      * @param  \RainLab\User\Models\User

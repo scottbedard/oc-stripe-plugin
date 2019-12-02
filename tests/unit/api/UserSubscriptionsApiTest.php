@@ -56,4 +56,41 @@ class UserSubscriptionsApiTest extends PluginTestCase
 
         $this->assertEquals('subscription', $data['data']['object']);
     }
+
+    public function test_changing_a_subscription_plan_patch()
+    {
+        $user = $this->createAuthenticatedUser();
+
+        StripeManager::createCard($user, 'tok_amex');
+
+        $product = StripeManager::createProduct(['name' => 'Basic']);
+
+        $monthly = StripeManager::createPlan([
+            'active'   => true,
+            'amount'   => 1000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product'  => $product->id,
+        ]);
+
+        $annual = StripeManager::createPlan([
+            'active'   => true,
+            'amount'   => 10000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product'  => $product->id,
+        ]);
+
+        $subscription = StripeManager::subscribeUserToPlan($user, $monthly->id);
+
+        $response = $this->patch('/api/bedard/saas/user/subscriptions/'.$subscription->id, [
+            'plan' => $annual->id,
+        ]);
+
+        $response->assertStatus(200);
+        $data = json_decode($response->getContent(), true);
+
+        $this->assertEquals(1, $data['data']['items']['total_count']);
+        $this->assertEquals($annual->id, $data['data']['plan']['id']);
+    }
 }
