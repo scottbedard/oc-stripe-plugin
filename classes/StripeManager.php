@@ -34,7 +34,7 @@ class StripeManager
      *
      * @param \RainLab\User\Models\User $user
      * @param string                    $subscriptionId
-     * 
+     *
      * @return \Stripe\Subscription
      */
     public function cancelUserSubscription(User $user, $subscriptionId)
