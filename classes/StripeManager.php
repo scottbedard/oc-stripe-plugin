@@ -2,6 +2,7 @@
 
 namespace Bedard\Saas\Classes;
 
+use October\Rain\Auth\AuthException;
 use RainLab\User\Models\User;
 use Stripe\Customer;
 use Stripe\Plan;
@@ -26,6 +27,25 @@ class StripeManager
     public function __construct()
     {
         Stripe::setApiKey(config('services.stripe.secret'));
+    }
+
+    /**
+     * Cancel a user's subscription at the end of the billing period.
+     * 
+     * @param  \RainLab\User\Models\User    $user
+     * @param  string                       $subscriptionId
+     */
+    public function cancelUserSubscription(User $user, $subscriptionId)
+    {
+        $subscription = Subscription::retrieve($subscriptionId);
+
+        if ($user->bedard_saas_customer_id !== $subscription->customer) {
+            throw new AuthException('bedard.saas::lang.exceptions.unauthorized_cancellation');
+        }
+
+        return Subscription::update($subscriptionId, [
+            'cancel_at_period_end' => true,
+        ]);
     }
 
     /**

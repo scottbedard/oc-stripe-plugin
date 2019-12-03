@@ -130,6 +130,14 @@ _Response_
 
 - `data` - The newly created [subscription object](https://stripe.com/docs/api/subscriptions/object?lang=php).
 
+##### `DELETE: /api/bedard/saas/user/subscriptions/{subscription}`
+
+Lazily cancels a user's subscription. Note that this is not the same as calling a subscription's `cancel` method, and does not cancel the user's subscription immediately. Instead, calling this endpoint sets the [`cancel_at_period_end`](https://stripe.com/docs/api/subscriptions/object?lang=php#subscription_object-cancel_at_period_end) property to `true`, and the user will continue to have access until the end of their billing cycle.
+
+_Parameters_
+
+- `subscription` - Subscription ID to cancel.
+
 ##### `PATCH/PUT: /api/bedard/saas/user/subscriptions/{subscription}`
 
 Change the plan associated with a user's subscription.

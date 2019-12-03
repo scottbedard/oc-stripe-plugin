@@ -4,6 +4,7 @@ namespace Bedard\Saas\Http\Controllers;
 
 use Auth;
 use Bedard\Saas\Classes\ApiController;
+use October\Rain\Auth\AuthException;
 use StripeManager;
 
 class UserSubscriptionsController extends ApiController
@@ -18,6 +19,26 @@ class UserSubscriptionsController extends ApiController
         $plan = post('plan');
 
         $subscription = StripeManager::subscribeUserToPlan($user, $plan);
+
+        return [
+            'data' => $subscription,
+        ];
+    }
+
+    /**
+     * Cancel a subscription.
+     * 
+     * @param  string   $subscription
+     */
+    public function destroy($subscription)
+    {
+        $user = Auth::getUser();
+
+        try {
+            $subscription = StripeManager::cancelUserSubscription($user, $subscription);
+        } catch (AuthException $e) {
+            return response('Unauthorized', 401);
+        }
 
         return [
             'data' => $subscription,

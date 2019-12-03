@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'exceptions' => [
+        'unauthorized_cancellation' => 'User attempted to cancel a subscription that does not belong to them.',
+    ],
     'permissions' => [
         'access_settings'    => 'Manage Stripe settings',
     ],

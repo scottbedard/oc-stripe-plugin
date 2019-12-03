@@ -29,6 +29,7 @@ if (config('bedard.saas::apiEnable')) {
                     Route::post('customer/default-source', 'Bedard\Saas\Http\Controllers\UserCustomerController@defaultSource');
 
                     // subscriptions
+                    Route::delete('subscriptions/{subscription}', 'Bedard\Saas\Http\Controllers\UserSubscriptionsController@destroy');
                     Route::get('subscriptions', 'Bedard\Saas\Http\Controllers\UserSubscriptionsController@index');
                     Route::match(['patch', 'put'], 'subscriptions/{subscription}', 'Bedard\Saas\Http\Controllers\UserSubscriptionsController@update');
                     Route::post('subscriptions', 'Bedard\Saas\Http\Controllers\UserSubscriptionsController@create');
