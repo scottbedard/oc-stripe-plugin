@@ -177,4 +177,42 @@ class UserSubscriptionsApiTest extends PluginTestCase
         $response = $this->delete('/api/bedard/saas/user/subscriptions/'.$subscription->id);
         $response->assertStatus(401);
     }
+
+    public function test_changing_plans_after_cancelling_reactivates_subscription()
+    {
+        $user = $this->createAuthenticatedUser();
+
+        StripeManager::createCard($user, 'tok_amex');
+
+        $product = StripeManager::createProduct(['name' => 'Basic']);
+
+        $monthly = StripeManager::createPlan([
+            'active'   => true,
+            'amount'   => 1000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product'  => $product->id,
+        ]);
+
+        $annual = StripeManager::createPlan([
+            'active'   => true,
+            'amount'   => 10000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product'  => $product->id,
+        ]);
+
+        $uncancelled = StripeManager::subscribeUserToPlan($user, $monthly->id);
+        $cancelled = StripeManager::cancelUserSubscription($user, $uncancelled->id);
+
+        $this->assertTrue($cancelled->cancel_at_period_end);
+
+        $response = $this->patch('/api/bedard/saas/user/subscriptions/'.$cancelled->id, [
+            'plan' => $annual->id,
+        ]);
+
+        $data = json_decode($response->getContent(), true);
+        $this->assertEquals($cancelled->id, $data['data']['id']);
+        $this->assertFalse($data['data']['cancel_at_period_end']);
+    }
 }

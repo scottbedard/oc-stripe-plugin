@@ -68,6 +68,7 @@ class StripeManager
         }
 
         return Subscription::update($subscriptionId, [
+            'cancel_at_period_end' => false,
             'items' => [
                 [
                     'id'   => $subscription->items->data[0]->id,

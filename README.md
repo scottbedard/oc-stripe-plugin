@@ -140,7 +140,7 @@ _Parameters_
 
 ##### `PATCH/PUT: /api/bedard/saas/user/subscriptions/{subscription}`
 
-Change the plan associated with a user's subscription.
+Change the plan associated with a user's subscription. If the subscription has `cancel_at_period_end` set to `true`, this will be updated to `false` and resume normal billing.
 
 _Parameters_
 
