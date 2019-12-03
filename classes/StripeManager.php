@@ -34,6 +34,8 @@ class StripeManager
      *
      * @param \RainLab\User\Models\User $user
      * @param string                    $subscriptionId
+     * 
+     * @return \Stripe\Subscription
      */
     public function cancelUserSubscription(User $user, $subscriptionId)
     {
@@ -51,14 +53,19 @@ class StripeManager
     /**
      * Change the plan associated with a subscription.
      *
-     * @param string $subscriptionId
-     * @param string $planId
+     * @param \RainLab\User\Models\User $user
+     * @param string                    $subscriptionId
+     * @param string                    $planId
      *
      * @return \Stripe\Subscription
      */
-    public function changeSubscriptionPlan($subscriptionId, $planId)
+    public function changeUserSubscription($user, $subscriptionId, $planId)
     {
         $subscription = Subscription::retrieve($subscriptionId);
+
+        if ($user->bedard_saas_customer_id !== $subscription->customer) {
+            throw new AuthException('bedard.saas::lang.exceptions.unauthorized_cancellation');
+        }
 
         return Subscription::update($subscriptionId, [
             'items' => [

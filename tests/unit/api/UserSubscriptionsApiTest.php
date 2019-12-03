@@ -57,7 +57,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
         $this->assertEquals('subscription', $data['data']['object']);
     }
 
-    public function test_changing_a_subscription_plan_patch()
+    public function test_changing_a_subscription_plan()
     {
         $user = $this->createAuthenticatedUser();
 
@@ -92,6 +92,46 @@ class UserSubscriptionsApiTest extends PluginTestCase
 
         $this->assertEquals(1, $data['data']['items']['total_count']);
         $this->assertEquals($annual->id, $data['data']['plan']['id']);
+    }
+
+    public function test_unauthorized_changing_a_subscription_plan()
+    {
+        // user 1 has access to change this plan
+        $user1 = $this->createActivatedUser();
+
+        StripeManager::createCard($user1, 'tok_amex');
+
+        $product = StripeManager::createProduct(['name' => 'Basic']);
+
+        $monthly = StripeManager::createPlan([
+            'active'   => true,
+            'amount'   => 1000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product'  => $product->id,
+        ]);
+
+        $annual = StripeManager::createPlan([
+            'active'   => true,
+            'amount'   => 10000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product'  => $product->id,
+        ]);
+
+        $subscription = StripeManager::subscribeUserToPlan($user1, $monthly->id);
+
+        // user 2 does not have access
+        $user2 = $this->createAuthenticatedUser();
+
+        StripeManager::createCard($user2, 'tok_amex');
+
+        // attempting to change this subscription from user 2's pespective should throw an error
+        $response = $this->patch('/api/bedard/saas/user/subscriptions/'.$subscription->id, [
+            'plan' => $annual->id,
+        ]);
+
+        $response->assertStatus(401);
     }
 
     public function test_cancelling_a_subscription()

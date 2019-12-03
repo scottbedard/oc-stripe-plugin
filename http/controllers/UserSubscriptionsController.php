@@ -73,7 +73,11 @@ class UserSubscriptionsController extends ApiController
 
         $plan = post('plan');
 
-        $subscription = StripeManager::changeSubscriptionPlan($subscription, $plan);
+        try {
+            $subscription = StripeManager::changeUserSubscription($user, $subscription, $plan);
+        } catch (AuthException $e) {
+            return response('Unauthorized', 401);
+        }
 
         return [
             'data' => $subscription,
