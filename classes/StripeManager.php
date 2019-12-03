@@ -31,9 +31,9 @@ class StripeManager
 
     /**
      * Cancel a user's subscription at the end of the billing period.
-     * 
-     * @param  \RainLab\User\Models\User    $user
-     * @param  string                       $subscriptionId
+     *
+     * @param \RainLab\User\Models\User $user
+     * @param string                    $subscriptionId
      */
     public function cancelUserSubscription(User $user, $subscriptionId)
     {

@@ -27,8 +27,8 @@ class UserSubscriptionsController extends ApiController
 
     /**
      * Cancel a subscription.
-     * 
-     * @param  string   $subscription
+     *
+     * @param string $subscription
      */
     public function destroy($subscription)
     {
