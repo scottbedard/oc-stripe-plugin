@@ -96,8 +96,8 @@ class StripeManager
 
     /**
      * Create a charge.
-     * 
-     * @param  array            $params
+     *
+     * @param array $params
      *
      * @return \Stripe\Charge
      */
@@ -208,9 +208,9 @@ class StripeManager
 
     /**
      * List charges.
-     * 
+     *
      * @param array $params
-     * 
+     *
      * @return array
      */
     public function listCharges(array $params)
