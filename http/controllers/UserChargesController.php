@@ -17,7 +17,7 @@ class UserChargesController extends ApiController
 
         $params = [
             'customer' => $user->bedard_saas_customer_id,
-            'limit' => (int) input('limit', 10),
+            'limit'    => (int) input('limit', 10),
         ];
 
         $after = input('after');

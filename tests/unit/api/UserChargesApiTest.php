@@ -14,11 +14,11 @@ class UserChargesApiTest extends PluginTestCase
 
         for ($i = 0; $i < 3; $i++) {
             StripeManager::createCharge([
-                'amount' => 1000,
-                'currency' => 'usd',
-                'customer' => $user->bedard_saas_customer_id,
+                'amount'      => 1000,
+                'currency'    => 'usd',
+                'customer'    => $user->bedard_saas_customer_id,
                 'description' => 'Charge #'.$i,
-                'source' => $card->id,
+                'source'      => $card->id,
             ]);
         }
 
