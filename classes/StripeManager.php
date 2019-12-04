@@ -4,6 +4,7 @@ namespace Bedard\Saas\Classes;
 
 use October\Rain\Auth\AuthException;
 use RainLab\User\Models\User;
+use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Plan;
 use Stripe\Product;
@@ -91,6 +92,18 @@ class StripeManager
         return Customer::createSource($user->bedard_saas_customer_id, [
             'source' => $token,
         ]);
+    }
+
+    /**
+     * Create a charge.
+     * 
+     * @param  array            $params
+     *
+     * @return \Stripe\Charge
+     */
+    public function createCharge(array $params = [])
+    {
+        return Charge::create($params);
     }
 
     /**
@@ -191,6 +204,18 @@ class StripeManager
             'email' => $user->email,
             'name'  => $user->name.' '.$user->surname,
         ];
+    }
+
+    /**
+     * List charges.
+     * 
+     * @param array $params
+     * 
+     * @return array
+     */
+    public function listCharges(array $params)
+    {
+        return Charge::all($params);
     }
 
     /**

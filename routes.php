@@ -25,6 +25,9 @@ if (config('bedard.saas::apiEnable')) {
                     Route::get('cards', 'Bedard\Saas\Http\Controllers\UserCardsController@index');
                     Route::post('cards', 'Bedard\Saas\Http\Controllers\UserCardsController@create');
 
+                    // charges
+                    Route::get('charges', 'Bedard\Saas\Http\Controllers\UserChargesController@index');
+
                     // customer
                     Route::post('customer/default-source', 'Bedard\Saas\Http\Controllers\UserCustomerController@defaultSource');
 

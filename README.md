@@ -82,6 +82,17 @@ _Response_
 - `deleted` - A boolean indicating if the card was successfully deleted.
 - `id` - Identifier for the deleted card.
 
+### Charges
+
+##### `GET: /api/bedard/saas/user/charges`
+
+List charges by the authenticated user.
+
+_Parameters_
+
+- `after` - Charge ID to use as pagination cursor position.
+- `limit` - Number of results to fetch, defaults to 10.
+
 ### Customers
 
 ##### `POST: /api/bedard/saas/user/customer/default-source`
