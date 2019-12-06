@@ -28,7 +28,7 @@ class UserChargesController extends ApiController
         } elseif ($before) {
             $params['ending_before'] = $before;
         }
-        
+
         $charges = StripeManager::listCharges($params);
         $first = array_first($charges->data);
         $last = last($charges->data);
@@ -39,25 +39,25 @@ class UserChargesController extends ApiController
             $prev = $charges->has_more;
         } elseif ($first) {
             $prev = count(StripeManager::listCharges([
-                'customer' => $user->bedard_saas_customer_id,
+                'customer'      => $user->bedard_saas_customer_id,
                 'ending_before' => $first->id,
-                'limit' => 1,
-            ])->data) > 0; 
+                'limit'         => 1,
+            ])->data) > 0;
         }
 
         if ($after) {
             $next = $charges->has_more;
         } elseif ($last) {
             $next = count(StripeManager::listCharges([
-                'customer' => $user->bedard_saas_customer_id,
-                'limit' => 1,
+                'customer'       => $user->bedard_saas_customer_id,
+                'limit'          => 1,
                 'starting_after' => $last->id,
-            ])->data) > 0; 
+            ])->data) > 0;
         }
-    
+
         return [
-            'data' => $charges->data,
-            'has_next' => $next, 
+            'data'     => $charges->data,
+            'has_next' => $next,
             'has_prev' => $prev,
         ];
     }
