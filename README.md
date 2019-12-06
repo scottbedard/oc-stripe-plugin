@@ -90,8 +90,15 @@ List charges by the authenticated user.
 
 _Parameters_
 
-- `after` - Charge ID to use as pagination cursor position.
+- `after` - Selects charges after a given ID.
+- `before` - Selects charges before a given ID.
 - `limit` - Number of results to fetch, defaults to 10.
+
+_Response_
+
+- `data` - A [list of charge objects](https://stripe.com/docs/api/charges/list?lang=php).
+- `has_next` - Indicates there are older charges after the last returned result.
+- `has_prev` - Indicates there are newer charges before the first returned result.
 
 ### Customers
 
