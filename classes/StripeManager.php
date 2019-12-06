@@ -145,25 +145,6 @@ class StripeManager
     }
 
     /**
-     * Subscribe a user to a plan.
-     *
-     * @param \RainLab\User\Models\User $user
-     * @param string                    $planId
-     * @param array                     $data
-     *
-     * @return \Stripe\Subscription
-     */
-    public function subscribeUserToPlan(User $user, string $planId, array $params = [])
-    {
-        return Subscription::create(array_merge($params, [
-            'customer' => $user->bedard_saas_customer_id,
-            'items'    => [
-                ['plan' => $planId],
-            ],
-        ]));
-    }
-
-    /**
      * Permenantly delete a customer. This cannot be undone, and immediately
      * cancels any active subscriptions on the customer.
      *
@@ -295,6 +276,25 @@ class StripeManager
     public function retrieveCustomer(User $user): Customer
     {
         return Customer::retrieve($user->bedard_saas_customer_id);
+    }
+
+    /**
+     * Subscribe a user to a plan.
+     *
+     * @param \RainLab\User\Models\User $user
+     * @param string                    $planId
+     * @param array                     $data
+     *
+     * @return \Stripe\Subscription
+     */
+    public function subscribeUserToPlan(User $user, string $planId, array $params = [])
+    {
+        return Subscription::create(array_merge($params, [
+            'customer' => $user->bedard_saas_customer_id,
+            'items'    => [
+                ['plan' => $planId],
+            ],
+        ]));
     }
 
     /**

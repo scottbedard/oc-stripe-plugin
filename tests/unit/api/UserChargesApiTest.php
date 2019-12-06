@@ -11,28 +11,50 @@ class UserChargesApiTest extends PluginTestCase
     {
         $user = $this->createAuthenticatedUser();
         $card = StripeManager::createCard($user, 'tok_amex');
+        $charges = [];
 
         for ($i = 0; $i < 3; $i++) {
-            StripeManager::createCharge([
+            $charge = StripeManager::createCharge([
                 'amount'      => 1000,
                 'currency'    => 'usd',
                 'customer'    => $user->bedard_saas_customer_id,
                 'description' => 'Charge #'.$i,
                 'source'      => $card->id,
             ]);
+
+            $charges[] = $charge;
         }
 
-        $response1 = $this->get('/api/bedard/saas/user/charges?limit=2');
+        // first page
+        $response1 = $this->get('/api/bedard/saas/user/charges?limit=1');
         $response1->assertStatus(200);
-
         $data1 = json_decode($response1->getContent(), true);
-        $this->assertEquals(2, count($data1['data']));
+        $this->assertEquals($charges[2]->id, $data1['data'][0]['id']);
+        $this->assertFalse($data1['has_prev']);
+        $this->assertTrue($data1['has_next']);
 
-        $response2 = $this->get('/api/bedard/saas/user/charges?after='.$data1['data'][1]['id'].'&limit=2');
+        // middle page (after)
+        $response2 = $this->get('/api/bedard/saas/user/charges?limit=1&after='.$charges[2]->id);
         $response2->assertStatus(200);
-
         $data2 = json_decode($response2->getContent(), true);
-        $this->assertEquals(1, count($data2['data']));
-        $this->assertFalse($data2['has_more']);
+        $this->assertEquals($charges[1]->id, $data2['data'][0]['id']);
+        $this->assertTrue($data2['has_prev']);
+        $this->assertTrue($data2['has_next']);
+
+        // middle page (before)
+        $response3 = $this->get('/api/bedard/saas/user/charges?limit=1&before='.$charges[0]->id);
+        $response3->assertStatus(200);
+        $data3 = json_decode($response3->getContent(), true);
+        $this->assertEquals($charges[1]->id, $data3['data'][0]['id']);
+        $this->assertTrue($data3['has_prev']);
+        $this->assertTrue($data3['has_next']);
+
+        // last page
+        $response4 = $this->get('/api/bedard/saas/user/charges?limit=1&after='.$charges[1]->id);
+        $response4->assertStatus(200);
+        $data4 = json_decode($response4->getContent(), true);
+        $this->assertEquals($charges[0]->id, $data4['data'][0]['id']);
+        $this->assertTrue($data4['has_prev']);
+        $this->assertFalse($data4['has_next']);
     }
 }
