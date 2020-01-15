@@ -1,6 +1,6 @@
 <?php
 
-namespace Bedard\Saas\Classes;
+namespace Bedard\Stripe\Classes;
 
 use Closure;
 use Illuminate\Routing\Controller;

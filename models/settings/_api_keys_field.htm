@@ -2,24 +2,24 @@
     <div class="callout callout-warning no-icon">
         <div class="header">
             <i class="icon-warning m-r"></i>
-            <h3><?= e(trans('bedard.saas::lang.settings.form.api_keys_test')) ?></h3>
-            <p><?= e(trans('bedard.saas::lang.settings.form.api_keys_test_comment')) ?></p>
+            <h3><?= e(trans('bedard.stripe::lang.settings.form.api_keys_test')) ?></h3>
+            <p><?= e(trans('bedard.stripe::lang.settings.form.api_keys_test_comment')) ?></p>
         </div>
     </div>
 <?php elseif ($model::apiKeysConfigured() === 2): ?>
     <div class="callout callout-success no-icon">
         <div class="header">
             <i class="icon-check m-r"></i>
-            <h3><?= e(trans('bedard.saas::lang.settings.form.api_keys_live')) ?></h3>
-            <p><?= e(trans('bedard.saas::lang.settings.form.api_keys_live_comment')) ?></p>
+            <h3><?= e(trans('bedard.stripe::lang.settings.form.api_keys_live')) ?></h3>
+            <p><?= e(trans('bedard.stripe::lang.settings.form.api_keys_live_comment')) ?></p>
         </div>
     </div>
 <?php else: ?>
     <div class="callout callout-danger no-icon">
         <div class="header">
             <i class="icon-warning m-r"></i>
-            <h3><?= e(trans('bedard.saas::lang.settings.form.api_keys_invalid')) ?></h3>
-            <p><?= trans('bedard.saas::lang.settings.form.api_keys_invalid_comment') ?></p>
+            <h3><?= e(trans('bedard.stripe::lang.settings.form.api_keys_invalid')) ?></h3>
+            <p><?= trans('bedard.stripe::lang.settings.form.api_keys_invalid_comment') ?></p>
         </div>
     </div>
 <?php endif; ?>

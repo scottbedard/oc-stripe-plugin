@@ -1,9 +1,9 @@
 <?php
 
-namespace Bedard\Saas\Tests\Unit\Classes;
+namespace Bedard\Stripe\Tests\Unit\Classes;
 
-use Bedard\Saas\Tests\PluginTestCase;
-use Bedard\Saas\Tests\Stubs\PlanStub;
+use Bedard\Stripe\Tests\PluginTestCase;
+use Bedard\Stripe\Tests\Stubs\PlanStub;
 use Mockery;
 
 class PlansApiTest extends PluginTestCase
@@ -17,7 +17,7 @@ class PlansApiTest extends PluginTestCase
             ->once()
             ->andReturn($plansFixture);
 
-        $response = $this->get('/api/bedard/saas/plans');
+        $response = $this->get('/api/bedard/stripe/plans');
         $response->assertStatus(200);
         $data = json_decode($response->getContent(), true);
 

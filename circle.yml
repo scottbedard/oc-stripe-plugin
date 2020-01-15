@@ -11,20 +11,20 @@ jobs:
       - run:
           name: Install plugins
           command: |
-            git clone https://github.com/scottbedard/oc-saas-plugin ./october/plugins/bedard/saas
+            git clone https://github.com/scottbedard/oc-stripe-plugin ./october/plugins/bedard/stripe
             git clone https://github.com/rainlab/user-plugin.git ./october/plugins/rainlab/user
       - restore_cache:
-          key: -v3-{{ checksum "october/composer.json" }}-{{ checksum "october/plugins/bedard/saas/composer.lock" }}
+          key: -v3-{{ checksum "october/composer.json" }}-{{ checksum "october/plugins/bedard/stripe/composer.lock" }}
       - run:
           name: Install dependencies
           command: |
             (cd ./october && composer install)
-            (cd ./october/plugins/bedard/saas && composer install)
+            (cd ./october/plugins/bedard/stripe && composer install)
       - save_cache:
-          key: -v3-{{ checksum "october/composer.json" }}-{{ checksum "october/plugins/bedard/saas/composer.lock" }}
+          key: -v3-{{ checksum "october/composer.json" }}-{{ checksum "october/plugins/bedard/stripe/composer.lock" }}
           paths:
             - "october/vendor"
-            - "october/plugins/bedard/saas/vendor"
+            - "october/plugins/bedard/stripe/vendor"
       - run:
           name: Configure environment
           command: |
@@ -32,12 +32,12 @@ jobs:
       - run:
           name: Test
           command: |
-            cd ./october/plugins/bedard/saas
+            cd ./october/plugins/bedard/stripe
             phpdbg -qrr vendor/bin/phpunit -d memory_limit=512M --coverage-clover clover.xml
       - run:
           name: Codecov
           command: |
-            cd ./october/plugins/bedard/saas
+            cd ./october/plugins/bedard/stripe
             bash <(curl -s https://codecov.io/bash) -v -cF php
 workflows:
   version: 2

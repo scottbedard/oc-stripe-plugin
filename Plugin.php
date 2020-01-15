@@ -1,6 +1,6 @@
 <?php
 
-namespace Bedard\Saas;
+namespace Bedard\Stripe;
 
 use App;
 use Exception;
@@ -13,7 +13,7 @@ use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 
 /**
- * Saas Plugin Information File.
+ * Stripe Plugin Information File.
  */
 class Plugin extends PluginBase
 {
@@ -34,10 +34,10 @@ class Plugin extends PluginBase
         // register our main stripe integration
         $alias = AliasLoader::getInstance();
 
-        $alias->alias('StripeManager', 'Bedard\Saas\Facades\StripeManager');
+        $alias->alias('StripeManager', 'Bedard\Stripe\Facades\StripeManager');
 
-        App::singleton('bedard.saas.stripe', function () {
-            return \Bedard\Saas\Classes\StripeManager::instance();
+        App::singleton('bedard.stripe.stripe', function () {
+            return \Bedard\Stripe\Classes\StripeManager::instance();
         });
 
         // extend rainlab.user
@@ -81,7 +81,7 @@ class Plugin extends PluginBase
             'author'      => 'Scott Bedard',
             'description' => 'Software as a service with Stripe',
             'icon'        => 'icon-cc-stripe',
-            'name'        => 'Saas',
+            'name'        => 'Stripe',
         ];
     }
 
@@ -93,8 +93,8 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'bedard.saas.access_settings' => [
-                'label' => 'bedard.saas::lang.permissions.access_settings',
+            'bedard.stripe.access_settings' => [
+                'label' => 'bedard.stripe::lang.permissions.access_settings',
                 'tab'   => 'rainlab.user::lang.plugin.tab',
             ],
         ];
@@ -110,12 +110,12 @@ class Plugin extends PluginBase
         return [
             'settings' => [
                 'category'    => SettingsManager::CATEGORY_USERS,
-                'class'       => 'Bedard\Saas\Models\Settings',
-                'description' => 'bedard.saas::lang.settings.menu_description',
+                'class'       => 'Bedard\Stripe\Models\Settings',
+                'description' => 'bedard.stripe::lang.settings.menu_description',
                 'icon'        => 'icon-cc-stripe',
-                'label'       => 'bedard.saas::lang.settings.menu_label',
+                'label'       => 'bedard.stripe::lang.settings.menu_label',
                 'order'       => 600,
-                'permissions' => ['bedard.saas.access_settings'],
+                'permissions' => ['bedard.stripe.access_settings'],
             ],
         ];
     }

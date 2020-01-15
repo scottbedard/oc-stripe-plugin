@@ -1,10 +1,10 @@
 {
     "autoload": {
         "psr-4": {
-            "Bedard\\Saas\\Tests\\": "tests/"
+            "Bedard\\Stripe\\Tests\\": "tests/"
         }
     },
-    "name": "bedard/oc-saas-plugin",
+    "name": "bedard/oc-stripe-plugin",
     "require": {
         "stripe/stripe-php": "^7.12"
     },

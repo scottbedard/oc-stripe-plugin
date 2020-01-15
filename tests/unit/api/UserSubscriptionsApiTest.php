@@ -1,8 +1,8 @@
 <?php
 
-namespace Bedard\Saas\Tests\Unit\Classes;
+namespace Bedard\Stripe\Tests\Unit\Classes;
 
-use Bedard\Saas\Tests\PluginTestCase;
+use Bedard\Stripe\Tests\PluginTestCase;
 use StripeManager;
 
 class UserSubscriptionsApiTest extends PluginTestCase
@@ -22,7 +22,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
 
         StripeManager::subscribeUserToPlan($user, $plan->id);
 
-        $response = $this->get('/api/bedard/saas/user/subscriptions');
+        $response = $this->get('/api/bedard/stripe/user/subscriptions');
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), true);
@@ -47,7 +47,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
             'product'  => $product->id,
         ]);
 
-        $response = $this->post('/api/bedard/saas/user/subscriptions', [
+        $response = $this->post('/api/bedard/stripe/user/subscriptions', [
             'plan' => $plan->id,
         ]);
 
@@ -83,7 +83,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
 
         $subscription = StripeManager::subscribeUserToPlan($user, $monthly->id);
 
-        $response = $this->patch('/api/bedard/saas/user/subscriptions/'.$subscription->id, [
+        $response = $this->patch('/api/bedard/stripe/user/subscriptions/'.$subscription->id, [
             'plan' => $annual->id,
         ]);
 
@@ -127,7 +127,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
         StripeManager::createCard($user2, 'tok_amex');
 
         // attempting to change this subscription from user 2's pespective should throw an error
-        $response = $this->patch('/api/bedard/saas/user/subscriptions/'.$subscription->id, [
+        $response = $this->patch('/api/bedard/stripe/user/subscriptions/'.$subscription->id, [
             'plan' => $annual->id,
         ]);
 
@@ -148,7 +148,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
         ]);
         $subscription = StripeManager::subscribeUserToPlan($user, $plan->id);
 
-        $response = $this->delete('/api/bedard/saas/user/subscriptions/'.$subscription->id);
+        $response = $this->delete('/api/bedard/stripe/user/subscriptions/'.$subscription->id);
         $response->assertStatus(200);
 
         $data = json_decode($response->getContent(), 200);
@@ -174,7 +174,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
         $user2 = $this->createAuthenticatedUser();
 
         // cancelling the subscription from user 2's perspective should fail
-        $response = $this->delete('/api/bedard/saas/user/subscriptions/'.$subscription->id);
+        $response = $this->delete('/api/bedard/stripe/user/subscriptions/'.$subscription->id);
         $response->assertStatus(401);
     }
 
@@ -207,7 +207,7 @@ class UserSubscriptionsApiTest extends PluginTestCase
 
         $this->assertTrue($cancelled->cancel_at_period_end);
 
-        $response = $this->patch('/api/bedard/saas/user/subscriptions/'.$cancelled->id, [
+        $response = $this->patch('/api/bedard/stripe/user/subscriptions/'.$cancelled->id, [
             'plan' => $annual->id,
         ]);
 

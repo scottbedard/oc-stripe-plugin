@@ -1,9 +1,9 @@
 <?php
 
-namespace Bedard\Saas\Http\Controllers;
+namespace Bedard\Stripe\Http\Controllers;
 
 use Auth;
-use Bedard\Saas\Classes\ApiController;
+use Bedard\Stripe\Classes\ApiController;
 use StripeManager;
 
 class UserChargesController extends ApiController
@@ -16,7 +16,7 @@ class UserChargesController extends ApiController
         $user = Auth::getUser();
 
         $params = [
-            'customer' => $user->bedard_saas_customer_id,
+            'customer' => $user->bedard_stripe_customer_id,
             'limit'    => (int) input('limit', 10),
         ];
 
@@ -39,7 +39,7 @@ class UserChargesController extends ApiController
             $prev = $charges->has_more;
         } elseif ($first) {
             $prev = count(StripeManager::listCharges([
-                'customer'      => $user->bedard_saas_customer_id,
+                'customer'      => $user->bedard_stripe_customer_id,
                 'ending_before' => $first->id,
                 'limit'         => 1,
             ])->data) > 0;
@@ -49,7 +49,7 @@ class UserChargesController extends ApiController
             $next = $charges->has_more;
         } elseif ($last) {
             $next = count(StripeManager::listCharges([
-                'customer'       => $user->bedard_saas_customer_id,
+                'customer'       => $user->bedard_stripe_customer_id,
                 'limit'          => 1,
                 'starting_after' => $last->id,
             ])->data) > 0;

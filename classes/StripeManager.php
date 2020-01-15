@@ -1,6 +1,6 @@
 <?php
 
-namespace Bedard\Saas\Classes;
+namespace Bedard\Stripe\Classes;
 
 use October\Rain\Auth\AuthException;
 use RainLab\User\Models\User;
@@ -42,8 +42,8 @@ class StripeManager
     {
         $subscription = Subscription::retrieve($subscriptionId);
 
-        if ($user->bedard_saas_customer_id !== $subscription->customer) {
-            throw new AuthException('bedard.saas::lang.exceptions.unauthorized_cancellation');
+        if ($user->bedard_stripe_customer_id !== $subscription->customer) {
+            throw new AuthException('bedard.stripe::lang.exceptions.unauthorized_cancellation');
         }
 
         return Subscription::update($subscriptionId, [
@@ -64,8 +64,8 @@ class StripeManager
     {
         $subscription = Subscription::retrieve($subscriptionId);
 
-        if ($user->bedard_saas_customer_id !== $subscription->customer) {
-            throw new AuthException('bedard.saas::lang.exceptions.unauthorized_cancellation');
+        if ($user->bedard_stripe_customer_id !== $subscription->customer) {
+            throw new AuthException('bedard.stripe::lang.exceptions.unauthorized_cancellation');
         }
 
         return Subscription::update($subscriptionId, [
@@ -89,7 +89,7 @@ class StripeManager
      */
     public function createCard(User $user, string $token)
     {
-        return Customer::createSource($user->bedard_saas_customer_id, [
+        return Customer::createSource($user->bedard_stripe_customer_id, [
             'source' => $token,
         ]);
     }
@@ -117,7 +117,7 @@ class StripeManager
     {
         $customer = Customer::create($this->getCustomerData($user));
 
-        $user->bedard_saas_customer_id = $customer->id;
+        $user->bedard_stripe_customer_id = $customer->id;
     }
 
     /**
@@ -169,7 +169,7 @@ class StripeManager
      */
     public function deleteCustomerSource(User $user, $source)
     {
-        return Customer::deleteSource($user->bedard_saas_customer_id, $source);
+        return Customer::deleteSource($user->bedard_stripe_customer_id, $source);
     }
 
     /**
@@ -251,7 +251,7 @@ class StripeManager
      */
     public function listCustomerSources(User $user, $params = [])
     {
-        return Customer::allSources($user->bedard_saas_customer_id, $params);
+        return Customer::allSources($user->bedard_stripe_customer_id, $params);
     }
 
     /**
@@ -275,7 +275,7 @@ class StripeManager
      */
     public function retrieveCustomer(User $user): Customer
     {
-        return Customer::retrieve($user->bedard_saas_customer_id);
+        return Customer::retrieve($user->bedard_stripe_customer_id);
     }
 
     /**
@@ -290,7 +290,7 @@ class StripeManager
     public function subscribeUserToPlan(User $user, string $planId, array $params = [])
     {
         return Subscription::create(array_merge($params, [
-            'customer' => $user->bedard_saas_customer_id,
+            'customer' => $user->bedard_stripe_customer_id,
             'items'    => [
                 ['plan' => $planId],
             ],
@@ -325,6 +325,6 @@ class StripeManager
      */
     public function updateCustomer(User $user, array $data = [])
     {
-        return Customer::update($user->bedard_saas_customer_id, $data);
+        return Customer::update($user->bedard_stripe_customer_id, $data);
     }
 }

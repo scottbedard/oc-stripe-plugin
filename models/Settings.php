@@ -1,6 +1,6 @@
 <?php
 
-namespace Bedard\Saas\Models;
+namespace Bedard\Stripe\Models;
 
 use Illuminate\Support\Str;
 use Model;
@@ -19,7 +19,7 @@ class Settings extends Model
         \System\Behaviors\SettingsModel::class,
     ];
 
-    public $settingsCode = 'bedard_saas_settings';
+    public $settingsCode = 'bedard_stripe_settings';
 
     public $settingsFields = 'fields.yaml';
 

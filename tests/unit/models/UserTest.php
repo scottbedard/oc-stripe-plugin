@@ -1,8 +1,8 @@
 <?php
 
-namespace Bedard\Saas\Tests\Unit\Models;
+namespace Bedard\Stripe\Tests\Unit\Models;
 
-use Bedard\Saas\Tests\PluginTestCase;
+use Bedard\Stripe\Tests\PluginTestCase;
 use Faker\Factory;
 use Log;
 use StripeManager;
@@ -13,7 +13,7 @@ class UserTest extends PluginTestCase
     {
         $user = $this->createUser();
 
-        $this->assertStringStartsWith('cus_', $user->bedard_saas_customer_id);
+        $this->assertStringStartsWith('cus_', $user->bedard_stripe_customer_id);
 
         $customer = StripeManager::retrieveCustomer($user);
 
@@ -51,7 +51,7 @@ class UserTest extends PluginTestCase
 
         // set the customer id to something invalid so when we delete the
         // user stripe can't find the related customer and throws an error
-        $user->bedard_saas_customer_id = 'cus_invalid';
+        $user->bedard_stripe_customer_id = 'cus_invalid';
         $user->save();
 
         // deleting the customer should log an error

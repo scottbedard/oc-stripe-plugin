@@ -1,6 +1,6 @@
 <?php
 
-namespace Bedard\Saas\Facades;
+namespace Bedard\Stripe\Facades;
 
 use October\Rain\Support\Facade;
 
@@ -8,6 +8,6 @@ class StripeManager extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'bedard.saas.stripe';
+        return 'bedard.stripe.stripe';
     }
 }

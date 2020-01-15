@@ -1,8 +1,8 @@
 <?php
 
-namespace Bedard\Saas\Http\Controllers;
+namespace Bedard\Stripe\Http\Controllers;
 
-use Bedard\Saas\Classes\ApiController;
+use Bedard\Stripe\Classes\ApiController;
 use StripeManager;
 
 class ProductsController extends ApiController

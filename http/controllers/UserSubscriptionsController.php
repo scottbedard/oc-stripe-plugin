@@ -1,9 +1,9 @@
 <?php
 
-namespace Bedard\Saas\Http\Controllers;
+namespace Bedard\Stripe\Http\Controllers;
 
 use Auth;
-use Bedard\Saas\Classes\ApiController;
+use Bedard\Stripe\Classes\ApiController;
 use October\Rain\Auth\AuthException;
 use StripeManager;
 
@@ -53,7 +53,7 @@ class UserSubscriptionsController extends ApiController
         $user = Auth::getUser();
 
         $subscriptions = StripeManager::listSubscriptions([
-            'customer' => $user->bedard_saas_customer_id,
+            'customer' => $user->bedard_stripe_customer_id,
         ]);
 
         return [

@@ -1,9 +1,9 @@
 <?php
 
-namespace Bedard\Saas\Tests\Unit\Classes;
+namespace Bedard\Stripe\Tests\Unit\Classes;
 
-use Bedard\Saas\Classes\ApiController;
-use Bedard\Saas\Tests\PluginTestCase;
+use Bedard\Stripe\Classes\ApiController;
+use Bedard\Stripe\Tests\PluginTestCase;
 
 class ApiControllerTest extends PluginTestCase
 {
@@ -13,7 +13,7 @@ class ApiControllerTest extends PluginTestCase
             $controller->middleware(TestMiddleware::class);
         });
 
-        $response = $this->get('/api/bedard/saas/products');
+        $response = $this->get('/api/bedard/stripe/products');
 
         $this->assertEquals('Hello from the test middleware!', $response->getContent());
     }

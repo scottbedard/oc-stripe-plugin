@@ -1,8 +1,8 @@
 <?php
 
-namespace Bedard\Saas\Tests\Unit\Classes;
+namespace Bedard\Stripe\Tests\Unit\Classes;
 
-use Bedard\Saas\Tests\PluginTestCase;
+use Bedard\Stripe\Tests\PluginTestCase;
 use StripeManager;
 
 class UserCustomerApiTest extends PluginTestCase
@@ -16,7 +16,7 @@ class UserCustomerApiTest extends PluginTestCase
         $customer = StripeManager::retrieveCustomer($user);
         $this->assertEquals($one->id, $customer->default_source);
 
-        $response = $this->post('/api/bedard/saas/user/customer/default-source', [
+        $response = $this->post('/api/bedard/stripe/user/customer/default-source', [
             'source' => $two->id,
         ]);
 

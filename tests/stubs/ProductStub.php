@@ -1,6 +1,6 @@
 <?php
 
-namespace Bedard\Saas\Tests\Stubs;
+namespace Bedard\Stripe\Tests\Stubs;
 
 use Stripe\ApiResource;
 

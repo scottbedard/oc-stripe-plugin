@@ -1,9 +1,9 @@
 <?php
 
-namespace Bedard\Saas\Models\Settings;
+namespace Bedard\Stripe\Models\Settings;
 
-use Bedard\Saas\Models\Settings;
-use Bedard\Saas\Tests\PluginTestCase;
+use Bedard\Stripe\Models\Settings;
+use Bedard\Stripe\Tests\PluginTestCase;
 use Config;
 
 class SettingsTest extends PluginTestCase

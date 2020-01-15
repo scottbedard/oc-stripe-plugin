@@ -1,8 +1,8 @@
 <?php
 
-namespace Bedard\Saas\Tests\Unit\Classes;
+namespace Bedard\Stripe\Tests\Unit\Classes;
 
-use Bedard\Saas\Tests\PluginTestCase;
+use Bedard\Stripe\Tests\PluginTestCase;
 use StripeManager;
 
 class ProductsApiTest extends PluginTestCase
@@ -14,7 +14,7 @@ class ProductsApiTest extends PluginTestCase
             'name'   => 'Basic',
         ]);
 
-        $response = $this->get('/api/bedard/saas/products');
+        $response = $this->get('/api/bedard/stripe/products');
         $response->assertStatus(200);
         $data = json_decode($response->getContent(), true);
 
@@ -46,7 +46,7 @@ class ProductsApiTest extends PluginTestCase
             'product'  => $product->id,
         ]);
 
-        $response = $this->get('/api/bedard/saas/products?plans');
+        $response = $this->get('/api/bedard/stripe/products?plans');
         $response->assertStatus(200);
         $data = json_decode($response->getContent(), true);
 

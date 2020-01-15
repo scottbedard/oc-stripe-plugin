@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'apiEnable' => env('BEDARD_SAAS_API_ENABLE', true),
+    'apiEnable' => env('BEDARD_STRIPE_API_ENABLE', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -24,5 +24,5 @@ return [
     |
     */
 
-    'apiPrefix' => env('BEDARD_SAAS_API_PREFIX', '/api/bedard/saas'),
+    'apiPrefix' => env('BEDARD_STRIPE_API_PREFIX', '/api/bedard/stripe'),
 ];

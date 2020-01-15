@@ -1,6 +1,6 @@
 <?php
 
-namespace Bedard\Saas\Tests;
+namespace Bedard\Stripe\Tests;
 
 use App;
 use Auth;
@@ -18,7 +18,7 @@ abstract class PluginTestCase extends BasePluginTestCase
      * @var array Plugins to refresh between tests.
      */
     protected $refreshPlugins = [
-        'Bedard.Saas',
+        'Bedard.Stripe',
         'RainLab.User',
     ];
 
@@ -59,7 +59,7 @@ abstract class PluginTestCase extends BasePluginTestCase
      */
     public static function jsonFixture(string $file)
     {
-        return json_decode(file_get_contents(plugins_path('bedard/saas/tests/fixtures/'.$file)));
+        return json_decode(file_get_contents(plugins_path('bedard/stripe/tests/fixtures/'.$file)));
     }
 
     /**
@@ -89,7 +89,7 @@ abstract class PluginTestCase extends BasePluginTestCase
         App::singleton(Factory::class, function ($app) {
             $faker = $app->make(Generator::class);
 
-            return Factory::construct($faker, plugins_path('bedard/saas/factories'));
+            return Factory::construct($faker, plugins_path('bedard/stripe/factories'));
         });
     }
 

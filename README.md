@@ -1,14 +1,14 @@
-# oc-saas-plugin
+# oc-stripe-plugin
 
-[![Build status](https://img.shields.io/circleci/build/github/scottbedard/oc-saas-plugin)](https://circleci.com/gh/scottbedard/oc-saas-plugin)
-[![Test coverage](https://img.shields.io/codecov/c/github/scottbedard/oc-saas-plugin)](https://codecov.io/gh/scottbedard/oc-saas-plugin)
-[![Code quality](https://img.shields.io/scrutinizer/quality/g/scottbedard/oc-saas-plugin/master)](https://scrutinizer-ci.com/g/scottbedard/oc-saas-plugin)
+[![Build status](https://img.shields.io/circleci/build/github/scottbedard/oc-stripe-plugin)](https://circleci.com/gh/scottbedard/oc-stripe-plugin)
+[![Test coverage](https://img.shields.io/codecov/c/github/scottbedard/oc-stripe-plugin)](https://codecov.io/gh/scottbedard/oc-stripe-plugin)
+[![Code quality](https://img.shields.io/scrutinizer/quality/g/scottbedard/oc-stripe-plugin/master)](https://scrutinizer-ci.com/g/scottbedard/oc-stripe-plugin)
 [![Code style](https://github.styleci.io/repos/221099316/shield?style=flat)](https://github.styleci.io/repos/221099316)
-[![License](https://img.shields.io/github/license/scottbedard/oc-saas-plugin?color=blue)](https://github.com/scottbedard/oc-saas-plugin/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/scottbedard/oc-stripe-plugin?color=blue)](https://github.com/scottbedard/oc-stripe-plugin/blob/master/LICENSE)
 
 Software as a service plugin for October CMS and Stripe.
 
-> **WARNING:** This plugin is in active development, and is not ready for public use. API changes may happen at any time. [See this issue](https://github.com/scottbedard/oc-saas-plugin/issues/2) for current project status.
+> **WARNING:** This plugin is in active development, and is not ready for public use. API changes may happen at any time. [See this issue](https://github.com/scottbedard/oc-stripe-plugin/issues/2) for current project status.
 
 ## Installation
 
@@ -16,10 +16,10 @@ Install [RainLab.User](https://github.com/rainlab/user-plugin) and run all migra
 
 ```bash
 # clone repository
-$ git clone git@github.com:scottbedard/oc-saas-plugin.git plugins/bedard/saas
+$ git clone git@github.com:scottbedard/oc-stripe-plugin.git plugins/bedard/stripe
 
 # run migrations
-$ php artisan plugin:refresh Bedard.Saas
+$ php artisan plugin:refresh Bedard.Stripe
 ```
 
 Once this is done, configure your publishable and secret Stripe keys. Do this by adding the following to `config/services.php`.
@@ -40,19 +40,19 @@ STRIPE_SECRET=sk_test_XXXXXXXXXXXXXXXXXXXXXX
 
 ## Components
 
-Unfortunately there are no components for this plugin yet. It is currently being designed for use with [single page applications](https://github.com/scottbedard/oc-saas-theme). Hopefully once the core functionality is built, we can create a similar starter theme that uses traditional October components. If you'd like to help with this, feel free to open an issue and lets chat!
+Unfortunately there are no components for this plugin yet. It is currently being designed for use with [single page applications](https://github.com/scottbedard/oc-stripe-theme). Hopefully once the core functionality is built, we can create a similar starter theme that uses traditional October components. If you'd like to help with this, feel free to open an issue and lets chat!
 
 ## Endpoints
 
 An HTTP API is enabled by default. If you'd like to disable this, add the following to your `.env` file. Alternatively, you can use October's [file based configuration](https://octobercms.com/docs/plugin/settings#file-configuration).
 
 ```
-BEDARD_SAAS_API_ENABLE=false
+BEDARD_STRIPE_API_ENABLE=false
 ```
 
 ### Cards
 
-##### `GET: /api/bedard/saas/user/cards`
+##### `GET: /api/bedard/stripe/user/cards`
 
 Fetch the authenticated user's cards.
 
@@ -61,7 +61,7 @@ _Response_
 - `default_source` - The customer's default payment source.
 - `has_more` - A boolean indicating if the user has more cards.
 
-##### `POST: /api/bedard/saas/user/cards`
+##### `POST: /api/bedard/stripe/user/cards`
 
 Create a card for the authenticated user.
 
@@ -69,7 +69,7 @@ _Response_
 
 - `data` - The newly created [card object](https://stripe.com/docs/api/cards/object?lang=php).
 
-##### `DELETE: /api/bedard/saas/user/cards/{card}`
+##### `DELETE: /api/bedard/stripe/user/cards/{card}`
 
 Delete a card for the authenticated user. It is recommended that you re-fetch the user's default payment source after deleting cards. See the [Stripe documentation](https://stripe.com/docs/api/cards/delete?lang=php) for more information about how default payment sources are managed when a card is deleted.
 
@@ -84,7 +84,7 @@ _Response_
 
 ### Charges
 
-##### `GET: /api/bedard/saas/user/charges`
+##### `GET: /api/bedard/stripe/user/charges`
 
 List charges by the authenticated user.
 
@@ -102,7 +102,7 @@ _Response_
 
 ### Customers
 
-##### `POST: /api/bedard/saas/user/customer/default-source`
+##### `POST: /api/bedard/stripe/user/customer/default-source`
 
 Update the authenticated user's default payment source.
 
@@ -112,7 +112,7 @@ _Payload_
 
 ### Products
 
-##### `GET: /api/bedard/saas/products`
+##### `GET: /api/bedard/stripe/products`
 
 Fetch active products.
 
@@ -127,7 +127,7 @@ _Response_
 
 ### Subscriptions
 
-##### `GET: /api/bedard/saas/user/subscriptions`
+##### `GET: /api/bedard/stripe/user/subscriptions`
 
 List the authenticated user's subscriptions.
 
@@ -136,7 +136,7 @@ _Response_
 - `data` - A [list of subscription objects](https://stripe.com/docs/api/subscriptions/list?lang=php).
 - `has_more` - A boolean indicating if there are more subscriptions.
 
-##### `POST: /api/bedard/saas/user/subscriptions`
+##### `POST: /api/bedard/stripe/user/subscriptions`
 
 Create a subscription for the authenticated user. The user must have at least one card on file before creating a subscription.
 
@@ -148,7 +148,7 @@ _Response_
 
 - `data` - The newly created [subscription object](https://stripe.com/docs/api/subscriptions/object?lang=php).
 
-##### `DELETE: /api/bedard/saas/user/subscriptions/{subscription}`
+##### `DELETE: /api/bedard/stripe/user/subscriptions/{subscription}`
 
 Lazily cancels a user's subscription. Note that this is not the same as calling a subscription's `cancel` method, and does not cancel the user's subscription immediately. Instead, calling this endpoint sets the [`cancel_at_period_end`](https://stripe.com/docs/api/subscriptions/object?lang=php#subscription_object-cancel_at_period_end) property to `true`, and the user will continue to have access until the end of their billing cycle.
 
@@ -156,7 +156,7 @@ _Parameters_
 
 - `subscription` - Subscription ID to cancel.
 
-##### `PATCH/PUT: /api/bedard/saas/user/subscriptions/{subscription}`
+##### `PATCH/PUT: /api/bedard/stripe/user/subscriptions/{subscription}`
 
 Change the plan associated with a user's subscription. If the subscription has `cancel_at_period_end` set to `true`, this will be updated to `false` and resume normal billing.
 
@@ -174,6 +174,6 @@ _Response_
 
 ## License
 
-[MIT](https://github.com/scottbedard/oc-saas-plugin/blob/master/LICENSE)
+[MIT](https://github.com/scottbedard/oc-stripe-plugin/blob/master/LICENSE)
 
 Copyright (c) 2019-present, Scott Bedard
