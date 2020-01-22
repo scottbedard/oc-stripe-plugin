@@ -281,7 +281,7 @@ class StripeManager
     /**
      * Retrieve a charge.
      *
-     * @param  string           $id
+     * @param string $id
      *
      * @return \Stripe\Customer
      */
