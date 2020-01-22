@@ -279,6 +279,18 @@ class StripeManager
     }
 
     /**
+     * Retrieve a charge.
+     *
+     * @param  string           $id
+     *
+     * @return \Stripe\Customer
+     */
+    public function retreiveCharge(string $id): Charge
+    {
+        return Charge::retrieve($id);
+    }
+
+    /**
      * Subscribe a user to a plan.
      *
      * @param \RainLab\User\Models\User $user
