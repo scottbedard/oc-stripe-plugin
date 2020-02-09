@@ -4,6 +4,7 @@ namespace Bedard\Stripe\Classes;
 
 use October\Rain\Auth\AuthException;
 use RainLab\User\Models\User;
+use Stripe\BalanceTransaction;
 use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Plan;
@@ -264,6 +265,18 @@ class StripeManager
     public function listSubscriptions($params = [])
     {
         return Subscription::all($params);
+    }
+
+    /**
+     * Retrieve a balance transaction.
+     *
+     * @param string $id
+     *
+     * @return \Stripe\BalanceTransaction
+     */
+    public function retreiveBalanceTransaction(string $id): BalanceTransaction
+    {
+        return BalanceTransaction::retrieve($id);
     }
 
     /**
